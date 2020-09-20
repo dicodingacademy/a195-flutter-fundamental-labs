@@ -13,6 +13,17 @@ final didReceiveLocalNotificationSubject =
     BehaviorSubject<ReceivedNotification>();
 
 class NotificationHelper {
+  static NotificationHelper _notificationHelper;
+
+  NotificationHelper._createObject();
+
+  factory NotificationHelper() {
+    if (_notificationHelper == null) {
+      _notificationHelper = NotificationHelper._createObject();
+    }
+    return _notificationHelper;
+  }
+
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
