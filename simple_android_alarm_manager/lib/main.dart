@@ -6,7 +6,9 @@ import 'package:simple_android_alarm_manager/utils/background_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  BackgroundService.initializeIsolate();
+  final BackgroundService _service = BackgroundService();
+
+  _service.initializeIsolate();
   AndroidAlarmManager.initialize();
 
   runApp(MyApp());
@@ -14,6 +16,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   static const title = 'Simple Alarm Manager';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

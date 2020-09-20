@@ -13,10 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final BackgroundService _service = BackgroundService();
+
   @override
   void initState() {
     super.initState();
-    port.listen((_) async => await BackgroundService.someTask());
+    port.listen((_) async => await _service.someTask());
   }
 
   @override

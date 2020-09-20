@@ -4,10 +4,20 @@ import 'dart:ui';
 final ReceivePort port = ReceivePort();
 
 class BackgroundService {
+  static BackgroundService _service;
   static String _isolateName = 'isolate';
   static SendPort _uiSendPort;
 
-  static void initializeIsolate() {
+  BackgroundService._createObject();
+
+  factory BackgroundService() {
+    if (_service == null) {
+      _service = BackgroundService._createObject();
+    }
+    return _service;
+  }
+
+  void initializeIsolate() {
     IsolateNameServer.registerPortWithName(
       port.sendPort,
       _isolateName,
@@ -20,7 +30,7 @@ class BackgroundService {
     _uiSendPort?.send(null);
   }
 
-  static Future<void> someTask() async {
+  Future<void> someTask() async {
     print('Updated data from the background isolate');
   }
 }
