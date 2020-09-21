@@ -17,7 +17,7 @@ class DatabaseHelper {
 
   Future<Database> get database async {
     if (_database == null) {
-      _database = await initializeDb();
+      _database = await _initializeDb();
     }
 
     return _database;
@@ -25,7 +25,7 @@ class DatabaseHelper {
 
   static String _tableName = 'notes';
 
-  Future<Database> initializeDb() async {
+  Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
     var db = openDatabase(
       '$path/note_db.db',
