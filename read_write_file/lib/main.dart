@@ -60,10 +60,10 @@ class MyHomePage extends StatelessWidget {
     }
   }
 
-  bool get isValid => _titleController.text.isNotEmpty;
+  bool get _isValid => _titleController.text.isNotEmpty;
 
   void _saveFile(BuildContext context) async {
-    if (isValid) {
+    if (_isValid) {
       final filePath = await FileHelper.getFilePath(_titleController.text);
       FileHelper.writeFile(filePath, _contentController.text);
       showCupertinoDialog(
