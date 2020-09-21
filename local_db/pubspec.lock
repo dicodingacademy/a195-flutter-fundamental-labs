@@ -89,7 +89,7 @@ packages:
     source: hosted
     version: "0.0.4"
   path:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path
       url: "https://pub.dartlang.org"
