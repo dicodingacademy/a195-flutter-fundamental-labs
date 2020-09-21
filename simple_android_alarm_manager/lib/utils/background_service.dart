@@ -4,18 +4,15 @@ import 'dart:ui';
 final ReceivePort port = ReceivePort();
 
 class BackgroundService {
-  static BackgroundService _service;
+  static BackgroundService _instance;
   static String _isolateName = 'isolate';
   static SendPort _uiSendPort;
 
-  BackgroundService._createObject();
-
-  factory BackgroundService() {
-    if (_service == null) {
-      _service = BackgroundService._createObject();
-    }
-    return _service;
+  BackgroundService._internal() {
+    _instance = this;
   }
+
+  factory BackgroundService() => _instance ?? BackgroundService._internal();
 
   void initializeIsolate() {
     IsolateNameServer.registerPortWithName(
