@@ -29,7 +29,7 @@ class NoteListPage extends StatelessWidget {
                     title: Text(note.title),
                     subtitle: Text(note.description),
                     onTap: () async {
-                      final selectedNote = await provider.openNote(note.id);
+                      final selectedNote = await provider.getNoteById(note.id);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

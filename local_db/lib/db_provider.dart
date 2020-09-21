@@ -16,6 +16,7 @@ class DbProvider extends ChangeNotifier {
   Future<void> addNote(Note note) async {
     await _dbHelper.insertNote(note);
     _getAllNotes();
+    notifyListeners();
   }
 
   void _getAllNotes() async {
@@ -23,17 +24,19 @@ class DbProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Note> openNote(int id) async {
+  Future<Note> getNoteById(int id) async {
     return await _dbHelper.getNoteById(id);
   }
 
   void updateNote(Note note) async {
     await _dbHelper.updateNote(note);
     _getAllNotes();
+    notifyListeners();
   }
 
   void deleteNote(int id) async {
     await _dbHelper.deleteNote(id);
     _getAllNotes();
+    notifyListeners();
   }
 }
