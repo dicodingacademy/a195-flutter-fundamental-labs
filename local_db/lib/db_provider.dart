@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:local_db/database_service.dart';
+import 'package:local_db/database_helper.dart';
 import 'package:local_db/note.dart';
 
 class DbProvider extends ChangeNotifier {
