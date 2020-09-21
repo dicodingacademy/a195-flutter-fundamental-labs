@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:read_write_file/file_dialog.dart';
+import 'package:read_write_file/file_helper.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,16 +33,8 @@ class MyHomePage extends StatelessWidget {
   }
 
   void _openFile(String filePath) async {
-    final content = await _readFile(filePath);
+    final content = await FileHelper.readFile(filePath);
     _contentController.text = content;
-  }
-
-  Future<File> _writeFile(String path, String content) async {
-    final file = File(path);
-
-    // Write the file.
-    print('Saved to $path');
-    return file.writeAsString('$content');
   }
 
   void _getFilesInDirectory(BuildContext context) async {
@@ -61,38 +54,18 @@ class MyHomePage extends StatelessWidget {
       ),
     );
 
-    _openFile(openFile.path);
-    _titleController.text = split(openFile.path).last.split('.').first;
-  }
-
-  Future<String> _readFile(String filePath) async {
-    try {
-      final file = File(filePath);
-
-      // Read the file.
-      String contents = await file.readAsString();
-
-      return contents;
-    } catch (e) {
-      // If encountering an error, return 0.
-      print(e);
-      return '';
+    if (openFile != null) {
+      _openFile(openFile.path);
+      _titleController.text = split(openFile.path).last.split('.').first;
     }
-  }
-
-  Future<String> _getFilePath(String filename) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final prefix = directory.path;
-    final absolutePath = '$prefix/$filename.txt';
-    return absolutePath;
   }
 
   bool get isValid => _titleController.text.isNotEmpty;
 
   void _saveFile(BuildContext context) async {
     if (isValid) {
-      final filePath = await _getFilePath(_titleController.text);
-      _writeFile(filePath, _contentController.text);
+      final filePath = await FileHelper.getFilePath(_titleController.text);
+      FileHelper.writeFile(filePath, _contentController.text);
       showCupertinoDialog(
         context: context,
         builder: (context) {
