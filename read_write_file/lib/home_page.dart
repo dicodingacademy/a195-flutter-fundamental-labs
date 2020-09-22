@@ -104,19 +104,21 @@ class MyHomePage extends StatelessWidget {
                 Expanded(
                   child: CupertinoButton(
                     child: Text('New File'),
-                    onPressed: () {},
+                    onPressed: _createNewFile,
                   ),
                 ),
                 Expanded(
                   child: CupertinoButton(
                     child: Text('Open File'),
-                    onPressed: () {},
+                    onPressed: () => _getFilesInDirectory(context),
                   ),
                 ),
                 Expanded(
                   child: CupertinoButton(
                     child: Text('Save File'),
-                    onPressed: () {},
+                    onPressed: () {
+                      _saveFile(context);
+                    },
                   ),
                 ),
                 Expanded(
