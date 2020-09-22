@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
     final files =
         dir.listSync().toList().where((file) => file.path.contains('txt'));
 
-    final FileSystemEntity openFile = await Navigator.push(
+    final FileSystemEntity selectedFile = await Navigator.push(
       context,
       CupertinoPageRoute(
         builder: (context) => FileDialog(
@@ -37,9 +37,9 @@ class MyHomePage extends StatelessWidget {
       ),
     );
 
-    if (openFile != null) {
-      _openFile(openFile.path);
-      _titleController.text = split(openFile.path).last.split('.').first;
+    if (selectedFile != null) {
+      _openFile(selectedFile.path);
+      _titleController.text = split(selectedFile.path).last.split('.').first;
     }
   }
 
