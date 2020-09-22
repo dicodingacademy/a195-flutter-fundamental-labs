@@ -18,6 +18,7 @@ class MyHomePage extends StatelessWidget {
   void _openFile(String filePath) async {
     final content = await FileHelper.readFile(filePath);
     _contentController.text = content;
+    _titleController.text = split(filePath).last.split('.').first;
   }
 
   void _getFilesInDirectory(BuildContext context) async {
@@ -39,7 +40,6 @@ class MyHomePage extends StatelessWidget {
 
     if (selectedFile != null) {
       _openFile(selectedFile.path);
-      _titleController.text = split(selectedFile.path).last.split('.').first;
     }
   }
 

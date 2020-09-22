@@ -13,7 +13,7 @@ class FileHelper {
   static Future<File> writeFile(String path, String content) async {
     final file = File(path);
 
-    // Write the file.
+    // Menuliskan konten ke dalam berkas.
     print('Saved to $path');
     return file.writeAsString('$content');
   }
@@ -22,12 +22,12 @@ class FileHelper {
     try {
       final file = File(filePath);
 
-      // Read the file.
+      // Membaca berkas sebagai sebuah String.
       String contents = await file.readAsString();
 
       return contents;
     } catch (e) {
-      // If encountering an error, return 0.
+      // Jika terjadi eror, mencetak pesan eror ke konsol dan mengembalikan teks kosong.
       print(e);
       return '';
     }

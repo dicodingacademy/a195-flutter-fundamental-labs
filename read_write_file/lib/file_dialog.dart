@@ -15,19 +15,19 @@ class FileDialog extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         middle: Text('Choose your file'),
       ),
-      child: ListView(
-        children: files.map(
-          (file) {
-            return Material(
-              child: ListTile(
-                title: Text(split(file.path).last),
-                onTap: () {
-                  Navigator.pop(context, file);
-                },
-              ),
-            );
-          },
-        ).toList(),
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          final file = files[index];
+          return Material(
+            child: ListTile(
+              title: Text(split(file.path).last),
+              onTap: () {
+                Navigator.pop(context, file);
+              },
+            ),
+          );
+        },
+        itemCount: files.length,
       ),
     );
   }
