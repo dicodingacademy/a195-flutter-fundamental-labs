@@ -13,6 +13,9 @@ final didReceiveLocalNotificationSubject =
     BehaviorSubject<ReceivedNotification>();
 
 class NotificationHelper {
+  static const _channelId = "01";
+  static const _channelName = "channel_01";
+  static const _channelDesc = "dicoding channel";
   static NotificationHelper _instance;
 
   NotificationHelper._internal() {
@@ -63,17 +66,14 @@ class NotificationHelper {
   Future<void> showNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 1',
-        'your channel name 1',
-        'your channel description 1',
-        importance: Importance.Max,
-        priority: Priority.High,
-        ticker: 'ticker');
+        _channelId, _channelName, _channelDesc,
+        importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
 
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
 
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
     await flutterLocalNotificationsPlugin.show(
         0, 'plain title', 'plain body', platformChannelSpecifics,
         payload: 'plain notification');
@@ -82,15 +82,14 @@ class NotificationHelper {
   Future<void> showNotificationWithNoBody(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 2',
-        'your channel name 2',
-        'your channel description 2',
-        importance: Importance.Max,
-        priority: Priority.High,
-        ticker: 'ticker');
+        _channelId, _channelName, _channelDesc,
+        importance: Importance.Max, priority: Priority.High, ticker: 'ticker');
+
     var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
     await flutterLocalNotificationsPlugin.show(
         0, 'plain title', null, platformChannelSpecifics,
         payload: 'item x');
@@ -98,8 +97,7 @@ class NotificationHelper {
 
   Future<void> scheduleNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var scheduledNotificationDateTime =
-        DateTime.now().add(Duration(seconds: 5));
+    var dateTime = DateTime.now().add(Duration(seconds: 5));
     var vibrationPattern = Int64List(4);
     vibrationPattern[0] = 0;
     vibrationPattern[1] = 1000;
@@ -107,27 +105,31 @@ class NotificationHelper {
     vibrationPattern[3] = 2000;
 
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 3',
-        'your channel name 3',
-        'your channel description 3',
-        icon: 'secondary_icon',
-        sound: RawResourceAndroidNotificationSound('slow_spring_board'),
-        largeIcon: DrawableResourceAndroidBitmap('sample_large_icon'),
-        vibrationPattern: vibrationPattern,
-        enableLights: true,
-        color: const Color.fromARGB(255, 255, 0, 0),
-        ledColor: const Color.fromARGB(255, 255, 0, 0),
-        ledOnMs: 1000,
-        ledOffMs: 500);
+      _channelId,
+      _channelName,
+      _channelDesc,
+      icon: 'secondary_icon',
+      sound: RawResourceAndroidNotificationSound('slow_spring_board'),
+      largeIcon: DrawableResourceAndroidBitmap('sample_large_icon'),
+      vibrationPattern: vibrationPattern,
+      enableLights: true,
+      color: const Color.fromARGB(255, 255, 0, 0),
+      ledColor: const Color.fromARGB(255, 255, 0, 0),
+      ledOnMs: 1000,
+      ledOffMs: 500,
+    );
+
     var iOSPlatformChannelSpecifics =
         IOSNotificationDetails(sound: 'slow_spring_board.aiff');
+
     var platformChannelSpecifics = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
     await flutterLocalNotificationsPlugin.schedule(
       0,
       'scheduled title',
       'scheduled body',
-      scheduledNotificationDateTime,
+      dateTime,
       platformChannelSpecifics,
       payload: 'scheduled notification',
     );
@@ -136,15 +138,13 @@ class NotificationHelper {
   Future<void> showTimeoutNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 4',
-        'your channel name 4',
-        'your channel description 4',
+        _channelId, _channelName, _channelDesc,
         timeoutAfter: 3000,
         styleInformation: DefaultStyleInformation(true, true));
-    var iOSPlatformChannelSpecifics =
-        IOSNotificationDetails(presentSound: false);
-    var platformChannelSpecifics = NotificationDetails(
-        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
+    var platformChannelSpecifics =
+        NotificationDetails(androidPlatformChannelSpecifics, null);
+
     await flutterLocalNotificationsPlugin.show(0, 'timeout notification',
         'Times out after 3 seconds', platformChannelSpecifics);
   }
@@ -152,12 +152,9 @@ class NotificationHelper {
   Future<void> showGroupedNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var groupKey = 'com.android.example.WORK_EMAIL';
-    var groupChannelId = 'your channel id 5';
-    var groupChannelName = 'your channel name 5';
-    var groupChannelDescription = 'your channel description 5';
 
     var firstNotificationAndroidSpecifics = AndroidNotificationDetails(
-        groupChannelId, groupChannelName, groupChannelDescription,
+        _channelId, _channelName, _channelDesc,
         importance: Importance.Max,
         priority: Priority.High,
         groupKey: groupKey);
@@ -165,8 +162,9 @@ class NotificationHelper {
         NotificationDetails(firstNotificationAndroidSpecifics, null);
     await flutterLocalNotificationsPlugin.show(1, 'Alex Faarborg',
         'You will not believe...', firstNotificationPlatformSpecifics);
+
     var secondNotificationAndroidSpecifics = AndroidNotificationDetails(
-        groupChannelId, groupChannelName, groupChannelDescription,
+        _channelId, _channelName, _channelDesc,
         importance: Importance.Max,
         priority: Priority.High,
         groupKey: groupKey);
@@ -181,10 +179,11 @@ class NotificationHelper {
     var lines = List<String>();
     lines.add('Alex Faarborg  Check this out');
     lines.add('Jeff Chang    Launch Party');
+
     var inboxStyleInformation = InboxStyleInformation(lines,
         contentTitle: '2 messages', summaryText: 'janedoe@example.com');
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        groupChannelId, groupChannelName, groupChannelDescription,
+        _channelId, _channelName, _channelDesc,
         styleInformation: inboxStyleInformation,
         groupKey: groupKey,
         setAsGroupSummary: true);
@@ -200,9 +199,7 @@ class NotificationHelper {
     for (var i = 0; i <= maxProgress; i++) {
       await Future.delayed(Duration(seconds: 1), () async {
         var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-            'your channel id 6',
-            'your channel name 6',
-            'your channel description 6',
+            _channelId, _channelName, _channelDesc,
             channelShowBadge: false,
             importance: Importance.Max,
             priority: Priority.High,
@@ -210,9 +207,10 @@ class NotificationHelper {
             showProgress: true,
             maxProgress: maxProgress,
             progress: i);
-        var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-        var platformChannelSpecifics = NotificationDetails(
-            androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
+        var platformChannelSpecifics =
+            NotificationDetails(androidPlatformChannelSpecifics, null);
+
         await flutterLocalNotificationsPlugin.show(
             0,
             'progress notification title',
@@ -238,6 +236,7 @@ class NotificationHelper {
         'http://via.placeholder.com/48x48', 'largeIcon');
     var bigPicturePath = await _downloadAndSaveFile(
         'http://via.placeholder.com/400x800', 'bigPicture');
+
     var bigPictureStyleInformation = BigPictureStyleInformation(
         FilePathAndroidBitmap(bigPicturePath),
         largeIcon: FilePathAndroidBitmap(largeIconPath),
@@ -245,13 +244,14 @@ class NotificationHelper {
         htmlFormatContentTitle: true,
         summaryText: 'summary <i>text</i>',
         htmlFormatSummaryText: true);
+
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 7',
-        'your channel name 7',
-        'your channel description 7',
+        _channelId, _channelName, _channelDesc,
         styleInformation: bigPictureStyleInformation);
+
     var platformChannelSpecifics =
         NotificationDetails(androidPlatformChannelSpecifics, null);
+
     await flutterLocalNotificationsPlugin.show(
         0, 'big text title', 'silent body', platformChannelSpecifics);
   }
@@ -260,19 +260,22 @@ class NotificationHelper {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var bigPicturePath = await _downloadAndSaveFile(
         'http://via.placeholder.com/600x200', 'bigPicture.jpg');
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-        attachments: [IOSNotificationAttachment(bigPicturePath)]);
+
     var bigPictureAndroidStyle =
         BigPictureStyleInformation(FilePathAndroidBitmap(bigPicturePath));
+
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 8',
-        'your channel name 8',
-        'your channel description 8',
+        _channelId, _channelName, _channelDesc,
         importance: Importance.High,
         priority: Priority.High,
         styleInformation: bigPictureAndroidStyle);
+
+    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
+        attachments: [IOSNotificationAttachment(bigPicturePath)]);
+
     var notificationDetails = NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
     await flutterLocalNotificationsPlugin.show(
         0,
         'notification with attachment title',
@@ -285,19 +288,21 @@ class NotificationHelper {
     var lines = List<String>();
     lines.add('line <b>1</b>');
     lines.add('line <i>2</i>');
+
     var inboxStyleInformation = InboxStyleInformation(lines,
         htmlFormatLines: true,
         contentTitle: 'overridden <b>inbox</b> context title',
         htmlFormatContentTitle: true,
         summaryText: 'summary <i>text</i>',
         htmlFormatSummaryText: true);
+
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id 9',
-        'your channel name 9',
-        'your channel description 9',
+        _channelId, _channelName, _channelDesc,
         styleInformation: inboxStyleInformation);
+
     var platformChannelSpecifics =
         NotificationDetails(androidPlatformChannelSpecifics, null);
+
     await flutterLocalNotificationsPlugin.show(
         0, 'inbox title', 'inbox body', platformChannelSpecifics);
   }
@@ -305,17 +310,16 @@ class NotificationHelper {
   Future<void> deleteNotificationChannel(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
       BuildContext context) async {
-    const channelId = 'your channel id 1';
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
-        ?.deleteNotificationChannel(channelId);
+        ?.deleteNotificationChannel(_channelId);
 
     await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: Text('Channel with id \"$channelId\" deleted'),
+          content: Text('Channel with id \"$_channelId\" deleted'),
           actions: [
             FlatButton(
               child: Text('OK'),
