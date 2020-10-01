@@ -1,7 +1,6 @@
-import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:simple_android_alarm_manager/utils/background_service.dart';
-import 'package:simple_android_alarm_manager/utils/date_time_helper.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -33,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             RaisedButton(
               child: Text(
-                'Alarm with Delayed',
+                'Alarm with Delayed (Once)',
               ),
               onPressed: () async {
                 await AndroidAlarmManager.oneShot(
@@ -48,28 +47,12 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 20),
             RaisedButton(
               child: Text(
-                'Alarm with Periodic',
-              ),
-              onPressed: () async {
-                await AndroidAlarmManager.periodic(
-                  Duration(seconds: 5),
-                  2,
-                  BackgroundService.callback,
-                  startAt: DateTime.now(),
-                  exact: true,
-                  wakeup: true,
-                );
-              },
-            ),
-            SizedBox(height: 20),
-            RaisedButton(
-              child: Text(
-                'Schedule Alarm with Date Time',
+                'Alarm with Date and Time (Once)',
               ),
               onPressed: () async {
                 await AndroidAlarmManager.oneShotAt(
                   DateTime.now().add(Duration(seconds: 5)),
-                  3,
+                  2,
                   BackgroundService.callback,
                   exact: true,
                   wakeup: true,
@@ -79,13 +62,14 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 20),
             RaisedButton(
               child: Text(
-                'Schedule Alarm with Specific Date Time',
+                'Alarm with Periodic',
               ),
               onPressed: () async {
-                await AndroidAlarmManager.oneShotAt(
-                  DateTimeHelper.format(),
-                  4,
+                await AndroidAlarmManager.periodic(
+                  Duration(minutes: 1),
+                  3,
                   BackgroundService.callback,
+                  startAt: DateTime.now(),
                   exact: true,
                   wakeup: true,
                 );
@@ -97,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                 'Cancel Alarm by Id',
               ),
               onPressed: () async {
-                await AndroidAlarmManager.cancel(2);
+                await AndroidAlarmManager.cancel(3);
               },
             ),
           ],
