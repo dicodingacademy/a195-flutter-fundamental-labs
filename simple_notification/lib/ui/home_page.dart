@@ -6,6 +6,8 @@ import 'package:simple_notification/utils/notification_helper.dart';
 import 'package:simple_notification/widget/custom_button.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = "/";
+
   @override
   _HomePageState createState() => _HomePageState();
 }

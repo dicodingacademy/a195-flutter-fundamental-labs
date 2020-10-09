@@ -17,8 +17,9 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: HomePage(),
+      initialRoute: HomePage.routeName,
       routes: {
+        HomePage.routeName: (context) => HomePage(),
         DetailPage.routeName: (context) => DetailPage(),
       },
     ),
