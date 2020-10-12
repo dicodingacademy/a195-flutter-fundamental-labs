@@ -78,29 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              onPressed: () async {
-                setState(() {
-                  _isLoading = true;
-                });
-                try {
-                  final email = _emailController.text;
-                  final password = _passwordController.text;
-
-                  final newUser = await _auth.createUserWithEmailAndPassword(
-                      email: email, password: password);
-
-                  if (newUser != null) {
-                    Navigator.pop(context);
-                  }
-                } catch (e) {
-                  final snackbar = SnackBar(content: Text(e.toString()));
-                  _scaffoldKey.currentState.showSnackBar(snackbar);
-                } finally {
-                  setState(() {
-                    _isLoading = false;
-                  });
-                }
-              },
+              onPressed: _register,
             ),
             FlatButton(
               child: Text('Already have an account? Login'),
@@ -110,6 +88,30 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  void _register() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      final newUser = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+
+      if (newUser != null) {
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      final snackbar = SnackBar(content: Text(e.toString()));
+      _scaffoldKey.currentState.showSnackBar(snackbar);
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   @override

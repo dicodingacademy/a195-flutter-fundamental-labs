@@ -21,12 +21,12 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
+    _getCurrentUser();
   }
 
-  void getCurrentUser() async {
+  void _getCurrentUser() {
     try {
-      var currentUser = await _auth.currentUser;
+      var currentUser = _auth.currentUser;
 
       if (currentUser != null) {
         _activeUser = currentUser;

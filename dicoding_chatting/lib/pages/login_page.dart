@@ -75,29 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              onPressed: () async {
-                setState(() {
-                  _isLoading = true;
-                });
-                try {
-                  final email = _emailController.text;
-                  final password = _passwordController.text;
-
-                  final user = await _auth.signInWithEmailAndPassword(
-                      email: email, password: password);
-
-                  if (user != null) {
-                    Navigator.pushReplacementNamed(context, ChatPage.id);
-                  }
-                } catch (e) {
-                  final snackbar = SnackBar(content: Text(e.toString()));
-                  _scaffoldKey.currentState.showSnackBar(snackbar);
-                } finally {
-                  setState(() {
-                    _isLoading = false;
-                  });
-                }
-              },
+              onPressed: _login,
             ),
             FlatButton(
               child: Text('Does not have an account yet? Register here'),
@@ -107,6 +85,30 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      final email = _emailController.text;
+      final password = _passwordController.text;
+
+      final user = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+
+      if (user != null) {
+        Navigator.pushReplacementNamed(context, ChatPage.id);
+      }
+    } catch (e) {
+      final snackbar = SnackBar(content: Text(e.toString()));
+      _scaffoldKey.currentState.showSnackBar(snackbar);
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   @override
