@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ModuleList extends StatelessWidget {
-  final List<String> moduleList = [
+  final List<String> _moduleList = [
     'Modul 1 - Pengenalan Dart',
     'Modul 2 - Memulai Pemrograman dengan Dart',
     'Modul 3 - Dart Fundamental',
@@ -19,15 +19,15 @@ class ModuleList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: moduleList.length,
+      itemCount: _moduleList.length,
       itemBuilder: (context, index) {
         return Consumer<DoneModuleProvider>(
           builder: (context, DoneModuleProvider data, widget) {
             return ModuleTile(
-              moduleName: moduleList[index],
-              isDone: data.doneModuleList.contains(moduleList[index]),
+              moduleName: _moduleList[index],
+              isDone: data.doneModuleList.contains(_moduleList[index]),
               onClick: () {
-                data.complete(moduleList[index]);
+                data.complete(_moduleList[index]);
               },
             );
           },
