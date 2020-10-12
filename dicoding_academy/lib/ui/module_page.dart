@@ -1,5 +1,5 @@
-import 'package:dicodingacademy/done_module_list.dart';
-import 'package:dicodingacademy/module_list.dart';
+import 'package:dicodingacademy/ui/done_module_list.dart';
+import 'package:dicodingacademy/ui/module_list.dart';
 import 'package:flutter/material.dart';
 
 class ModulePage extends StatelessWidget {

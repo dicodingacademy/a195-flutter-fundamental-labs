@@ -1,4 +1,4 @@
-import 'package:dicodingacademy/module_page.dart';
+import 'package:dicodingacademy/ui/module_page.dart';
 import 'package:dicodingacademy/provider/done_module_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
