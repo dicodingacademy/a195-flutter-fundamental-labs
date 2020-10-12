@@ -22,18 +22,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int numTaps = 0;
-  int numDoubleTaps = 0;
-  int numLongPress = 0;
+  int _numTaps = 0;
+  int _numDoubleTaps = 0;
+  int _numLongPress = 0;
 
-  final double boxSize = 150.0;
-  double posX = 0.0;
-  double posY = 0.0;
+  final double _boxSize = 150.0;
+  double _posX = 0.0;
+  double _posY = 0.0;
 
   @override
   Widget build(BuildContext context) {
-    if (posX == 0) {
-      center(context);
+    if (_posX == 0) {
+      _center(context);
     }
 
     return Scaffold(
@@ -43,35 +43,35 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         children: [
           Positioned(
-            top: posY,
-            left: posX,
+            top: _posY,
+            left: _posX,
             child: GestureDetector(
               onTap: () {
                 setState(() {
-                  numTaps++;
+                  _numTaps++;
                 });
               },
               onDoubleTap: () {
                 setState(() {
-                  numDoubleTaps++;
+                  _numDoubleTaps++;
                 });
               },
               onLongPress: () {
                 setState(() {
-                  numLongPress++;
+                  _numLongPress++;
                 });
               },
               onPanUpdate: (DragUpdateDetails details) {
                 setState(() {
                   double deltaX = details.delta.dx;
                   double deltaY = details.delta.dy;
-                  posX += deltaX;
-                  posY += deltaY;
+                  _posX += deltaX;
+                  _posY += deltaY;
                 });
               },
               child: Container(
-                width: boxSize,
-                height: boxSize,
+                width: _boxSize,
+                height: _boxSize,
                 decoration: BoxDecoration(color: Colors.red),
               ),
             ),
@@ -82,20 +82,20 @@ class _MyHomePageState extends State<MyHomePage> {
         color: Colors.yellow,
         padding: const EdgeInsets.all(16.0),
         child: Text(
-          'Taps: $numTaps - Double Taps: $numDoubleTaps - Long Press: $numLongPress',
+          'Taps: $_numTaps - Double Taps: $_numDoubleTaps - Long Press: $_numLongPress',
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
     );
   }
 
-  void center(BuildContext context) {
-    posX = (MediaQuery.of(context).size.width / 2) - boxSize / 2;
-    posY = (MediaQuery.of(context).size.height / 2) - boxSize / 2 - 30;
+  void _center(BuildContext context) {
+    _posX = (MediaQuery.of(context).size.width / 2) - _boxSize / 2;
+    _posY = (MediaQuery.of(context).size.height / 2) - _boxSize / 2 - 30;
 
     setState(() {
-      this.posX = posX;
-      this.posY = posY;
+      this._posX = _posX;
+      this._posY = _posY;
     });
   }
 }
