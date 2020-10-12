@@ -1,4 +1,4 @@
-import 'package:cupertino_app/category_page.dart';
+import 'package:cupertino_app/pages/category_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeedsPage extends StatelessWidget {

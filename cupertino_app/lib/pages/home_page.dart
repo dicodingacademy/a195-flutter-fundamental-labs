@@ -1,6 +1,6 @@
-import 'package:cupertino_app/feeds_page.dart';
-import 'package:cupertino_app/search_page.dart';
-import 'package:cupertino_app/settings_page.dart';
+import 'package:cupertino_app/pages/feeds_page.dart';
+import 'package:cupertino_app/pages/search_page.dart';
+import 'package:cupertino_app/pages/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomePage extends StatelessWidget {

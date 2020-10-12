@@ -1,4 +1,4 @@
-import 'package:cupertino_app/home_page.dart';
+import 'package:cupertino_app/pages/home_page.dart';
 import 'package:flutter/cupertino.dart';
 
 void main() {
