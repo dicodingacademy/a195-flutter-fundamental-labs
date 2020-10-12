@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sliver_sample/academy.dart';
-import 'package:sliver_sample/sliver_app_bar_delegate.dart';
+import 'package:sliver_sample/data/academy.dart';
+import 'package:sliver_sample/widgets/sliver_app_bar_delegate.dart';
 
 class LearningPathList extends StatelessWidget {
   SliverPersistentHeader _header(String text) {

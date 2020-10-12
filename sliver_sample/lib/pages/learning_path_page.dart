@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sliver_sample/learning_path_list.dart';
+import 'package:sliver_sample/pages/learning_path_list.dart';
 
 class LearningPathPage extends StatelessWidget {
   @override
