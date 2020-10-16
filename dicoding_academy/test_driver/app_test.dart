@@ -2,7 +2,7 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Testing App Performance', () {
+  group('Testing App', () {
     FlutterDriver driver;
 
     setUpAll(() async {
@@ -22,7 +22,7 @@ void main() {
       await scrollingSummary.writeTimelineToFile('scrolling', pretty: true);
     });
 
-    test('Favorites operations test', () async {
+    test('Done module test', () async {
       final operationsTimeline = await driver.traceAction(() async {
         final keys = [
           'Modul 1 - Pengenalan Dart',
@@ -34,7 +34,7 @@ void main() {
           await driver.tap(find.byValueKey(key));
         }
 
-        await driver.tap(find.byValueKey('done_button'));
+        await driver.tap(find.byValueKey('done_page_button'));
 
         await driver.waitFor(find.text('Modul 1 - Pengenalan Dart'));
         await driver
