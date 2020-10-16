@@ -10,6 +10,7 @@ class ModulePage extends StatelessWidget {
         title: Text('Memulai Pemrograman Dengan Dart'),
         actions: <Widget>[
           IconButton(
+            key: Key('done_button'),
             icon: Icon(Icons.done),
             onPressed: () {
               Navigator.push(
