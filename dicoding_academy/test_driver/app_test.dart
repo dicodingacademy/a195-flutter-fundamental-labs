@@ -9,7 +9,7 @@ void main() {
       driver = await FlutterDriver.connect();
     });
 
-    /*test('Scrolling test', () async {
+    test('Scrolling test', () async {
       final listFinder = find.byType('ListView');
 
       final scrollingTimeline = await driver.traceAction(() async {
@@ -20,7 +20,7 @@ void main() {
       final scrollingSummary = TimelineSummary.summarize(scrollingTimeline);
       await scrollingSummary.writeSummaryToFile('scrolling', pretty: true);
       await scrollingSummary.writeTimelineToFile('scrolling', pretty: true);
-    });*/
+    });
 
     test('Done module test', () async {
       final operationsTimeline = await driver.traceAction(() async {
