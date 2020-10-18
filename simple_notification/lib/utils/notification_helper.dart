@@ -63,6 +63,35 @@ class NotificationHelper {
         );
   }
 
+  void configureDidReceiveLocalNotificationSubject(
+      BuildContext context, String route) {
+    didReceiveLocalNotificationSubject.stream
+        .listen((ReceivedNotification receivedNotification) async {
+      await showDialog(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: receivedNotification.title != null
+              ? Text(receivedNotification.title)
+              : null,
+          content: receivedNotification.body != null
+              ? Text(receivedNotification.body)
+              : null,
+          actions: [
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              child: Text('Ok'),
+              onPressed: () async {
+                Navigator.of(context, rootNavigator: true).pop();
+                await Navigator.pushNamed(context, route,
+                    arguments: receivedNotification);
+              },
+            )
+          ],
+        ),
+      );
+    });
+  }
+
   Future<void> showNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
@@ -133,20 +162,6 @@ class NotificationHelper {
       platformChannelSpecifics,
       payload: 'scheduled notification',
     );
-  }
-
-  Future<void> showTimeoutNotification(
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDesc,
-        timeoutAfter: 3000,
-        styleInformation: DefaultStyleInformation(true, true));
-
-    var platformChannelSpecifics =
-        NotificationDetails(androidPlatformChannelSpecifics, null);
-
-    await flutterLocalNotificationsPlugin.show(0, 'timeout notification',
-        'Times out after 3 seconds', platformChannelSpecifics);
   }
 
   Future<void> showGroupedNotifications(
@@ -283,99 +298,10 @@ class NotificationHelper {
         notificationDetails);
   }
 
-  Future<void> showInboxNotification(
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var lines = List<String>();
-    lines.add('line <b>1</b>');
-    lines.add('line <i>2</i>');
-
-    var inboxStyleInformation = InboxStyleInformation(lines,
-        htmlFormatLines: true,
-        contentTitle: 'overridden <b>inbox</b> context title',
-        htmlFormatContentTitle: true,
-        summaryText: 'summary <i>text</i>',
-        htmlFormatSummaryText: true);
-
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDesc,
-        styleInformation: inboxStyleInformation);
-
-    var platformChannelSpecifics =
-        NotificationDetails(androidPlatformChannelSpecifics, null);
-
-    await flutterLocalNotificationsPlugin.show(
-        0, 'inbox title', 'inbox body', platformChannelSpecifics);
-  }
-
-  Future<void> deleteNotificationChannel(
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
-      BuildContext context) async {
-    await flutterLocalNotificationsPlugin
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.deleteNotificationChannel(_channelId);
-
-    await showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text('Channel with id \"$_channelId\" deleted'),
-          actions: [
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Future<void> cancelNotification(
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    await flutterLocalNotificationsPlugin.cancel(0);
-  }
-
-  Future<void> cancelAllNotifications(
-      FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    await flutterLocalNotificationsPlugin.cancelAll();
-  }
-
   void configureSelectNotificationSubject(BuildContext context, String route) {
     selectNotificationSubject.stream.listen((String payload) async {
       await Navigator.pushNamed(context, route,
           arguments: ReceivedNotification(payload: payload));
-    });
-  }
-
-  void configureDidReceiveLocalNotificationSubject(
-      BuildContext context, String route) {
-    didReceiveLocalNotificationSubject.stream
-        .listen((ReceivedNotification receivedNotification) async {
-      await showDialog(
-        context: context,
-        builder: (BuildContext context) => CupertinoAlertDialog(
-          title: receivedNotification.title != null
-              ? Text(receivedNotification.title)
-              : null,
-          content: receivedNotification.body != null
-              ? Text(receivedNotification.body)
-              : null,
-          actions: [
-            CupertinoDialogAction(
-              isDefaultAction: true,
-              child: Text('Ok'),
-              onPressed: () async {
-                Navigator.of(context, rootNavigator: true).pop();
-                await Navigator.pushNamed(context, route,
-                    arguments: receivedNotification);
-              },
-            )
-          ],
-        ),
-      );
     });
   }
 }

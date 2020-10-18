@@ -69,15 +69,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(height: 10),
                 CustomButton(
-                  text:
-                      'Show notification that times out after 3 seconds [Android]',
-                  onPressed: () async {
-                    await _notificationHelper.showTimeoutNotification(
-                        flutterLocalNotificationsPlugin);
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomButton(
                   text: 'Show grouped notifications [Android]',
                   onPressed: () async {
                     await _notificationHelper.showGroupedNotifications(
@@ -106,38 +97,6 @@ class _HomePageState extends State<HomePage> {
                   text: 'Show notification with attachment [iOS]',
                   onPressed: () async {
                     await _notificationHelper.showNotificationWithAttachment(
-                        flutterLocalNotificationsPlugin);
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  text: 'Show inbox notification [Android]',
-                  onPressed: () async {
-                    await _notificationHelper
-                        .showInboxNotification(flutterLocalNotificationsPlugin);
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  text: 'Delete notification channel [Android]',
-                  onPressed: () async {
-                    await _notificationHelper.deleteNotificationChannel(
-                        flutterLocalNotificationsPlugin, context);
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  text: 'Cancel notification',
-                  onPressed: () async {
-                    await _notificationHelper
-                        .cancelNotification(flutterLocalNotificationsPlugin);
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomButton(
-                  text: 'Cancel all notification',
-                  onPressed: () async {
-                    await _notificationHelper.cancelAllNotifications(
                         flutterLocalNotificationsPlugin);
                   },
                 ),
