@@ -14,29 +14,29 @@ class FirstScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               child: Text('Go to Second Screen'),
               onPressed: () {
                 Navigator.pushNamed(context, '/secondScreen');
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Navigation with Data'),
               onPressed: () {
                 Navigator.pushNamed(context, '/secondScreenWithData',
                     arguments: 'Hello from First Screen');
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Return Data from Another Screen'),
               onPressed: () async {
                 final result =
                     await Navigator.pushNamed(context, '/returnDataScreen');
-                SnackBar snackbar = SnackBar(content: Text('$result'));
-                _scaffoldKey.currentState.showSnackBar(snackbar);
+                SnackBar snackBar = SnackBar(content: Text('$result'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Replace Screen'),
               onPressed: () {
                 Navigator.pushNamed(context, '/replacementScreen');

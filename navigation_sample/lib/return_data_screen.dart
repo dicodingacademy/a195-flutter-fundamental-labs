@@ -17,7 +17,7 @@ class ReturnDataScreen extends StatelessWidget {
                 decoration: InputDecoration(labelText: 'Enter your name'),
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Send'),
               onPressed: () {
                 Navigator.pop(context, textController.text);
