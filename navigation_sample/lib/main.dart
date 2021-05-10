@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
       // routes: {
       //   '/': (context) => FirstScreen(),
       //   '/secondScreen': (context) => SecondScreen(),
-      //   '/secondScreenWithData': (context) =>
-      //       SecondScreenWithData(ModalRoute.of(context).settings.arguments),
+      //   '/secondScreenWithData': (context) => SecondScreenWithData(
+      //       ModalRoute.of(context)?.settings.arguments as String),
       //   '/returnDataScreen': (context) => ReturnDataScreen(),
       //   '/replacementScreen': (context) => ReplacementScreen(),
       //   '/anotherScreen': (context) => AnotherScreen(),

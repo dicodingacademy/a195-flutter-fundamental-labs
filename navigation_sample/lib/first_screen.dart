@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Navigation & Routing'),
       ),

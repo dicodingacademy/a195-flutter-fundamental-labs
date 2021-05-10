@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ReturnDataScreen extends StatelessWidget {
-  final textController = TextEditingController();
+class ReturnDataScreen extends StatefulWidget {
+  @override
+  _ReturnDataScreenState createState() => _ReturnDataScreenState();
+}
+
+class _ReturnDataScreenState extends State<ReturnDataScreen> {
+  final _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +18,25 @@ class ReturnDataScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextField(
-                controller: textController,
+                controller: _textController,
                 decoration: InputDecoration(labelText: 'Enter your name'),
               ),
             ),
             ElevatedButton(
               child: Text('Send'),
               onPressed: () {
-                Navigator.pop(context, textController.text);
+                Navigator.pop(context, _textController.text);
               },
             ),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
   }
 }
