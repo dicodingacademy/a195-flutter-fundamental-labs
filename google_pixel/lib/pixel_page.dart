@@ -119,17 +119,19 @@ class PixelPage extends StatelessWidget {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    child: RaisedButton(
+                    child: ElevatedButton(
                       child: Text('Beli'),
-                      color: Theme.of(context).primaryColor,
-                      textColor: Colors.white,
-                      shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8),
+                      style: ElevatedButton.styleFrom(
+                        primary: Theme.of(context).primaryColor,
+                        onPrimary: Colors.white,
+                        shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8),
+                          ),
                         ),
                       ),
                       onPressed: () {
-                        Scaffold.of(context).showSnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Added to Cart'),
                           ),
