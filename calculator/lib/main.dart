@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   screenText,
                   style: Theme.of(context)
                       .textTheme
-                      .headline3
+                      .headline3!
                       .copyWith(color: Colors.white),
                 ),
               ),
@@ -249,23 +249,23 @@ class _MyHomePageState extends State<MyHomePage> {
 class CalculatorButton extends StatelessWidget {
   final Color backgroundColor;
   final Color foregroundColor;
-  IconData icon;
+  IconData? icon;
   final String text;
-  final Function onTap;
+  final void Function() onTap;
 
   CalculatorButton({
-    @required this.backgroundColor,
-    @required this.foregroundColor,
-    @required this.text,
-    @required this.onTap,
+    required this.backgroundColor,
+    required this.foregroundColor,
+    required this.text,
+    required this.onTap,
   });
 
   CalculatorButton.Icon({
-    @required this.backgroundColor,
-    @required this.foregroundColor,
-    @required this.icon,
-    @required this.text,
-    @required this.onTap,
+    required this.backgroundColor,
+    required this.foregroundColor,
+    required this.icon,
+    required this.text,
+    required this.onTap,
   });
 
   @override
@@ -280,7 +280,7 @@ class CalculatorButton extends StatelessWidget {
                   text,
                   style: Theme.of(context)
                       .textTheme
-                      .headline4
+                      .headline4!
                       .copyWith(color: foregroundColor),
                 )
               : Icon(
