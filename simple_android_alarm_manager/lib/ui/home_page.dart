@@ -5,7 +5,7 @@ import 'package:simple_android_alarm_manager/utils/background_service.dart';
 class HomePage extends StatefulWidget {
   final String title;
 
-  const HomePage({Key key, this.title}) : super(key: key);
+  const HomePage({required this.title});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 'Alarm with Delayed (Once)',
               ),
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 20),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 'Alarm with Date and Time (Once)',
               ),
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 20),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 'Alarm with Periodic',
               ),
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             SizedBox(height: 20),
-            RaisedButton(
+            ElevatedButton(
               child: Text(
                 'Cancel Alarm by Id',
               ),
