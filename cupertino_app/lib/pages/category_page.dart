@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class CategoryPage extends StatelessWidget {
   final String selectedCategory;
 
-  CategoryPage({@required this.selectedCategory});
+  CategoryPage({required this.selectedCategory});
 
   @override
   Widget build(BuildContext context) {
