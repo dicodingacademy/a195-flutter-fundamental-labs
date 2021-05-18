@@ -9,7 +9,7 @@ class AlbumPage extends StatefulWidget {
 }
 
 class _AlbumPageState extends State<AlbumPage> {
-  Future<Album> _futureAlbum;
+  late Future<Album> _futureAlbum;
 
   @override
   void initState() {
@@ -18,8 +18,8 @@ class _AlbumPageState extends State<AlbumPage> {
   }
 
   Future<Album> fetchAlbum() async {
-    final response =
-        await http.get('https://jsonplaceholder.typicode.com/albums/1');
+    final response = await http
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
     if (response.statusCode == 200) {
       return Album.fromJson(json.decode(response.body));
     } else {
@@ -42,7 +42,7 @@ class _AlbumPageState extends State<AlbumPage> {
               return Center(child: CircularProgressIndicator());
             } else {
               if (snapshot.hasData) {
-                return Text(snapshot.data.title);
+                return Text(snapshot.data!.title);
               } else if (snapshot.hasError) {
                 return Center(child: Text("${snapshot.error}"));
               } else {
