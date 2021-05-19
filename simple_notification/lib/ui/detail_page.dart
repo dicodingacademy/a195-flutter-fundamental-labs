@@ -6,13 +6,14 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ReceivedNotification arg = ModalRoute.of(context).settings.arguments;
+    final ReceivedNotification arg =
+        ModalRoute.of(context)?.settings.arguments as ReceivedNotification;
     return Scaffold(
       appBar: AppBar(
         title: Text('Title: ${arg.payload}'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
