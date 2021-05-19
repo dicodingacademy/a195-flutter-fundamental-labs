@@ -5,7 +5,7 @@ class MessageBubble extends StatelessWidget {
   final String text;
   final bool isMyChat;
 
-  MessageBubble({this.sender, this.text, this.isMyChat});
+  MessageBubble({required this.sender, required this.text, required this.isMyChat});
 
   final _senderBorderRadius = BorderRadius.only(
     topLeft: Radius.circular(20),
