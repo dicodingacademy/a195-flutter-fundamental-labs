@@ -6,7 +6,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:read_write_file/file_dialog.dart';
 import 'package:read_write_file/file_helper.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
 
@@ -28,7 +33,7 @@ class MyHomePage extends StatelessWidget {
     final files =
         dir.listSync().toList().where((file) => file.path.contains('txt'));
 
-    final FileSystemEntity selectedFile = await Navigator.push(
+    final FileSystemEntity? selectedFile = await Navigator.push(
       context,
       CupertinoPageRoute(
         builder: (context) => FileDialog(
@@ -148,5 +153,12 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _contentController.dispose();
+    super.dispose();
   }
 }

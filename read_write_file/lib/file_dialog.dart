@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 class FileDialog extends StatelessWidget {
   final List<FileSystemEntity> files;
 
-  FileDialog({this.files});
+  FileDialog({required this.files});
 
   @override
   Widget build(BuildContext context) {
