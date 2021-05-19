@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-DoneModuleProvider provider;
+late DoneModuleProvider provider;
 
 Widget createDoneModulePage() => ChangeNotifierProvider(
       create: (context) {
