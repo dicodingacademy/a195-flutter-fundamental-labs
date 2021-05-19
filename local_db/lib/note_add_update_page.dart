@@ -81,4 +81,11 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 }
