@@ -40,9 +40,13 @@ class ModuleList extends StatelessWidget {
 class ModuleTile extends StatelessWidget {
   final String moduleName;
   final bool isDone;
-  final Function onClick;
+  final Function() onClick;
 
-  ModuleTile({this.moduleName, this.isDone, this.onClick});
+  ModuleTile({
+    required this.moduleName,
+    required this.isDone,
+    required this.onClick,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +54,7 @@ class ModuleTile extends StatelessWidget {
       title: Text(moduleName),
       trailing: isDone
           ? Icon(Icons.done)
-          : RaisedButton(
+          : ElevatedButton(
               key: Key('$moduleName'),
               child: Text('Done'),
               onPressed: onClick,
