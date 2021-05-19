@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 'Masuk',
                 style: Theme.of(context)
                     .textTheme
-                    .headline4
+                    .headline4!
                     .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               Center(child: Image.asset('images/illustration.png')),
@@ -118,17 +118,21 @@ class _LoginPageState extends State<LoginPage> {
                 'Lupa Password?',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(decoration: TextDecoration.underline),
               ),
               SizedBox(height: 16),
-              RaisedButton(
-                color: Colors.pink,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.pink,
+                ),
                 onPressed: () {},
                 child: Text(
                   'Masuk',
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               Text(
@@ -137,9 +141,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Row(
                 children: <Widget>[
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {},
-                    color: Colors.white,
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
                     child: Image.network(
                       'https://pngimg.com/uploads/google/google_PNG19644.png',
                       width: 50,
@@ -148,9 +154,11 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     width: 16,
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {},
-                    color: Colors.white,
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                    ),
                     child: Image.network(
                       'https://pngimg.com/uploads/facebook_logos/facebook_logos_PNG19749.png',
                       width: 50,
@@ -203,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
 class MenuTile extends StatelessWidget {
   final String title;
 
-  MenuTile({@required this.title});
+  MenuTile({required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +220,7 @@ class MenuTile extends StatelessWidget {
         title,
         style: Theme.of(context)
             .textTheme
-            .bodyText1
+            .bodyText1!
             .copyWith(fontWeight: FontWeight.bold),
       ),
       trailing: Icon(
