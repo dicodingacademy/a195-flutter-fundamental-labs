@@ -14,7 +14,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
-  User _activeUser;
+  late User _activeUser;
 
   final _messageTextController = TextEditingController();
 
@@ -57,7 +57,7 @@ class _ChatPageState extends State<ChatPage> {
         child: Column(
           children: [
             Expanded(
-              child: StreamBuilder<QuerySnapshot>(
+              child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
                 stream: _firestore
                     .collection('messages')
                     .orderBy('dateCreated', descending: true)
@@ -68,27 +68,21 @@ class _ChatPageState extends State<ChatPage> {
                       child: CircularProgressIndicator(),
                     );
                   }
-                  final messages = snapshot.data.docs;
-                  List<MessageBubble> messageBubbles = [];
-                  for (var message in messages) {
-                    final messageText = message.data()['text'];
-                    final messageSender = message.data()['sender'];
-
-                    final messageBubble = MessageBubble(
-                      sender: messageSender,
-                      text: messageText,
-                      isMyChat: messageSender == _activeUser.email,
-                    );
-                    messageBubbles.add(messageBubble);
-                  }
-
                   return ListView(
                     reverse: true,
                     padding: EdgeInsets.symmetric(
                       horizontal: 8.0,
                       vertical: 16.0,
                     ),
-                    children: messageBubbles,
+                    children: snapshot.data!.docs.map((document) {
+                      final messageText = document.data()['text'];
+                      final messageSender = document.data()['sender'];
+                      return MessageBubble(
+                        sender: messageSender,
+                        text: messageText,
+                        isMyChat: messageSender == _activeUser.email,
+                      );
+                    }).toList(),
                   );
                 },
               ),

@@ -12,7 +12,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _auth = FirebaseAuth.instance;
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -22,7 +21,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -77,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               onPressed: _login,
             ),
-            FlatButton(
+            TextButton(
               child: Text('Does not have an account yet? Register here'),
               onPressed: () => Navigator.pushNamed(context, RegisterPage.id),
             ),
@@ -95,15 +93,11 @@ class _LoginPageState extends State<LoginPage> {
       final email = _emailController.text;
       final password = _passwordController.text;
 
-      final user = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-
-      if (user != null) {
-        Navigator.pushReplacementNamed(context, ChatPage.id);
-      }
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pushReplacementNamed(context, ChatPage.id);
     } catch (e) {
       final snackbar = SnackBar(content: Text(e.toString()));
-      _scaffoldKey.currentState.showSnackBar(snackbar);
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
     } finally {
       setState(() {
         _isLoading = false;
