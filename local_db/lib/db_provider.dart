@@ -4,7 +4,7 @@ import 'package:local_db/note.dart';
 
 class DbProvider extends ChangeNotifier {
   List<Note> _notes = [];
-  DatabaseHelper _dbHelper;
+  late DatabaseHelper _dbHelper;
 
   List<Note> get notes => _notes;
 

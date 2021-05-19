@@ -4,7 +4,7 @@ import 'package:local_db/note.dart';
 import 'package:provider/provider.dart';
 
 class NoteAddUpdatePage extends StatefulWidget {
-  final Note note;
+  final Note? note;
 
   NoteAddUpdatePage([this.note]);
 
@@ -22,8 +22,8 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
   void initState() {
     super.initState();
     if (widget.note != null) {
-      _titleController.text = widget.note.title;
-      _descriptionController.text = widget.note.description;
+      _titleController.text = widget.note!.title;
+      _descriptionController.text = widget.note!.description;
       _isUpdate = true;
     }
   }
@@ -50,7 +50,7 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
             ),
             SizedBox(
               width: double.infinity,
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Simpan'),
                 onPressed: () async {
                   if (!_isUpdate) {
@@ -63,7 +63,7 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
                         .addNote(note);
                   } else {
                     final note = Note(
-                      id: widget.note.id,
+                      id: widget.note!.id,
                       title: _titleController.text,
                       description: _descriptionController.text,
                     );

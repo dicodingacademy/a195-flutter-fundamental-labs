@@ -1,25 +1,19 @@
 import 'package:local_db/note.dart';
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
-  static DatabaseHelper _databaseHelper;
-  static Database _database;
+  static DatabaseHelper? _databaseHelper;
+  static late Database _database;
 
-  DatabaseHelper._createObject();
-
-  factory DatabaseHelper() {
-    if (_databaseHelper == null) {
-      _databaseHelper = DatabaseHelper._createObject();
-    }
-
-    return _databaseHelper;
+  DatabaseHelper._internal() {
+    _databaseHelper = this;
   }
 
-  Future<Database> get database async {
-    if (_database == null) {
-      _database = await _initializeDb();
-    }
+  factory DatabaseHelper() => _databaseHelper ?? DatabaseHelper._internal();
 
+  Future<Database> get database async {
+    _database = await _initializeDb();
     return _database;
   }
 
@@ -28,7 +22,7 @@ class DatabaseHelper {
   Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
     var db = openDatabase(
-      '$path/note_db.db',
+      join(path, 'note_db.db'),
       onCreate: (db, version) async {
         await db.execute(
           '''CREATE TABLE $_tableName (
@@ -51,7 +45,7 @@ class DatabaseHelper {
 
   Future<List<Note>> getNotes() async {
     final Database db = await database;
-    List<Map<String, dynamic>> results = await db.query(_tableName);
+    List<Map<String, Object?>> results = await db.query(_tableName);
 
     return results.map((res) => Note.fromMap(res)).toList();
   }

@@ -22,14 +22,14 @@ class NoteListPage extends StatelessWidget {
                 key: Key(note.id.toString()),
                 background: Container(color: Colors.red),
                 onDismissed: (direction) {
-                  provider.deleteNote(note.id);
+                  provider.deleteNote(note.id!);
                 },
                 child: Card(
                   child: ListTile(
                     title: Text(note.title),
                     subtitle: Text(note.description),
                     onTap: () async {
-                      final selectedNote = await provider.getNoteById(note.id);
+                      final selectedNote = await provider.getNoteById(note.id!);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
