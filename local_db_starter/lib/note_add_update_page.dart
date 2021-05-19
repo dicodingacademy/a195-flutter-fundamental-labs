@@ -4,7 +4,7 @@ import 'package:local_db/note.dart';
 import 'package:provider/provider.dart';
 
 class NoteAddUpdatePage extends StatefulWidget {
-  final Note note;
+  final Note? note;
 
   NoteAddUpdatePage([this.note]);
 
@@ -22,8 +22,8 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
   void initState() {
     super.initState();
     if (widget.note != null) {
-      _titleController.text = widget.note.title;
-      _descriptionController.text = widget.note.description;
+      _titleController.text = widget.note!.title;
+      _descriptionController.text = widget.note!.description;
       _isUpdate = true;
     }
   }
@@ -50,7 +50,7 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
             ),
             SizedBox(
               width: double.infinity,
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text('Simpan'),
                 onPressed: () async {
                   // TODO : Tambahkan kode untuk menyimpan atau mengedit note
@@ -61,5 +61,12 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
   }
 }
