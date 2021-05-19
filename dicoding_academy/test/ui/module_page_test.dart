@@ -21,8 +21,8 @@ void main() {
     testWidgets('Test Done Button', (tester) async {
       // Me-render widget
       await tester.pumpWidget(createHomeScreen());
-      // Mencari RaisedButton pertama kemudian melakukan gestur tap
-      await tester.tap(find.byType(RaisedButton).first);
+      // Mencari ElevatedButtin pertama kemudian melakukan gestur tap
+      await tester.tap(find.byType(ElevatedButton).first);
       // Rebuild tampilan karena perubahan state
       await tester.pumpAndSettle();
       // Verifikasi apakah ditemukan 2 ikon done (Termasuk ikon done yang berada di AppBar)

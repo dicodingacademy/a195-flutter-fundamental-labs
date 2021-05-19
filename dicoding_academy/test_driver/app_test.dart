@@ -3,54 +3,48 @@ import 'package:test/test.dart';
 
 void main() {
   group('Testing App', () {
-    FlutterDriver driver;
+    late FlutterDriver driver;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
 
-    test('Scrolling test', () async {
-      final listFinder = find.byType('ListView');
-
-      final scrollingTimeline = await driver.traceAction(() async {
-        await driver.scroll(listFinder, 0, -1000, Duration(seconds: 1));
-        await driver.scroll(listFinder, 0, 1000, Duration(seconds: 1));
-      });
-
-      final scrollingSummary = TimelineSummary.summarize(scrollingTimeline);
-      await scrollingSummary.writeSummaryToFile('scrolling', pretty: true);
-      await scrollingSummary.writeTimelineToFile('scrolling', pretty: true);
-    });
-
     test('Done module test', () async {
-      final operationsTimeline = await driver.traceAction(() async {
-        final keys = [
-          'Modul 1 - Pengenalan Dart',
-          'Modul 2 - Memulai Pemrograman dengan Dart',
-          'Modul 3 - Dart Fundamental',
-        ];
+      final keys = [
+        'Modul 1 - Pengenalan Dart',
+        'Modul 2 - Memulai Pemrograman dengan Dart',
+        'Modul 3 - Dart Fundamental',
+      ];
 
-        for (var key in keys) {
-          await driver.tap(find.byValueKey(key));
-        }
+      for (var key in keys) {
+        await driver.tap(find.byValueKey(key));
+      }
 
-        await driver.tap(find.byValueKey('done_page_button'));
+      await driver.tap(find.byValueKey('done_page_button'));
 
-        await driver.waitFor(find.text('Modul 1 - Pengenalan Dart'));
-        await driver
-            .waitFor(find.text('Modul 2 - Memulai Pemrograman dengan Dart'));
-        await driver.waitFor(find.text('Modul 3 - Dart Fundamental'));
+      final listFinder = find.byType('ListView');
+      final firstItem = find.text('Modul 1 - Pengenalan Dart');
+      final secondItem = find.text('Modul 2 - Memulai Pemrograman dengan Dart');
+      final thirdItem = find.text('Modul 3 - Dart Fundamental');
+
+      final timeline = await driver.traceAction(() async {
+        await driver.scrollUntilVisible(listFinder, firstItem, dyScroll: -300);
+        await driver.scrollUntilVisible(listFinder, secondItem, dyScroll: -300);
+        await driver.scrollUntilVisible(listFinder, thirdItem, dyScroll: -300);
+
+        expect(await driver.getText(firstItem), 'Modul 1 - Pengenalan Dart');
+        expect(await driver.getText(secondItem),
+            'Modul 2 - Memulai Pemrograman dengan Dart');
+        expect(await driver.getText(thirdItem), 'Modul 3 - Dart Fundamental');
       });
 
-      final operationsSummary = TimelineSummary.summarize(operationsTimeline);
-      await operationsSummary.writeSummaryToFile('done_module', pretty: true);
-      await operationsSummary.writeTimelineToFile('done_module', pretty: true);
+      final summary = TimelineSummary.summarize(timeline);
+      await summary.writeSummaryToFile('done_module', pretty: true);
+      await summary.writeTimelineToFile('done_module', pretty: true);
     });
 
     tearDownAll(() async {
-      if (driver != null) {
-        await driver.close();
-      }
+      await driver.close();
     });
   });
 }
