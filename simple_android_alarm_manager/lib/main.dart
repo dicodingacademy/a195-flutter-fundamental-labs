@@ -1,4 +1,4 @@
-import 'package:android_alarm_manager/android_alarm_manager.dart';
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_android_alarm_manager/ui/home_page.dart';
 import 'package:simple_android_alarm_manager/utils/background_service.dart';
