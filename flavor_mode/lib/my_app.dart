@@ -1,3 +1,4 @@
+import 'package:flavor_mode/flavor_config.dart';
 import 'package:flavor_mode/home.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title:  "Flavor Mode",
+      title: FlavorConfig.instance.values.titleApp,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: FlavorConfig.instance.color,
       ),
       home: const Home(),
     );
