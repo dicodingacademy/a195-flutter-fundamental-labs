@@ -1,5 +1,5 @@
-
-
+// todo localizations-1 13: update benefit_widget.dart, add library and update Text Widget
+import 'package:dicoding_subscriptions/common.dart';
 import 'package:dicoding_subscriptions/content/benefit_table.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,7 @@ class BenefitWidget extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "Keuntungan Langganan",
+          AppLocalizations.of(context)!.benefitTitle,
           style: Theme.of(context).textTheme.headline4,
           softWrap: true,
           overflow: TextOverflow.fade,

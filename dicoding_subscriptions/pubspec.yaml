@@ -11,8 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # todo localizations-1 1: add library
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
 
   cupertino_icons: ^1.0.2
+  # todo localizations-1 15: add library for open setting
+  app_settings: ^4.1.1
 
 dev_dependencies:
   flutter_test:
@@ -21,6 +27,8 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
+  # todo localizations-1 2: add generate flag
+  generate: true
   uses-material-design: true
   assets:
     - assets/dicoding-academy.png

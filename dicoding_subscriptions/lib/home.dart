@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:dicoding_subscriptions/widget/max_width_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,10 @@ class HomePage extends StatelessWidget {
             icon: const Icon(Icons.flag),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              // todo localizations-1 16: add function to open Device Setting
+              AppSettings.openDeviceSettings();
+            },
             icon: const Icon(Icons.settings),
           ),
         ],

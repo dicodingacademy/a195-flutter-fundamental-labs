@@ -1,3 +1,5 @@
+// todo localizations-1 8: update header_widget.dart, add library and update Text Widget
+import 'package:dicoding_subscriptions/common.dart';
 import 'package:flutter/material.dart';
 
 class CostWidget extends StatelessWidget {
@@ -10,7 +12,7 @@ class CostWidget extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            "Biaya Langganan",
+            AppLocalizations.of(context)!.costTitle,
             style: Theme.of(context).textTheme.headline4,
             softWrap: true,
             overflow: TextOverflow.fade,
@@ -18,7 +20,7 @@ class CostWidget extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            "Pilih paket langganan sebagai invertasi belajar yang sesuai dengan kebutuhan Anda.",
+            AppLocalizations.of(context)!.costSubtitle,
             style: Theme.of(context).textTheme.bodyText2,
             softWrap: true,
             overflow: TextOverflow.fade,
