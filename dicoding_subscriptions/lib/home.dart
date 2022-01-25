@@ -1,4 +1,6 @@
 import 'package:app_settings/app_settings.dart';
+// todo localizations-2 8: add library and change widget to the newest one
+import 'package:dicoding_subscriptions/widget/flag_icon_widget.dart';
 import 'package:dicoding_subscriptions/widget/max_width_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +21,8 @@ class HomePage extends StatelessWidget {
         ),
         title: const Text("Dicoding Academy"),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.flag),
-          ),
+          // todo localizations-2 9: change widget to the newest one
+          const FlagIconWidget(),
           IconButton(
             onPressed: () {
               // todo localizations-1 16: add function to open Device Setting
