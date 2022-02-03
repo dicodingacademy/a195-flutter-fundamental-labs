@@ -1,4 +1,3 @@
-// todo localizations-1 13: update benefit_widget.dart, add library and update Text Widget
 import 'package:dicoding_subscriptions/common.dart';
 import 'package:dicoding_subscriptions/content/benefit_table.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +15,7 @@ class BenefitWidget extends StatelessWidget {
           softWrap: true,
           overflow: TextOverflow.fade,
           textAlign: TextAlign.center,
+          semanticsLabel: AppLocalizations.of(context)!.accBenefitTitle,
         ),
         const Padding(
           padding: EdgeInsets.all(8.0),

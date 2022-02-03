@@ -1,4 +1,3 @@
-// todo localizations-1 14: update benefit_table.dart, add library and update Text Widget
 import 'package:dicoding_subscriptions/common.dart';
 import 'package:dicoding_subscriptions/classes/benefit_feature.dart';
 import 'package:dicoding_subscriptions/widget/table_cell_widget.dart';
@@ -27,24 +26,36 @@ class BenefitTable extends StatelessWidget {
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: [
         TableRow(children: [
-          TableCellWidget(
-            text: AppLocalizations.of(context)!.benefitFeatureTitle1,
-            isBold: true,
+          ExcludeSemantics(
+            child: TableCellWidget(
+              text: AppLocalizations.of(context)!.benefitFeatureTitle1,
+              isBold: true,
+            ),
           ),
-          TableCellWidget(
-            text: AppLocalizations.of(context)!.benefitFeatureTitle2,
-            isBold: true,
+          ExcludeSemantics(
+            child: TableCellWidget(
+              text: AppLocalizations.of(context)!.benefitFeatureTitle2,
+              isBold: true,
+            ),
           ),
-          TableCellWidget(
-            text: AppLocalizations.of(context)!.benefitFeatureTitle3,
-            isBold: true,
+          ExcludeSemantics(
+            child: TableCellWidget(
+              text: AppLocalizations.of(context)!.benefitFeatureTitle3,
+              isBold: true,
+            ),
           ),
         ]),
         ...benefitFeatureList.map((benefitFeature) {
           return TableRow(
             children: [
-              TableCellWidget(
-                text: benefitFeature.feature,
+              Semantics(
+                label: AppLocalizations.of(context)!
+                    .accBenefitFeatureItem1(benefitFeature.feature),
+                child: ExcludeSemantics(
+                  child: TableCellWidget(
+                    text: benefitFeature.feature,
+                  ),
+                ),
               ),
               TableCellWidget(
                 check: benefitFeature.freeBenefit,

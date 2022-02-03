@@ -1,4 +1,3 @@
-// todo localizations-1 11: update or_widget.dart, add library and update Text Widget
 import 'package:dicoding_subscriptions/common.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +12,7 @@ class OrWidget extends StatelessWidget {
       child: Text(
         AppLocalizations.of(context)!.orText,
         textAlign: TextAlign.center,
+        semanticsLabel: AppLocalizations.of(context)!.accOrText,
       ),
     );
   }

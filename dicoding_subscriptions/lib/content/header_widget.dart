@@ -1,4 +1,3 @@
-// todo localizations-1 8: update header_widget.dart, add library and update Text Widget
 import 'package:dicoding_subscriptions/common.dart';
 import 'package:flutter/material.dart';
 
@@ -9,24 +8,28 @@ class CostWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Text(
-            AppLocalizations.of(context)!.costTitle,
-            style: Theme.of(context).textTheme.headline4,
-            softWrap: true,
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            AppLocalizations.of(context)!.costSubtitle,
-            style: Theme.of(context).textTheme.bodyText2,
-            softWrap: true,
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-          ),
-        ],
+      child: MergeSemantics(
+        child: Column(
+          children: [
+            Text(
+              AppLocalizations.of(context)!.costTitle,
+              style: Theme.of(context).textTheme.headline4,
+              softWrap: true,
+              overflow: TextOverflow.fade,
+              textAlign: TextAlign.center,
+              semanticsLabel: AppLocalizations.of(context)!.costTitle,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              AppLocalizations.of(context)!.costSubtitle,
+              style: Theme.of(context).textTheme.bodyText2,
+              softWrap: true,
+              overflow: TextOverflow.fade,
+              textAlign: TextAlign.center,
+              semanticsLabel: AppLocalizations.of(context)!.costSubtitle,
+            ),
+          ],
+        ),
       ),
     );
   }
