@@ -1,0 +1,9 @@
+{
+  "titleApp": "Localization App",
+  "helloWorld": "Hello World! My name is {myName}",
+  "address": "I live in {city}, {country}",
+  "myNumber": "Number : {value}",
+  "todayDate": "Today's date : {dateNow}",
+  "myApple": "{count,plural, =0{no apples} other{{count} apples}}",
+  "nThings": "You do {count,plural, =0{not have {thing}} other{have {count} {thing}}}"
+}
