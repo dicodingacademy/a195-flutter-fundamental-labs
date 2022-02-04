@@ -1,0 +1,69 @@
+{
+  "titleApp": "Aplikasi Lokalisasi",
+  "@titleApp": {
+    "description": "Deskripsi mengenai variabel titleApp"
+  },
+  "helloWorld": "Halo Dunia! Nama saya {myName}",
+  "@helloWorld": {
+    "description": "Deskripsi variabel helloWorld",
+    "placeholders": {
+      "myName": {
+        "type": "String"
+      }
+    }
+  },
+  "address": "Saya tinggal di {city}, {country}",
+  "@address": {
+    "description": "Deskripsi variabel address",
+    "placeholders": {
+      "city": {
+        "type": "String"
+      },
+      "country": {}
+    }
+  },
+  "myNumber": "Angka : {value}",
+  "@myNumber": {
+    "description": "Pesan dengan format int",
+    "placeholders": {
+      "value": {
+        "type": "int",
+        "format": "simpleCurrency",
+        "optionalParameters": {
+          "decimalDigits": 2
+        }
+      }
+    }
+  },
+  "todayDate": "Tanggal hari ini : {dateNow}",
+  "@todayDate": {
+    "description": "Pesan dengan format DateTime",
+    "placeholders": {
+      "dateNow": {
+        "type": "DateTime",
+        "format": "yMd"
+      }
+    }
+  },
+  "myApple": "{count,plural, =0{tidak ada apel} other{{count} apel}}",
+  "@myApple": {
+    "description": "Pesan berbentuk plural (jamak)",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nThings": "Anda {count,plural, =0{tidak mempunyai {thing}} other{mempunyai {count} {thing}}}",
+  "@nThings": {
+    "description": "Pesan berbentuk plural dengan tambahan parameter",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "thing": {
+        "type": "String"
+      }
+    }
+  }
+}

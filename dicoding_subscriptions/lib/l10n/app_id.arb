@@ -1,0 +1,102 @@
+{
+  "titleAppBar": "Dicoding Academy",
+  "costTitle": "Biaya Langganan",
+  "costSubtitle": "Pilih paket langganan sebagai investasi belajar yang sesuai dengan kebutuhan Anda.",
+  "paidPackageTitle": "Berlangganan {month,plural, other{{month} bulan}}",
+  "@paidPackageTitle": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      }
+    }
+  },
+  "paidPackagePrice": "{feeSubscription}",
+  "@paidPackagePrice": {
+    "placeholders": {
+      "feeSubscription": {
+        "type": "int",
+        "format": "simpleCurrency",
+        "optionalParameters": {
+          "decimalDigits": 0
+        }
+      }
+    }
+  },
+  "paidPackageButton": "Pilih Paket",
+  "orText": "atau",
+  "freePackageTitle": "Berlangganan {day,plural, other{{day} hari}}",
+  "@freePackageTitle": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "freePackagePrice": "Gratis",
+  "freePackageButton": "Coba sekarang",
+  "benefitTitle": "Keuntungan Langganan",
+  "benefitFeatureTitle1": "Fitur Utama",
+  "benefitFeatureTitle2": "Uji Coba",
+  "benefitFeatureTitle3": "Langganan",
+  "benefitFeatureItem1": "Akses semua kelas",
+  "benefitFeatureItem2": "Ujian",
+  "benefitFeatureItem3": "Kirim Proyek",
+  "accLogoAppBar": "Logo Dicoding Academy",
+  "accTitleAppBar": "Dicoding Academy",
+  "accHeader": "Biaya Langganan, Pilih paket langganan sebagai investasi belajar yang sesuai dengan kebutuhan Anda.",
+  "accPaidPackage": "Anda dapat {paidPackageTitle} dengan biaya {paidPackagePrice}",
+  "@accPaidPackage": {
+    "placeholders": {
+      "paidPackageTitle": {
+        "type": "String"
+      },
+      "paidPackagePrice": {
+        "type": "String"
+      }
+    }
+  },
+  "accPaidPackageButton": "Pilih Paket untuk berlangganan",
+  "accOrText": "atau",
+  "accFreePackage": "Anda dapat uji coba dengan {freePackageTitle} secara {freePackagePrice}",
+  "@accFreePackage": {
+    "placeholders": {
+      "freePackageTitle": {
+        "type": "String"
+      },
+      "freePackagePrice": {
+        "type": "String"
+      }
+    }
+  },
+  "accFreePackageButton": "Coba Sekarang",
+  "accBenefitTitle": "Keuntungan Langganan",
+  "accBenefitFeatureItem1": "Fitur {benefitFeatureItem1}, tersedia di langganan uji coba, tersedia di langganan berbayar.",
+  "@accBenefitFeatureItem1": {
+    "placeholders": {
+      "benefitFeatureItem1": {
+        "type": "String"
+      }
+    }
+  },
+  "accBenefitFeatureItem2": "Fitur {benefitFeatureItem2}, tersedia di langganan uji coba, tersedia di langganan berbayar.",
+  "@accBenefitFeatureItem2": {
+    "placeholders": {
+      "benefitFeatureItem2": {
+        "type": "String"
+      }
+    }
+  },
+  "accBenefitFeatureItem3": "Fitur {benefitFeatureItem3}, tidak tersedia di langganan uji coba, tersedia di langganan berbayar.",
+  "@accBenefitFeatureItem3": {
+    "placeholders": {
+      "benefitFeatureItem3": {
+        "type": "String"
+      }
+    }
+  },
+  "accChangeLanguage": "Pengaturan ubah bahasa",
+  "accOpenSetting": "Buka pengaturan",
+  "accLocaleItem1": "Bahasa Indonesia",
+  "accLocaleItem2": "Bahasa Inggris",
+  "accLocaleItem3": "Bahasa Arab"
+}
