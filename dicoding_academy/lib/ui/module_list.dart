@@ -16,6 +16,8 @@ class ModuleList extends StatelessWidget {
     'Modul 10 - Effective Dart',
   ];
 
+  ModuleList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -42,21 +44,22 @@ class ModuleTile extends StatelessWidget {
   final bool isDone;
   final Function() onClick;
 
-  ModuleTile({
+  const ModuleTile({
+    Key? key,
     required this.moduleName,
     required this.isDone,
     required this.onClick,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(moduleName),
       trailing: isDone
-          ? Icon(Icons.done)
+          ? const Icon(Icons.done)
           : ElevatedButton(
-              key: Key('$moduleName'),
-              child: Text('Done'),
+              key: Key(moduleName),
+              child: const Text('Done'),
               onPressed: onClick,
             ),
     );

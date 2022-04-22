@@ -5,7 +5,7 @@ import 'package:simple_android_alarm_manager/utils/background_service.dart';
 class HomePage extends StatefulWidget {
   final String title;
 
-  const HomePage({required this.title});
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -31,12 +31,12 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              child: Text(
+              child: const Text(
                 'Alarm with Delayed (Once)',
               ),
               onPressed: () async {
                 await AndroidAlarmManager.oneShot(
-                  Duration(seconds: 5),
+                  const Duration(seconds: 5),
                   1,
                   BackgroundService.callback,
                   exact: true,
@@ -44,14 +44,14 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Text(
+              child: const Text(
                 'Alarm with Date and Time (Once)',
               ),
               onPressed: () async {
                 await AndroidAlarmManager.oneShotAt(
-                  DateTime.now().add(Duration(seconds: 5)),
+                  DateTime.now().add(const Duration(seconds: 5)),
                   2,
                   BackgroundService.callback,
                   exact: true,
@@ -59,14 +59,14 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Text(
+              child: const Text(
                 'Alarm with Periodic',
               ),
               onPressed: () async {
                 await AndroidAlarmManager.periodic(
-                  Duration(minutes: 1),
+                  const Duration(minutes: 1),
                   3,
                   BackgroundService.callback,
                   startAt: DateTime.now(),
@@ -75,9 +75,9 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Text(
+              child: const Text(
                 'Cancel Alarm by Id',
               ),
               onPressed: () async {

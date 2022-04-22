@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
 
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -26,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : Container(),
             Hero(
               tag: 'Dicoding Chatting',
@@ -35,26 +37,26 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: Theme.of(context).textTheme.headline5,
               ),
             ),
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             Text(
               'Create your account',
               style: Theme.of(context).textTheme.subtitle1,
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Email',
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             TextField(
               controller: _passwordController,
               obscureText: _obscureText,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
@@ -67,9 +69,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 hintText: 'Password',
               ),
             ),
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             MaterialButton(
-              child: Text('Register'),
+              child: const Text('Register'),
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               height: 40,
@@ -79,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onPressed: _register,
             ),
             TextButton(
-              child: Text('Already have an account? Login'),
+              child: const Text('Already have an account? Login'),
               onPressed: () => Navigator.pop(context),
             ),
           ],

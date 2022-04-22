@@ -69,11 +69,25 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_lints:
+    dependency: "direct dev"
+    description:
+      name: flutter_lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   matcher:
     dependency: transitive
     description:
@@ -81,6 +95,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -141,7 +162,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
+    version: "0.4.8"
   typed_data:
     dependency: transitive
     description:

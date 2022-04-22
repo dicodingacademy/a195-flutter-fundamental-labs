@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 class ChatPage extends StatefulWidget {
   static const String id = 'chat_page';
 
+  const ChatPage({Key? key}) : super(key: key);
+
   @override
   _ChatPageState createState() => _ChatPageState();
 }
@@ -40,10 +42,10 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat Room'),
+        title: const Text('Chat Room'),
         actions: [
           IconButton(
-            icon: Icon(Icons.close),
+            icon: const Icon(Icons.close),
             tooltip: 'Logout',
             onPressed: () async {
               await _auth.signOut();
@@ -64,13 +66,13 @@ class _ChatPageState extends State<ChatPage> {
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
                   return ListView(
                     reverse: true,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 8.0,
                       vertical: 16.0,
                     ),
@@ -87,22 +89,22 @@ class _ChatPageState extends State<ChatPage> {
                 },
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Expanded(
                   child: TextField(
                     controller: _messageTextController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 MaterialButton(
-                  child: Text('SEND'),
+                  child: const Text('SEND'),
                   color: Theme.of(context).primaryColor,
                   textTheme: ButtonTextTheme.primary,
                   onPressed: () {

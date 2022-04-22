@@ -5,7 +5,7 @@ final ReceivePort port = ReceivePort();
 
 class BackgroundService {
   static BackgroundService? _instance;
-  static String _isolateName = 'isolate';
+  static const String _isolateName = 'isolate';
   static SendPort? _uiSendPort;
 
   BackgroundService._internal() {

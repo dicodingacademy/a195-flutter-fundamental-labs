@@ -15,7 +15,7 @@ class FileHelper {
 
     // Menuliskan konten ke dalam berkas.
     print('Saved to $path');
-    return file.writeAsString('$content');
+    return file.writeAsString(content);
   }
 
   static Future<String> readFile(String filePath) async {

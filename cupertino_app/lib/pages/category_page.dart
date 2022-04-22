@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 class CategoryPage extends StatelessWidget {
   final String selectedCategory;
 
-  CategoryPage({required this.selectedCategory});
+  const CategoryPage({Key? key, required this.selectedCategory})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

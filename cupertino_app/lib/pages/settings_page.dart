@@ -1,28 +1,30 @@
 import 'package:flutter/cupertino.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('Settings Page'),
       ),
       child: Center(
         child: CupertinoButton(
-          child: Text('Log out'),
+          child: const Text('Log out'),
           onPressed: () {
             showCupertinoDialog(
               context: context,
               builder: (context) {
                 return CupertinoAlertDialog(
-                  title: Text('Are you sure to log out?'),
+                  title: const Text('Are you sure to log out?'),
                   actions: [
                     CupertinoDialogAction(
-                      child: Text('No'),
+                      child: const Text('No'),
                       onPressed: () => Navigator.pop(context),
                     ),
                     CupertinoDialogAction(
-                      child: Text('Yes'),
+                      child: const Text('Yes'),
                       onPressed: () => Navigator.pop(context),
                     ),
                   ],

@@ -7,6 +7,8 @@ import 'package:read_write_file/file_dialog.dart';
 import 'package:read_write_file/file_helper.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -58,10 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         builder: (context) {
           return CupertinoAlertDialog(
-            title: Text('File Saved'),
+            title: const Text('File Saved'),
             actions: [
               CupertinoDialogAction(
-                child: Text('Ok'),
+                child: const Text('Ok'),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -75,15 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         builder: (context) {
           return CupertinoAlertDialog(
-            title: Text(
+            title: const Text(
               'File Not Created',
               style: TextStyle(color: CupertinoColors.systemRed),
             ),
-            content: Text('File name must not be empty!'),
+            content: const Text('File name must not be empty!'),
             actions: [
               CupertinoDialogAction(
                 isDefaultAction: true,
-                child: Text('Ok'),
+                child: const Text('Ok'),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -98,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('My Read Write File'),
       ),
       child: SafeArea(
@@ -108,19 +110,19 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: CupertinoButton(
-                    child: Text('New File'),
+                    child: const Text('New File'),
                     onPressed: _createNewFile,
                   ),
                 ),
                 Expanded(
                   child: CupertinoButton(
-                    child: Text('Open File'),
+                    child: const Text('Open File'),
                     onPressed: () => _getFilesInDirectory(context),
                   ),
                 ),
                 Expanded(
                   child: CupertinoButton(
-                    child: Text('Save File'),
+                    child: const Text('Save File'),
                     onPressed: () {
                       _saveFile(context);
                     },
