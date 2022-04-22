@@ -36,6 +36,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   test: ^1.14.4
+  flutter_lints: ^1.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

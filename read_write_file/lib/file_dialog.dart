@@ -7,12 +7,12 @@ import 'package:path/path.dart';
 class FileDialog extends StatelessWidget {
   final List<FileSystemEntity> files;
 
-  FileDialog({required this.files});
+  const FileDialog({Key? key, required this.files}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('Choose your file'),
       ),
       child: ListView.builder(

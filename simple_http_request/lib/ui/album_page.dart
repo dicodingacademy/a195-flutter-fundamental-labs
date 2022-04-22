@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:simple_http_request/model/album.dart';
 
 class AlbumPage extends StatefulWidget {
+  const AlbumPage({Key? key}) : super(key: key);
+
   @override
   _AlbumPageState createState() => _AlbumPageState();
 }
@@ -31,7 +33,7 @@ class _AlbumPageState extends State<AlbumPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fetch Data Example'),
+        title: const Text('Fetch Data Example'),
       ),
       body: Center(
         child: FutureBuilder<Album>(
@@ -39,14 +41,14 @@ class _AlbumPageState extends State<AlbumPage> {
           builder: (context, snapshot) {
             var state = snapshot.connectionState;
             if (state != ConnectionState.done) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else {
               if (snapshot.hasData) {
                 return Text(snapshot.data!.title);
               } else if (snapshot.hasError) {
                 return Center(child: Text("${snapshot.error}"));
               } else {
-                return Text('');
+                return const Text('');
               }
             }
           },

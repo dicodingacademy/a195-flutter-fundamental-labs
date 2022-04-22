@@ -39,7 +39,6 @@ void main() {
       });
 
       final summary = TimelineSummary.summarize(timeline);
-      await summary.writeSummaryToFile('done_module', pretty: true);
       await summary.writeTimelineToFile('done_module', pretty: true);
     });
 

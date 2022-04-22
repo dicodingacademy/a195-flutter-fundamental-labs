@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatefulWidget {
   static const String id = 'login_page';
 
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -28,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : Container(),
             Hero(
               tag: 'Dicoding Chatting',
@@ -37,21 +39,21 @@ class _LoginPageState extends State<LoginPage> {
                 style: Theme.of(context).textTheme.headline5,
               ),
             ),
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Email',
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             TextField(
               controller: _passwordController,
               obscureText: _obscureText,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
@@ -64,9 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: 'Password',
               ),
             ),
-            SizedBox(height: 24.0),
+            const SizedBox(height: 24.0),
             MaterialButton(
-              child: Text('Login'),
+              child: const Text('Login'),
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               height: 40,
@@ -76,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: _login,
             ),
             TextButton(
-              child: Text('Does not have an account yet? Register here'),
+              child: const Text('Does not have an account yet? Register here'),
               onPressed: () => Navigator.pushNamed(context, RegisterPage.id),
             ),
           ],

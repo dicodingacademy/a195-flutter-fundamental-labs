@@ -5,15 +5,20 @@ class MessageBubble extends StatelessWidget {
   final String text;
   final bool isMyChat;
 
-  MessageBubble({required this.sender, required this.text, required this.isMyChat});
+  const MessageBubble({
+    Key? key,
+    required this.sender,
+    required this.text,
+    required this.isMyChat,
+  }) : super(key: key);
 
-  final _senderBorderRadius = BorderRadius.only(
+  final _senderBorderRadius = const BorderRadius.only(
     topLeft: Radius.circular(20),
     bottomLeft: Radius.circular(20),
     topRight: Radius.circular(20),
   );
 
-  final _otherBorderRadius = BorderRadius.only(
+  final _otherBorderRadius = const BorderRadius.only(
     topRight: Radius.circular(20),
     topLeft: Radius.circular(20),
     bottomRight: Radius.circular(20),
@@ -22,14 +27,14 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment:
             isMyChat ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             sender,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12.0,
               color: Colors.black54,
             ),
@@ -39,7 +44,8 @@ class MessageBubble extends StatelessWidget {
             borderRadius: isMyChat ? _senderBorderRadius : _otherBorderRadius,
             elevation: 4.0,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: Text(
                 text,
                 style: TextStyle(

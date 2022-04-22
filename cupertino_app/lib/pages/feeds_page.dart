@@ -2,10 +2,12 @@ import 'package:cupertino_app/pages/category_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeedsPage extends StatelessWidget {
+  const FeedsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+      navigationBar: const CupertinoNavigationBar(
         middle: Text('Feeds Page'),
       ),
       child: Center(
@@ -17,55 +19,55 @@ class FeedsPage extends StatelessWidget {
               style:
                   CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             CupertinoButton.filled(
-              child: Text('Select Category'),
+              child: const Text('Select Category'),
               onPressed: () {
                 showCupertinoModalPopup(
                     context: context,
                     builder: (context) {
                       return CupertinoActionSheet(
-                        title: Text('Select Categories'),
+                        title: const Text('Select Categories'),
                         actions: [
                           CupertinoActionSheetAction(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                  builder: (context) => CategoryPage(
+                                  builder: (context) => const CategoryPage(
                                       selectedCategory: 'Technology'),
                                 ),
                               );
                             },
-                            child: Text('Technology'),
+                            child: const Text('Technology'),
                           ),
                           CupertinoActionSheetAction(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                  builder: (context) => CategoryPage(
+                                  builder: (context) => const CategoryPage(
                                       selectedCategory: 'Business'),
                                 ),
                               );
                             },
-                            child: Text('Business'),
+                            child: const Text('Business'),
                           ),
                           CupertinoActionSheetAction(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 CupertinoPageRoute(
-                                  builder: (context) =>
-                                      CategoryPage(selectedCategory: 'Sport'),
+                                  builder: (context) => const CategoryPage(
+                                      selectedCategory: 'Sport'),
                                 ),
                               );
                             },
-                            child: Text('Sport'),
+                            child: const Text('Sport'),
                           ),
                         ],
                         cancelButton: CupertinoActionSheetAction(
-                          child: Text('Close'),
+                          child: const Text('Close'),
                           onPressed: () => Navigator.pop(context),
                         ),
                       );

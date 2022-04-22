@@ -11,7 +11,7 @@ Widget createDoneModulePage() => ChangeNotifierProvider(
         provider = DoneModuleProvider();
         return provider;
       },
-      child: MaterialApp(
+      child: const MaterialApp(
         home: DoneModuleList(),
       ),
     );

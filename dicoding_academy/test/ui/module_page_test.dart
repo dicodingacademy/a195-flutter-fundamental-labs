@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 Widget createHomeScreen() => ChangeNotifierProvider<DoneModuleProvider>(
       create: (context) => DoneModuleProvider(),
-      child: MaterialApp(
+      child: const MaterialApp(
         home: ModulePage(),
       ),
     );

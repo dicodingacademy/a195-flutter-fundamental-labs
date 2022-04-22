@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:local_db/db_provider.dart';
 import 'package:local_db/note.dart';
-import 'package:provider/provider.dart';
 
 class NoteAddUpdatePage extends StatefulWidget {
   final Note? note;
 
-  NoteAddUpdatePage([this.note]);
+  const NoteAddUpdatePage({Key? key, this.note}) : super(key: key);
 
   @override
   _NoteAddUpdatePageState createState() => _NoteAddUpdatePageState();
 }
 
 class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   bool _isUpdate = false;
 
@@ -38,20 +36,20 @@ class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Judul',
               ),
             ),
             TextField(
               controller: _descriptionController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Deskripsi',
               ),
             ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                child: Text('Simpan'),
+                child: const Text('Simpan'),
                 onPressed: () async {
                   // TODO : Tambahkan kode untuk menyimpan atau mengedit note
                 },
