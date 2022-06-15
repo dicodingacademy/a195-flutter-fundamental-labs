@@ -1,4 +1,4 @@
-package dev.widdyjp.calculator
+package com.dicoding.calculator
 
 import io.flutter.embedding.android.FlutterActivity
 
