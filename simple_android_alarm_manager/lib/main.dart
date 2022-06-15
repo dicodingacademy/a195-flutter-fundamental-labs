@@ -6,9 +6,9 @@ import 'package:simple_android_alarm_manager/utils/background_service.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final BackgroundService _service = BackgroundService();
+  final BackgroundService service = BackgroundService();
 
-  _service.initializeIsolate();
+  service.initializeIsolate();
   AndroidAlarmManager.initialize();
 
   runApp(const MyApp());
