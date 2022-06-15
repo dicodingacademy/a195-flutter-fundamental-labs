@@ -7,7 +7,7 @@ class AlbumPage extends StatefulWidget {
   const AlbumPage({Key? key}) : super(key: key);
 
   @override
-  _AlbumPageState createState() => _AlbumPageState();
+  State<AlbumPage> createState() => _AlbumPageState();
 }
 
 class _AlbumPageState extends State<AlbumPage> {
