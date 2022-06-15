@@ -8,12 +8,13 @@ import 'package:navigation_sample/second_screen.dart';
 import 'package:navigation_sample/second_screen_with_data.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,27 +24,27 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',
-      // routes: {
-      //   '/': (context) => FirstScreen(),
-      //   '/secondScreen': (context) => SecondScreen(),
-      //   '/secondScreenWithData': (context) => SecondScreenWithData(
-      //       ModalRoute.of(context)?.settings.arguments as String),
-      //   '/returnDataScreen': (context) => ReturnDataScreen(),
-      //   '/replacementScreen': (context) => ReplacementScreen(),
-      //   '/anotherScreen': (context) => AnotherScreen(),
-      // },
+      routes: {
+        '/': (context) => const FirstScreen(),
+        '/secondScreen': (context) => const SecondScreen(),
+        '/secondScreenWithData': (context) => SecondScreenWithData(
+            ModalRoute.of(context)?.settings.arguments as String),
+        '/returnDataScreen': (context) => const ReturnDataScreen(),
+        '/replacementScreen': (context) => const ReplacementScreen(),
+        '/anotherScreen': (context) => const AnotherScreen(),
+      },
       onGenerateRoute: (settings) {
         // route /
         if (settings.name == '/') {
           return MaterialPageRoute(
-            builder: (context) => FirstScreen(),
+            builder: (context) => const FirstScreen(),
             settings: settings,
           );
         }
         // route /secondScreen
         if (settings.name == '/secondScreen') {
           return MaterialPageRoute(
-            builder: (context) => SecondScreen(),
+            builder: (context) => const SecondScreen(),
             settings: settings,
           );
         }
@@ -58,27 +59,27 @@ class MyApp extends StatelessWidget {
         // route /returnDataScreen
         if (settings.name == '/returnDataScreen') {
           return MaterialPageRoute(
-            builder: (context) => ReturnDataScreen(),
+            builder: (context) => const ReturnDataScreen(),
             settings: settings,
           );
         }
         // route /replacementScreen
         if (settings.name == '/replacementScreen') {
           return MaterialPageRoute(
-            builder: (context) => ReplacementScreen(),
+            builder: (context) => const ReplacementScreen(),
             settings: settings,
           );
         }
         // route /anotherScreen
         if (settings.name == '/anotherScreen') {
           return MaterialPageRoute(
-            builder: (context) => AnotherScreen(),
+            builder: (context) => const AnotherScreen(),
             settings: settings,
           );
         }
 
         return MaterialPageRoute(
-          builder: (context) => NotFoundScreen(),
+          builder: (context) => const NotFoundScreen(),
           settings: settings,
         );
       },
