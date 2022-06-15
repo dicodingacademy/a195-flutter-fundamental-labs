@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,14 +17,16 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -36,13 +41,13 @@ class _LoginPageState extends State<LoginPage> {
         leading: Padding(
           padding: const EdgeInsets.all(12),
           child: Image.network(
-              'https://d17ivq9b7rppb3.cloudfront.net/original/commons/new-ui-logo.png'),
+              'https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/new-ui-logo.png'),
         ),
       ),
       endDrawer: Drawer(
         child: SafeArea(
           child: Column(
-            children: <Widget>[
+            children: const <Widget>[
               MenuTile(title: 'Academy'),
               MenuTile(title: 'Challenge'),
               MenuTile(title: 'Event'),
@@ -56,11 +61,11 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Image.network(
-                  'https://d17ivq9b7rppb3.cloudfront.net/original/commons/certificate_logo.png'),
-              SizedBox(
+                  'https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/certificate_logo.png'),
+              const SizedBox(
                 height: 20.0,
               ),
               Text(
@@ -71,34 +76,26 @@ class _LoginPageState extends State<LoginPage> {
                     .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               Center(child: Image.asset('images/illustration.png')),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Text(
-                'Email',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              TextField(
+              const TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  hintText: 'Alamat Email',
+                  hintText: 'Email',
                   focusedBorder: OutlineInputBorder(),
                   border: OutlineInputBorder(),
                   isDense: true,
                 ),
               ),
-              SizedBox(height: 16),
-              Text(
-                'Password',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
+              const SizedBox(height: 16),
               Theme(
                 data: Theme.of(context).copyWith(primaryColor: Colors.grey),
                 child: TextField(
                   obscureText: obscureText,
                   decoration: InputDecoration(
-                    hintText: 'Masukkan password',
-                    border: OutlineInputBorder(),
+                    hintText: 'Password',
+                    border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(obscureText
                           ? Icons.visibility
@@ -113,21 +110,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Text(
                 'Lupa Password?',
+                textAlign: TextAlign.right,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText2!
                     .copyWith(decoration: TextDecoration.underline),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.pink,
+                  primary: Colors.blueGrey.shade800,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Masuk',
                   style: TextStyle(
                     color: Colors.white,
@@ -135,64 +133,89 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              Text(
-                'Atau masuk dengan',
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
-              Row(
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                    ),
-                    child: Image.network(
-                      'https://pngimg.com/uploads/google/google_PNG19644.png',
-                      width: 50,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                    ),
-                    child: Image.network(
-                      'https://pngimg.com/uploads/facebook_logos/facebook_logos_PNG19749.png',
-                      width: 50,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 8),
-              RichText(
-                text: TextSpan(
-                  text: 'Belum punya akun? Ayo ',
-                  style: Theme.of(context).textTheme.bodyText1,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    TextSpan(
-                      text: 'Daftar',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold,
+                    const Divider(
+                      color: Colors.black,
+                    ),
+                    Positioned(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 4, horizontal: 20),
+                        color: Colors.white,
+                        child: Text(
+                          'atau',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+              OutlinedButton.icon(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  side: const BorderSide(color: Colors.black),
+                ),
+                icon: const FaIcon(
+                  FontAwesomeIcons.google,
+                  color: Colors.grey,
+                ),
+                label: Text(
+                  'Masuk dengan Google',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ),
+              const SizedBox(
+                width: 16,
+              ),
+              OutlinedButton.icon(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  side: const BorderSide(color: Colors.black),
+                ),
+                icon: const FaIcon(
+                  FontAwesomeIcons.facebook,
+                  color: Colors.blue,
+                ),
+                label: Text(
+                  'Masuk dengan Facebook',
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+              ),
+              const SizedBox(height: 8),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: 'Belum punya akun? Ayo ',
+                  style: Theme.of(context).textTheme.bodyText1,
+                  children: const [
+                    TextSpan(
+                      text: 'daftar',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Divider(
                   color: Colors.black,
                 ),
               ),
               RichText(
+                textAlign: TextAlign.center,
                 text: TextSpan(
                   text: 'Dengan melakukan login, Anda setuju dengan ',
                   style: Theme.of(context).textTheme.bodyText1,
-                  children: [
+                  children: const [
                     TextSpan(
                       text: 'syarat & ketentuan Dicoding',
                       style: TextStyle(decoration: TextDecoration.underline),
@@ -211,7 +234,10 @@ class _LoginPageState extends State<LoginPage> {
 class MenuTile extends StatelessWidget {
   final String title;
 
-  MenuTile({required this.title});
+  const MenuTile({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -223,7 +249,7 @@ class MenuTile extends StatelessWidget {
             .bodyText1!
             .copyWith(fontWeight: FontWeight.bold),
       ),
-      trailing: Icon(
+      trailing: const Icon(
         Icons.navigate_next,
         color: Colors.black,
       ),
