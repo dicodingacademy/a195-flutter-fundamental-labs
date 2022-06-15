@@ -17,7 +17,7 @@ class DatabaseHelper {
     return _database;
   }
 
-  static String _tableName = 'notes';
+  static const String _tableName = 'notes';
 
   Future<Database> _initializeDb() async {
     var path = await getDatabasesPath();
