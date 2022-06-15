@@ -37,6 +37,8 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.grey,
         elevation: 4,
         leading: Padding(
           padding: const EdgeInsets.all(12),
@@ -75,7 +77,6 @@ class _LoginPageState extends State<LoginPage> {
                     .headline4!
                     .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
               ),
-              Center(child: Image.asset('images/illustration.png')),
               const SizedBox(
                 height: 16,
               ),
@@ -89,25 +90,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 16),
-              Theme(
-                data: Theme.of(context).copyWith(primaryColor: Colors.grey),
-                child: TextField(
-                  obscureText: obscureText,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: Icon(obscureText
-                          ? Icons.visibility
-                          : Icons.visibility_off),
-                      onPressed: () {
-                        setState(() {
-                          obscureText = !obscureText;
-                        });
-                      },
-                    ),
-                    isDense: true,
+              TextField(
+                obscureText: obscureText,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  border: const OutlineInputBorder(),
+                  focusedBorder: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        obscureText ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        obscureText = !obscureText;
+                      });
+                    },
                   ),
+                  isDense: true,
                 ),
               ),
               const SizedBox(height: 8),
