@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -11,14 +13,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -38,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gesture Detector'),
+        title: const Text('Gesture Detector'),
       ),
       body: Stack(
         children: [
@@ -72,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 width: _boxSize,
                 height: _boxSize,
-                decoration: BoxDecoration(color: Colors.red),
+                decoration: const BoxDecoration(color: Colors.red),
               ),
             ),
           ),
@@ -90,12 +94,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _center(BuildContext context) {
-    _posX = (MediaQuery.of(context).size.width / 2) - _boxSize / 2;
-    _posY = (MediaQuery.of(context).size.height / 2) - _boxSize / 2 - 30;
-
     setState(() {
-      this._posX = _posX;
-      this._posY = _posY;
+      _posX = (MediaQuery.of(context).size.width / 2) - _boxSize / 2;
+      _posY = (MediaQuery.of(context).size.height / 2) -
+          _boxSize / 2 -
+          kToolbarHeight;
     });
   }
 }
