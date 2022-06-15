@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_notification/ui/detail_page.dart';
 import 'package:simple_notification/main.dart';
@@ -8,8 +7,10 @@ import 'package:simple_notification/widget/custom_button.dart';
 class HomePage extends StatefulWidget {
   static const routeName = "/";
 
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -36,10 +37,10 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Simple Notification'),
+          title: const Text('Simple Notification'),
         ),
         body: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                         .showNotification(flutterLocalNotificationsPlugin);
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomButton(
                   text: 'Show plain notification that has no body with payload',
                   onPressed: () async {
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                         flutterLocalNotificationsPlugin);
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomButton(
                   text: 'Show grouped notifications [Android]',
                   onPressed: () async {
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                         flutterLocalNotificationsPlugin);
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomButton(
                   text:
                       'Show progress notification - updates every second [Android]',
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                         flutterLocalNotificationsPlugin);
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomButton(
                   text: 'Show big picture notification [Android]',
                   onPressed: () async {
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                         flutterLocalNotificationsPlugin);
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 CustomButton(
                   text: 'Show notification with attachment [iOS]',
                   onPressed: () async {

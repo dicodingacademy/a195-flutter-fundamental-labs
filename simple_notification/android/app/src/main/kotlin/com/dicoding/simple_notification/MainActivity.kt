@@ -1,4 +1,4 @@
-package com.rifafauzi.simple_notification
+package com.dicoding.simple_notification
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -4,6 +4,8 @@ import 'package:simple_notification/utils/received_notification.dart';
 class DetailPage extends StatelessWidget {
   static const routeName = '/detail_page';
 
+  const DetailPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final ReceivedNotification arg =
@@ -17,7 +19,7 @@ class DetailPage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Go back!'),
+          child: const Text('Go back!'),
         ),
       ),
     );
