@@ -9,6 +9,7 @@ late DoneModuleProvider provider;
 Widget createDoneModulePage() => ChangeNotifierProvider(
       create: (context) {
         provider = DoneModuleProvider();
+        addItems();
         return provider;
       },
       child: const MaterialApp(
@@ -28,16 +29,14 @@ void main() {
   group('Done Module List Tests', () {
     testWidgets('Test if ListView shows up', (tester) async {
       await tester.pumpWidget(createDoneModulePage());
-      addItems();
       await tester.pumpAndSettle();
       expect(find.byType(ListView), findsOneWidget);
     });
 
     testWidgets('Test if items added', (tester) async {
       await tester.pumpWidget(createDoneModulePage());
-      addItems();
       await tester.pumpAndSettle();
-      var totalItems = tester.widgetList(find.byType(ListTile)).length;
+      var totalItems = tester.elementList(find.byType(ListTile)).length;
       expect(2, totalItems);
     });
   });
