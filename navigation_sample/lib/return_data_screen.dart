@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// return_data_screen.dart
 class ReturnDataScreen extends StatefulWidget {
+  const ReturnDataScreen({Key? key}) : super(key: key);
+
   @override
-  _ReturnDataScreenState createState() => _ReturnDataScreenState();
+  State<ReturnDataScreen> createState() => _ReturnDataScreenState();
 }
 
 class _ReturnDataScreenState extends State<ReturnDataScreen> {
@@ -19,11 +22,11 @@ class _ReturnDataScreenState extends State<ReturnDataScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextField(
                 controller: _textController,
-                decoration: InputDecoration(labelText: 'Enter your name'),
+                decoration: const InputDecoration(labelText: 'Enter your name'),
               ),
             ),
             ElevatedButton(
-              child: Text('Send'),
+              child: const Text('Send'),
               onPressed: () {
                 Navigator.pop(context, _textController.text);
               },

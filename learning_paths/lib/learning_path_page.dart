@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:learning_paths/academy.dart';
 
 class LearningPathPage extends StatelessWidget {
+  const LearningPathPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dicoding Learning Paths'),
+        title: const Text('Dicoding Learning Paths'),
       ),
-      body: LearningPathList(),
+      body: const LearningPathList(),
     );
   }
 }
@@ -46,6 +47,8 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class LearningPathList extends StatelessWidget {
+  const LearningPathList({Key? key}) : super(key: key);
+
   SliverPersistentHeader _header(String text) {
     return SliverPersistentHeader(
       pinned: true,
@@ -57,7 +60,7 @@ class LearningPathList extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -68,7 +71,12 @@ class LearningPathList extends StatelessWidget {
   Widget _buildTile(Academy academy) {
     return ListTile(
       title: Text(academy.title),
-      subtitle: Text(academy.description),
+      subtitle: Text(
+        academy.description,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 4,
+      ),
+      isThreeLine: true,
     );
   }
 
@@ -97,7 +105,7 @@ class LearningPathList extends StatelessWidget {
         SliverGrid.count(
           crossAxisCount: 2,
           children: webPaths.map(_buildTile).toList(),
-        )
+        ),
       ],
     );
   }

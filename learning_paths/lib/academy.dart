@@ -12,32 +12,32 @@ final List<Academy> androidPaths = [
   Academy(
     title: 'Memulai Pemrograman Dengan Kotlin',
     description:
-        'Kelas pengantar untuk mempelajari Functional Programming serta Object-Oriented Programming (OOP) menggunakan Kotlin.',
-  ),
-  Academy(
-    title: 'Belajar Prinsip Pemrograman SOLID',
-    description:
-        'Pelajari kelima prinsip desain yang merupakan pedoman untuk rancangan kode yang baik pada pemrograman berorientasi objek (OOP).',
+        'Langkah pertama untuk menjadi seorang Android Developer dengan mempelajari bahasa yang direkomendasikan oleh Google.',
   ),
   Academy(
     title: 'Belajar Membuat Aplikasi Android untuk Pemula',
     description:
-        'Pelajari cara membuat aplikasi pertamamu dengan Android Studio. Kelas ini mengajarkan dasar Android mulai dari Intent sampai RecyclerView.',
+        'Buat aplikasi pertamamu dengan memahami dasar-dasar membuat tampilan dan logika aplikasi.',
   ),
   Academy(
     title: 'Belajar Fundamental Aplikasi Android',
     description:
-        'Pelajari skill Android dengan kurikulum terlengkap yang dibutuhkan oleh perusahaan. Mulai dari design pattern, testing, API sampai database.',
+        'Perdalam keahlianmu di dunia pemrograman Android dengan mempelajari cara membuat aplikasi yang dapat mengambil data dari server dan menyimpannya ke dalam database.',
   ),
   Academy(
-    title: 'Belajar Android Jetpack Pro',
+    title: 'Belajar Pengembangan Aplikasi Android Intermediate',
     description:
-        'Pelajari Android Jetpack dengan berbagai fitur canggih dan sudah diimplementasikan 80% dari 1000 aplikasi terbaik di Google Play Store.',
+        'Perdalam keahlian untuk menjadi Associate Android Developer yang fokus pada pengalaman pengguna yang lebih baik.',
+  ),
+  Academy(
+    title: 'Belajar Prinsip Pemrograman SOLID',
+    description:
+        'Memperkaya modal menjadi Android Developer dengan belajar prinsip dasar SOLID.',
   ),
   Academy(
     title: 'Menjadi Android Developer Expert',
     description:
-        'Saatnya menjadi Android Expert dengan belajar Clean Architecture, Reactive, Dependency Injection, Modularization, Performance, dan Security.',
+        'Jadilah developer expert dengan belajar berbagai macam skill yang diperlukan di dunia industri, termasuk performa dan keamanan aplikasi.',
   ),
 ];
 
@@ -45,27 +45,27 @@ final List<Academy> iosPaths = [
   Academy(
     title: 'Memulai Pemrograman Dengan Swift',
     description:
-        'Belajar bahasa Swift buat kamu yang ingin mempelajari konsep Pemrograman Berorientasi Objek (PBO) dalam mengembangkan iOS dan OS X.',
-  ),
-  Academy(
-    title: 'Belajar Prinsip Pemrograman SOLID',
-    description:
-        'Pelajari kelima prinsip desain yang merupakan pedoman untuk rancangan kode yang baik pada pemrograman berorientasi objek (OOP).',
+        'Langkah pertama untuk menjadi seorang iOS Developer dengan mempelajari bahasa yang direkomendasikan oleh Apple.Inc.',
   ),
   Academy(
     title: 'Belajar Membuat Aplikasi iOS untuk Pemula',
     description:
-        'Pelajari cara membuat aplikasi pertamamu dengan XCode. Kelas ini mengajarkan dasar iOS mulai dari Controller sampai TableViews.',
+        'Buat aplikasi iOS pertamamu dengan memahami dasar-dasar membuat tampilan dan logika aplikasi.',
   ),
   Academy(
     title: 'Belajar Fundamental Aplikasi iOS',
     description:
-        'Pelajari komponen fundamental iOS berdasarkan teknik yang digunakan industri mulai dari App Design, SwiftUI, Networking, sampai Database.',
+        'Perdalam keahlianmu di dunia pemrograman iOS dengan mempelajari cara membuat aplikasi yang dapat mengambil data dari server dan menyimpannya ke dalam database.',
+  ),
+  Academy(
+    title: 'Belajar Prinsip Pemrograman SOLID',
+    description:
+        'Memperkaya modal menjadi iOS Developer dengan belajar prinsip dasar SOLID.',
   ),
   Academy(
     title: 'Menjadi iOS Developer Expert',
     description:
-        'Tingkatkan skill kamu menjadi seorang iOS expert dengan kurikulum yang fokus pada case study dan best practice dari pelaku industri.',
+        'Jadilah iOS Developer Expert dengan belajar berbagai macam skill yang diperlukan di dunia industri.',
   ),
 ];
 
@@ -73,27 +73,27 @@ final List<Academy> flutterPaths = [
   Academy(
     title: 'Memulai Pemrograman Dengan Dart',
     description:
-        'Kelas pengantar buat kamu yang ingin mempelajari bahasa populer dari Google untuk mengembangkan aplikasi multiplatform seperti Flutter.',
-  ),
-  Academy(
-    title: 'Belajar Prinsip Pemrograman SOLID',
-    description:
-        'Pelajari kelima prinsip desain yang merupakan pedoman untuk rancangan kode yang baik pada pemrograman berorientasi objek (OOP).',
+        'Langkah pertama untuk menjadi seorang Flutter Developer dengan mempelajari bahasa Dart yang digunakan untuk mengembangkan aplikasi dengan Flutter.',
   ),
   Academy(
     title: 'Belajar Membuat Aplikasi Flutter untuk Pemula',
     description:
-        'Pelajari cara membuat aplikasi multi-platform pertamamu menggunakan Flutter. Kelas ini mengajarkan mulai dari fundamental hingga widget.',
+        'Buat aplikasi pertamamu dengan mengenal Flutter dan memahami dasar-dasar membangun tampilan Flutter dengan widget.',
   ),
   Academy(
     title: 'Belajar Fundamental Aplikasi Flutter',
     description:
-        'Pelajari skill Flutter dengan kurikulum terlengkap yang dibutuhkan oleh perusahaan seperti advance layouts, interactive widgets dan backend.',
+        'Perdalam keahlianmu dalam mengembangkan aplikasi menggunakan Flutter dengan mempelajari cara membuat aplikasi yang dapat mengambil data dari server dan menyimpannya ke dalam database.',
+  ),
+  Academy(
+    title: 'Belajar Prinsip Pemrograman SOLID',
+    description:
+        'Mendalami Object-Oriented Programming (OOP) dengan belajar prinsip dasar SOLID.',
   ),
   Academy(
     title: 'Menjadi Flutter Developer Expert',
     description:
-        'Tingkatkan skill kamu menjadi seorang Flutter expert dengan kurikulum yang fokus pada case study dan best practice dari pelaku industri.',
+        'Pelajari best practice seperti clean architecture, TDD, modularisasi, continuous integration, performance, dan security dalam mengembangkan aplikasi Flutter.',
   ),
 ];
 
@@ -101,21 +101,21 @@ final List<Academy> webPaths = [
   Academy(
     title: 'Belajar Dasar Pemrograman Web',
     description:
-        'Pelajari komponen-komponen dasar HTML, CSS, dan JavaScript yang merupakan fondasi utama untuk menjadi Web Developer.',
+        'Belajar dasar adalah langkah yang tidak boleh dilewatkan untuk mahir di bidang apa pun. Di sini, Anda akan belajar dasar dari HTML, CSS dan JavaScript. sebagai 3 pilar pembentuk website.',
+  ),
+  Academy(
+    title: 'Belajar Membuat Front-End Web untuk Pemula',
+    description:
+        'Pelajari lebih dalam JavaScript, DOM manipulation, dan web storage untuk meningkatkan fungsionalitas dan interaktifitas pada website Anda.',
   ),
   Academy(
     title: 'Belajar Fundamental Front-End Web Development',
     description:
-        'Pelajari sintaks ES6, Web Component, dan Build Tools dalam membangun website dengan teknik yang simple, reusable, dan optimized.',
-  ),
-  Academy(
-    title: 'Membangun Progressive Web Apps',
-    description:
-        'Pelajari strategi single page application, offline caching, dan push notification agar web Anda memiliki fungsi layaknya aplikasi native.',
+        'Agar pengalaman mengembangkan website lebih seru, gunakanlah tools modern seperti Webpack. Selain itu, Anda akan belajar bagaimana menampilkan data dari server sehingga webmu bisa menampilkan data yang dinamis.',
   ),
   Academy(
     title: 'Menjadi Front-End Web Developer Expert',
     description:
-        'Pelajari teknik-teknik expert serta modern dalam membangun website yang optimal pada seluruh perangkat, terutama pada perangkat mobile.',
+        'Menjadi seorang expert adalah impian setiap developer. Untuk itu, Anda perlu mempelajari prinsip dan materi expert seperti testing dan performance di sini. Di langkah ini juga, Anda diarahkan untuk membuat web aplikasi yang modern.',
   ),
 ];

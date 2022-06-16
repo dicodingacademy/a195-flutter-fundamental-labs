@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as path;
 
 class FileDialog extends StatelessWidget {
   final List<FileSystemEntity> files;
@@ -20,7 +20,7 @@ class FileDialog extends StatelessWidget {
           final file = files[index];
           return Material(
             child: ListTile(
-              title: Text(split(file.path).last),
+              title: Text(path.split(file.path).last),
               onTap: () {
                 Navigator.pop(context, file);
               },

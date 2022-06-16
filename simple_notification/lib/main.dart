@@ -10,17 +10,17 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final NotificationHelper _notificationHelper = NotificationHelper();
+  final NotificationHelper notificationHelper = NotificationHelper();
 
-  await _notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
-  _notificationHelper.requestIOSPermissions(flutterLocalNotificationsPlugin);
+  await notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
+  notificationHelper.requestIOSPermissions(flutterLocalNotificationsPlugin);
 
   runApp(
     MaterialApp(
       initialRoute: HomePage.routeName,
       routes: {
-        HomePage.routeName: (context) => HomePage(),
-        DetailPage.routeName: (context) => DetailPage(),
+        HomePage.routeName: (context) => const HomePage(),
+        DetailPage.routeName: (context) => const DetailPage(),
       },
     ),
   );

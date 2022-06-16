@@ -59,8 +59,8 @@ class ModuleTile extends StatelessWidget {
           ? const Icon(Icons.done)
           : ElevatedButton(
               key: Key(moduleName),
-              child: const Text('Done'),
               onPressed: onClick,
+              child: const Text('Done'),
             ),
     );
   }

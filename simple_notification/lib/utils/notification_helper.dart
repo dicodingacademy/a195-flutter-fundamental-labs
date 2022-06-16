@@ -1,11 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rxdart/subjects.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:rxdart/subjects.dart';
+import 'package:timezone/timezone.dart' as tz;
+
 import 'package:simple_notification/utils/received_notification.dart';
 
 final selectNotificationSubject = BehaviorSubject<String?>();
@@ -27,7 +30,7 @@ class NotificationHelper {
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
-        AndroidInitializationSettings('app_icon');
+        const AndroidInitializationSettings('app_icon');
 
     var initializationSettingsIOS = IOSInitializationSettings(
         requestAlertPermission: false,
@@ -47,7 +50,7 @@ class NotificationHelper {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: (String? payload) async {
       if (payload != null) {
-        print('notification payload: ' + payload);
+        print('notification payload: $payload');
       }
       selectNotificationSubject.add(payload);
     });
@@ -81,7 +84,7 @@ class NotificationHelper {
           actions: [
             CupertinoDialogAction(
               isDefaultAction: true,
-              child: Text('Ok'),
+              child: const Text('Ok'),
               onPressed: () async {
                 Navigator.of(context, rootNavigator: true).pop();
                 await Navigator.pushNamed(context, route,
@@ -96,11 +99,14 @@ class NotificationHelper {
 
   Future<void> showNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDesc,
-        importance: Importance.max, priority: Priority.high, ticker: 'ticker');
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+        _channelId, _channelName,
+        channelDescription: _channelDesc,
+        importance: Importance.max,
+        priority: Priority.high,
+        ticker: 'ticker');
 
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -118,11 +124,14 @@ class NotificationHelper {
 
   Future<void> showNotificationWithNoBody(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDesc,
-        importance: Importance.max, priority: Priority.high, ticker: 'ticker');
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+        _channelId, _channelName,
+        channelDescription: _channelDesc,
+        importance: Importance.max,
+        priority: Priority.high,
+        ticker: 'ticker');
 
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -140,7 +149,7 @@ class NotificationHelper {
 
   Future<void> scheduleNotification(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
-    var dateTime = DateTime.now().add(Duration(seconds: 5));
+    var dateTime = tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5));
     var vibrationPattern = Int64List(4);
     vibrationPattern[0] = 0;
     vibrationPattern[1] = 1000;
@@ -150,10 +159,10 @@ class NotificationHelper {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       icon: 'secondary_icon',
-      sound: RawResourceAndroidNotificationSound('slow_spring_board'),
-      largeIcon: DrawableResourceAndroidBitmap('sample_large_icon'),
+      sound: const RawResourceAndroidNotificationSound('slow_spring_board'),
+      largeIcon: const DrawableResourceAndroidBitmap('sample_large_icon'),
       vibrationPattern: vibrationPattern,
       enableLights: true,
       color: const Color.fromARGB(255, 255, 0, 0),
@@ -163,20 +172,23 @@ class NotificationHelper {
     );
 
     var iOSPlatformChannelSpecifics =
-        IOSNotificationDetails(sound: 'slow_spring_board.aiff');
+        const IOSNotificationDetails(sound: 'slow_spring_board.aiff');
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
 
-    await flutterLocalNotificationsPlugin.schedule(
+    await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       'scheduled title',
       'scheduled body',
       dateTime,
       platformChannelSpecifics,
       payload: 'scheduled notification',
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidAllowWhileIdle: true,
     );
   }
 
@@ -187,7 +199,7 @@ class NotificationHelper {
     var firstNotificationAndroidSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       importance: Importance.max,
       priority: Priority.high,
       groupKey: groupKey,
@@ -206,7 +218,7 @@ class NotificationHelper {
     var secondNotificationAndroidSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       importance: Importance.max,
       priority: Priority.high,
       groupKey: groupKey,
@@ -235,7 +247,7 @@ class NotificationHelper {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       styleInformation: inboxStyleInformation,
       groupKey: groupKey,
       setAsGroupSummary: true,
@@ -256,11 +268,11 @@ class NotificationHelper {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var maxProgress = 5;
     for (var i = 0; i <= maxProgress; i++) {
-      await Future.delayed(Duration(seconds: 1), () async {
+      await Future.delayed(const Duration(seconds: 1), () async {
         var androidPlatformChannelSpecifics = AndroidNotificationDetails(
           _channelId,
           _channelName,
-          _channelDesc,
+          channelDescription: _channelDesc,
           channelShowBadge: false,
           importance: Importance.max,
           priority: Priority.high,
@@ -312,7 +324,7 @@ class NotificationHelper {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       styleInformation: bigPictureStyleInformation,
     );
 
@@ -338,7 +350,7 @@ class NotificationHelper {
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       _channelId,
       _channelName,
-      _channelDesc,
+      channelDescription: _channelDesc,
       importance: Importance.high,
       priority: Priority.high,
       styleInformation: bigPictureAndroidStyle,

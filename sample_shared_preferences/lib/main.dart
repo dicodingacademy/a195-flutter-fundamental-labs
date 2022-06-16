@@ -26,7 +26,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -53,6 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _resetNumber() async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.remove(counterNumberPrefs);
+  _loadNumber();
+}
+
   @override
   void initState() {
     super.initState();
@@ -75,6 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            OutlinedButton(
+              onPressed: _resetNumber,
+              child: const Text("Reset"),
             ),
           ],
         ),

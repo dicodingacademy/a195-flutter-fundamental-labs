@@ -10,7 +10,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -29,14 +29,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _getFilesInDirectory(BuildContext context) async {
+    final navigator = Navigator.of(context);
     final directory = await getApplicationDocumentsDirectory();
 
     final dir = Directory(directory.path);
     final files =
         dir.listSync().toList().where((file) => file.path.contains('txt'));
 
-    final FileSystemEntity? selectedFile = await Navigator.push(
-      context,
+    final FileSystemEntity? selectedFile = await navigator.push(
       CupertinoPageRoute(
         builder: (context) => FileDialog(
           files: files.toList(),
@@ -110,8 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: CupertinoButton(
-                    child: const Text('New File'),
                     onPressed: _createNewFile,
+                    child: const Text('New File'),
                   ),
                 ),
                 Expanded(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// second_screen_with_data.dart
 class SecondScreenWithData extends StatelessWidget {
   final String data;
 
-  const SecondScreenWithData(this.data);
+  const SecondScreenWithData(this.data, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class SecondScreenWithData extends StatelessWidget {
           children: <Widget>[
             Text(data),
             ElevatedButton(
-              child: Text('Back'),
+              child: const Text('Back'),
               onPressed: () {
                 Navigator.pop(context);
               },

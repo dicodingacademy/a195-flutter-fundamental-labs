@@ -4,19 +4,21 @@ import 'package:local_db/note_add_update_page.dart';
 import 'package:provider/provider.dart';
 
 class NoteListPage extends StatelessWidget {
+  const NoteListPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notes'),
+        title: const Text('Notes'),
       ),
       body: Consumer<DbProvider>(
-        builder: (context, provider, child) {
+        builder: (_, provider, child) {
           final notes = provider.notes;
 
           return ListView.builder(
             itemCount: notes.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (_, index) {
               final note = notes[index];
               return Dismissible(
                 key: Key(note.id.toString()),
@@ -29,12 +31,16 @@ class NoteListPage extends StatelessWidget {
                     title: Text(note.title),
                     subtitle: Text(note.description),
                     onTap: () async {
+                      final navigator =  Navigator.of(context);
+                      
                       final selectedNote = await provider.getNoteById(note.id!);
-                      Navigator.push(
-                        context,
+
+                      navigator.push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return NoteAddUpdatePage(selectedNote);
+                            return NoteAddUpdatePage(
+                              note: selectedNote,
+                            );
                           },
                         ),
                       );
@@ -47,10 +53,12 @@ class NoteListPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => NoteAddUpdatePage()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NoteAddUpdatePage()));
         },
       ),
     );

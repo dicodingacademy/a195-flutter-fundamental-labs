@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// another_screen.dart
 class AnotherScreen extends StatelessWidget {
+  const AnotherScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,9 +11,9 @@ class AnotherScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Back to First Screen'),
+            const Text('Back to First Screen'),
             ElevatedButton(
-              child: Text('Back'),
+              child: const Text('Back'),
               onPressed: () {
                 Navigator.pop(context);
               },

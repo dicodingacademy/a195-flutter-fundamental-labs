@@ -7,7 +7,7 @@ class NoteAddUpdatePage extends StatefulWidget {
   const NoteAddUpdatePage({Key? key, this.note}) : super(key: key);
 
   @override
-  _NoteAddUpdatePageState createState() => _NoteAddUpdatePageState();
+  State<NoteAddUpdatePage> createState() => _NoteAddUpdatePageState();
 }
 
 class _NoteAddUpdatePageState extends State<NoteAddUpdatePage> {
