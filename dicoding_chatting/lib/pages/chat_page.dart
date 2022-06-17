@@ -5,12 +5,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/message_bubble.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   static const String id = 'chat_page';
+
+  const ChatPage({Key? key}) : super(key: key);
+
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
+  late User? _activeUser;
 
-  ChatPage({Key? key}) : super(key: key);
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      _activeUser = _auth.currentUser;
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +61,7 @@ class ChatPage extends StatelessWidget {
                     .collection('messages')
                     .orderBy('dateCreated', descending: true)
                     .snapshots(),
-                builder: (context, snapshot)  {
+                builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(),
@@ -59,6 +80,7 @@ class ChatPage extends StatelessWidget {
                       return MessageBubble(
                         sender: messageSender,
                         text: messageText,
+                        isMyChat: messageSender == _activeUser?.email,
                       );
                     }).toList(),
                   );
