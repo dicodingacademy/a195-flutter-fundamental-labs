@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -7,11 +6,10 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _auth = FirebaseAuth.instance;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -71,14 +69,14 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 24.0),
             MaterialButton(
-              child: const Text('Register'),
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               height: 40,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              onPressed: _register,
+              onPressed: () {},
+              child: const Text('Register'),
             ),
             TextButton(
               child: const Text('Already have an account? Login'),
@@ -88,27 +86,6 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
-  }
-
-  void _register() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final email = _emailController.text;
-      final password = _passwordController.text;
-
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      Navigator.pop(context);
-    } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
   }
 
   @override
