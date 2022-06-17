@@ -1,10 +1,14 @@
 import 'package:dicoding_chatting/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../widgets/message_bubble.dart';
 
 class ChatPage extends StatelessWidget {
   static const String id = 'chat_page';
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
 
   ChatPage({Key? key}) : super(key: key);
 
@@ -20,7 +24,7 @@ class ChatPage extends StatelessWidget {
             onPressed: () async {
               final navigator = Navigator.of(context);
               await _auth.signOut();
-              
+
               navigator.pushReplacementNamed(LoginPage.id);
             },
           )
@@ -30,8 +34,36 @@ class ChatPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Expanded(
-              child: Placeholder(),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                stream: _firestore
+                    .collection('messages')
+                    .orderBy('dateCreated', descending: true)
+                    .snapshots(),
+                builder: (context, snapshot)  {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return ListView(
+                    reverse: true,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 16.0,
+                    ),
+                    children: snapshot.data!.docs.map((document) {
+                      final data = document.data();
+                      final String messageText = data['text'];
+                      final String messageSender = data['sender'];
+                      return MessageBubble(
+                        sender: messageSender,
+                        text: messageText,
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 8),
             Row(

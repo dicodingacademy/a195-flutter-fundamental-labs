@@ -34,6 +34,7 @@ dev_dependencies:
   flutter_lints: ^2.0.1
   firebase_core: ^1.18.0
   firebase_auth: ^3.3.20
+  cloud_firestore: ^3.1.18
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
