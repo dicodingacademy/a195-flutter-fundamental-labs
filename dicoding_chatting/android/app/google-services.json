@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1077531466593",
+    "firebase_url": "https://dicoding-chatting.firebaseio.com",
+    "project_id": "dicoding-chatting",
+    "storage_bucket": "dicoding-chatting.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077531466593:android:3f5851ddec714788604320",
+        "android_client_info": {
+          "package_name": "com.dicoding.dicoding_chatting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077531466593-dpo8j54gl6h0i2jtn5jbm43c1esk3mv5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS1QvXga0nrjaVeNWyoi0e0_rM_tT9n8Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077531466593-dpo8j54gl6h0i2jtn5jbm43c1esk3mv5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1077531466593-ss8pltfla3859emqmhrju6i03r4cnst2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dicoding.dicodingChatting"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
