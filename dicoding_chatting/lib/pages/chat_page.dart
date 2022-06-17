@@ -17,12 +17,19 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
+  final _messageTextController = TextEditingController();
   late User? _activeUser;
 
   @override
   void initState() {
     super.initState();
     getCurrentUser();
+  }
+
+  @override
+  void dispose() {
+    _messageTextController.dispose();
+    super.dispose();
   }
 
   void getCurrentUser() async {
@@ -90,9 +97,10 @@ class _ChatPageState extends State<ChatPage> {
             const SizedBox(height: 8),
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    controller: _messageTextController,
+                    decoration: const InputDecoration(
                       contentPadding:
                           EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                       border: OutlineInputBorder(),
@@ -103,7 +111,15 @@ class _ChatPageState extends State<ChatPage> {
                 MaterialButton(
                   color: Theme.of(context).primaryColor,
                   textTheme: ButtonTextTheme.primary,
-                  onPressed: () {},
+                  onPressed: () {
+                    _firestore.collection("messages").add({
+                      'text': _messageTextController.text,
+                      'sender': _activeUser?.email,
+                      'dateCreated': Timestamp.now(),
+                    });
+
+                    _messageTextController.clear();
+                  },
                   child: const Text('SEND'),
                 ),
               ],
