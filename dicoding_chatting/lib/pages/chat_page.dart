@@ -1,8 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dicoding_chatting/pages/login_page.dart';
-import 'package:dicoding_chatting/widgets/message_bubble.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../widgets/message_bubble.dart';
 
 class ChatPage extends StatefulWidget {
   static const String id = 'chat_page';
@@ -10,29 +11,30 @@ class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
   @override
-  _ChatPageState createState() => _ChatPageState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
-  late User _activeUser;
-
   final _messageTextController = TextEditingController();
+  late User? _activeUser;
 
   @override
   void initState() {
     super.initState();
-    _getCurrentUser();
+    getCurrentUser();
   }
 
-  void _getCurrentUser() {
-    try {
-      var currentUser = _auth.currentUser;
+  @override
+  void dispose() {
+    _messageTextController.dispose();
+    super.dispose();
+  }
 
-      if (currentUser != null) {
-        _activeUser = currentUser;
-      }
+  void getCurrentUser() async {
+    try {
+      _activeUser = _auth.currentUser;
     } catch (e) {
       print(e);
     }
@@ -48,8 +50,10 @@ class _ChatPageState extends State<ChatPage> {
             icon: const Icon(Icons.close),
             tooltip: 'Logout',
             onPressed: () async {
+              final navigator = Navigator.of(context);
               await _auth.signOut();
-              Navigator.pushReplacementNamed(context, LoginPage.id);
+
+              navigator.pushReplacementNamed(LoginPage.id);
             },
           )
         ],
@@ -77,12 +81,13 @@ class _ChatPageState extends State<ChatPage> {
                       vertical: 16.0,
                     ),
                     children: snapshot.data!.docs.map((document) {
-                      final messageText = document.data()['text'];
-                      final messageSender = document.data()['sender'];
+                      final data = document.data();
+                      final String messageText = data['text'];
+                      final String messageSender = data['sender'];
                       return MessageBubble(
                         sender: messageSender,
                         text: messageText,
-                        isMyChat: messageSender == _activeUser.email,
+                        isMyChat: messageSender == _activeUser?.email,
                       );
                     }).toList(),
                   );
@@ -104,17 +109,18 @@ class _ChatPageState extends State<ChatPage> {
                 ),
                 const SizedBox(width: 8),
                 MaterialButton(
-                  child: const Text('SEND'),
                   color: Theme.of(context).primaryColor,
                   textTheme: ButtonTextTheme.primary,
                   onPressed: () {
-                    _firestore.collection('messages').add({
+                    _firestore.collection("messages").add({
                       'text': _messageTextController.text,
-                      'sender': _activeUser.email,
+                      'sender': _activeUser?.email,
                       'dateCreated': Timestamp.now(),
                     });
+
                     _messageTextController.clear();
                   },
+                  child: const Text('SEND'),
                 ),
               ],
             ),
@@ -122,11 +128,5 @@ class _ChatPageState extends State<ChatPage> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _messageTextController.dispose();
-    super.dispose();
   }
 }

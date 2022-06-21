@@ -12,13 +12,13 @@ class MessageBubble extends StatelessWidget {
     required this.isMyChat,
   }) : super(key: key);
 
-  final _senderBorderRadius = const BorderRadius.only(
+  final senderBorderRadius = const BorderRadius.only(
     topLeft: Radius.circular(20),
     bottomLeft: Radius.circular(20),
     topRight: Radius.circular(20),
   );
 
-  final _otherBorderRadius = const BorderRadius.only(
+  final otherBorderRadius = const BorderRadius.only(
     topRight: Radius.circular(20),
     topLeft: Radius.circular(20),
     bottomRight: Radius.circular(20),
@@ -41,8 +41,8 @@ class MessageBubble extends StatelessWidget {
           ),
           Material(
             color: isMyChat ? Colors.lightBlue : Colors.white,
-            borderRadius: isMyChat ? _senderBorderRadius : _otherBorderRadius,
-            elevation: 4.0,
+            borderRadius: isMyChat ? senderBorderRadius : otherBorderRadius,
+            elevation: 5.0,
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),

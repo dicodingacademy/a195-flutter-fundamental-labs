@@ -1,7 +1,7 @@
 import 'package:dicoding_chatting/pages/chat_page.dart';
 import 'package:dicoding_chatting/pages/register_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   static const String id = 'login_page';
@@ -9,7 +9,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -68,14 +68,34 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 24.0),
             MaterialButton(
-              child: const Text('Login'),
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               height: 40,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              onPressed: _login,
+              onPressed: () async {
+                setState(() {
+                  _isLoading = true;
+                });
+                try {
+                  final navigator = Navigator.of(context);
+                  final email = _emailController.text;
+                  final password = _passwordController.text;
+
+                  await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
+                  navigator.pushReplacementNamed(ChatPage.id);
+                } catch (e) {
+                  final snackbar = SnackBar(content: Text(e.toString()));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                } finally {
+                  setState(() {
+                    _isLoading = false;
+                  });
+                }
+              },
+              child: const Text('Login'),
             ),
             TextButton(
               child: const Text('Does not have an account yet? Register here'),
@@ -85,26 +105,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
-
-  void _login() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final email = _emailController.text;
-      final password = _passwordController.text;
-
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.pushReplacementNamed(context, ChatPage.id);
-    } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
   }
 
   @override

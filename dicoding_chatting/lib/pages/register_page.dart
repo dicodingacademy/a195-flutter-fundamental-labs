@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterPage extends StatefulWidget {
   static const String id = 'register_page';
@@ -7,7 +7,7 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
@@ -71,14 +71,34 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 24.0),
             MaterialButton(
-              child: const Text('Register'),
               color: Theme.of(context).primaryColor,
               textTheme: ButtonTextTheme.primary,
               height: 40,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              onPressed: _register,
+              onPressed: () async {
+                setState(() {
+                  _isLoading = true;
+                });
+                try {
+                  final navigator = Navigator.of(context);
+                  final email = _emailController.text;
+                  final password = _passwordController.text;
+
+                  await _auth.createUserWithEmailAndPassword(
+                      email: email, password: password);
+                  navigator.pop();
+                } catch (e) {
+                  final snackbar = SnackBar(content: Text(e.toString()));
+                  ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                } finally {
+                  setState(() {
+                    _isLoading = false;
+                  });
+                }
+              },
+              child: const Text('Register'),
             ),
             TextButton(
               child: const Text('Already have an account? Login'),
@@ -88,27 +108,6 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
-  }
-
-  void _register() async {
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      final email = _emailController.text;
-      final password = _passwordController.text;
-
-      await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      Navigator.pop(context);
-    } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    } finally {
-      setState(() {
-        _isLoading = false;
-      });
-    }
   }
 
   @override
