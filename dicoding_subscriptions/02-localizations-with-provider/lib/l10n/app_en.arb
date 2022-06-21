@@ -1,0 +1,19 @@
+{
+  "titleAppBar": "Dicoding Academy",
+  "costTitle": "Subscription Fee",
+  "costSubtitle": "Choose a subscription package as a learning investment that suits your needs.",
+  "paidPackageTitle": "{month,plural, =1{{month} Month} other{{month} Months}} Subscription",
+  "paidPackagePrice": "{feeSubscription}",
+  "paidPackageButton": "Choose Package",
+  "orText": "or",
+  "freePackageTitle": "{day,plural, =1{{day} day} other{{day} days}} Subscription",
+  "freePackagePrice": "Free",
+  "freePackageButton": "Try Now",
+  "benefitTitle": "Subscription Benefit",
+  "benefitFeatureTitle1": "Main Feature",
+  "benefitFeatureTitle2": "Trial",
+  "benefitFeatureTitle3": "Subscription",
+  "benefitFeatureItem1": "All-Access Course",
+  "benefitFeatureItem2": "Exam",
+  "benefitFeatureItem3": "Send Project"
+}
