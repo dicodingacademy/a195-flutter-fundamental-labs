@@ -1,0 +1,44 @@
+{
+  "titleAppBar": "Dicoding Academy",
+  "costTitle": "Biaya Langganan",
+  "costSubtitle": "Pilih paket langganan sebagai investasi belajar yang sesuai dengan kebutuhan Anda.",
+  "paidPackageTitle": "Berlangganan {month,plural, other{{month} bulan}}",
+  "@paidPackageTitle": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      }
+    }
+  },
+  "paidPackagePrice": "{feeSubscription}",
+  "@paidPackagePrice": {
+    "placeholders": {
+      "feeSubscription": {
+        "type": "int",
+        "format": "simpleCurrency",
+        "optionalParameters": {
+          "decimalDigits": 0
+        }
+      }
+    }
+  },
+  "paidPackageButton": "Pilih Paket",
+  "orText": "atau",
+  "freePackageTitle": "Berlangganan {day,plural, other{{day} hari}}",
+  "@freePackageTitle": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "freePackagePrice": "Gratis",
+  "freePackageButton": "Coba sekarang",
+  "benefitTitle": "Keuntungan Langganan",
+  "benefitFeatureTitle1": "Fitur Utama",
+  "benefitFeatureTitle2": "Uji Coba",
+  "benefitFeatureTitle3": "Langganan",
+  "benefitFeatureItem1": "Akses semua kelas",
+  "benefitFeatureItem2": "Ujian",
+  "benefitFeatureItem3": "Kirim Proyek"
+}

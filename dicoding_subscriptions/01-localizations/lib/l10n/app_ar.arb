@@ -1,0 +1,19 @@
+{
+  "titleAppBar": "Dicoding Academy",
+  "costTitle": "رسم الاشتراك",
+  "costSubtitle": "اختر حزمة اشتراك كاستثمار تعليمي يناسب احتياجاتك.",
+  "paidPackageTitle": "{month,plural, =1{اشتراك لمدة شهر} =2{اشتراك شهرين} other{اشتراك {month} شهور}",
+  "paidPackagePrice": "{feeSubscription}",
+  "paidPackageButton": "اختر الباقة",
+  "orText": "أو",
+  "freePackageTitle": "{day,plural, =1{اشتراك ليوم واحد} =2{اشتراك لمدة 2 يوم} other{اشتراك {day} يوم}}",
+  "freePackagePrice": "حر",
+  "freePackageButton": "جرب الآن",
+  "benefitTitle": "ميزة الاشتراك",
+  "benefitFeatureTitle1": "الميزة الأساسية",
+  "benefitFeatureTitle2": "محاكمة",
+  "benefitFeatureTitle3": "الاشتراك",
+  "benefitFeatureItem1": "دورة بلا حدود",
+  "benefitFeatureItem2": "امتحان",
+  "benefitFeatureItem3": "أرسل المشروع"
+}

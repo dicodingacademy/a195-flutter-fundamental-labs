@@ -1,0 +1,32 @@
+name: dicoding_subscriptions
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: 
+
+  cupertino_icons: ^1.0.2
+  app_settings: 
+  provider:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints:
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/dicoding-academy.png
