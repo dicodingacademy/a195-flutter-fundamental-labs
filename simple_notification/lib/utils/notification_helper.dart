@@ -32,7 +32,7 @@ class NotificationHelper {
     var initializationSettingsAndroid =
         const AndroidInitializationSettings('app_icon');
 
-    var initializationSettingsIOS = IOSInitializationSettings(
+    var initializationSettingsIOS = DarwinInitializationSettings(
         requestAlertPermission: false,
         requestBadgePermission: false,
         requestSoundPermission: false,
@@ -47,13 +47,16 @@ class NotificationHelper {
       iOS: initializationSettingsIOS,
     );
 
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: (String? payload) async {
-      if (payload != null) {
-        print('notification payload: $payload');
-      }
-      selectNotificationSubject.add(payload);
-    });
+    await flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (details) {
+        final payload = details.payload;
+        if (payload != null) {
+          print('notification payload: $payload');
+        }
+        selectNotificationSubject.add(payload ?? 'empty payload');
+      },
+    );
   }
 
   void requestIOSPermissions(
@@ -106,7 +109,7 @@ class NotificationHelper {
         priority: Priority.high,
         ticker: 'ticker');
 
-    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -131,7 +134,7 @@ class NotificationHelper {
         priority: Priority.high,
         ticker: 'ticker');
 
-    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
+    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -172,7 +175,7 @@ class NotificationHelper {
     );
 
     var iOSPlatformChannelSpecifics =
-        const IOSNotificationDetails(sound: 'slow_spring_board.aiff');
+        const DarwinNotificationDetails(sound: 'slow_spring_board.aiff');
 
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
@@ -356,8 +359,8 @@ class NotificationHelper {
       styleInformation: bigPictureAndroidStyle,
     );
 
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-        attachments: [IOSNotificationAttachment(bigPicturePath)]);
+    var iOSPlatformChannelSpecifics = DarwinNotificationDetails(
+        attachments: [DarwinNotificationAttachment(bigPicturePath)]);
 
     var notificationDetails = NotificationDetails(
       android: androidPlatformChannelSpecifics,

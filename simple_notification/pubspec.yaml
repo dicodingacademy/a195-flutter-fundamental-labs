@@ -29,7 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
   rxdart: ^0.27.0
-  flutter_local_notifications: ^9.6.0
+  flutter_local_notifications: ^11.0.0
   http: ^0.13.3
   path_provider: ^2.0.1
 
