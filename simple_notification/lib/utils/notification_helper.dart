@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -52,7 +53,7 @@ class NotificationHelper {
       onDidReceiveNotificationResponse: (details) {
         final payload = details.payload;
         if (payload != null) {
-          print('notification payload: $payload');
+          log('notification payload: $payload');
         }
         selectNotificationSubject.add(payload ?? 'empty payload');
       },
