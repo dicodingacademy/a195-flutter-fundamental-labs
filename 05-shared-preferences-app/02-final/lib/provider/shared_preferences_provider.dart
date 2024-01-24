@@ -17,10 +17,10 @@ class SharedPreferencesProvider extends ChangeNotifier {
   Profile? get profile => _profile;
 
   // todo-provider-04: add a function to pass a profile value
-  Future<void> saveProfileValue(Profile profile) async {
+  Future<void> saveProfileValue(Profile value) async {
     // todo-provider-05: wrap with try-catch and do the saving process
     try {
-      await _service.saveProfileValue(profile);
+      await _service.saveProfileValue(value);
       _message = "Your data is saved";
       notifyListeners();
     } catch (e) {

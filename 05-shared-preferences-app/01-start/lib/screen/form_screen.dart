@@ -54,7 +54,7 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _phoneNumberController,
                 keyboardType: TextInputType.phone,
                 decoration: const InputDecoration(
-                  hintText: "Input your phone number",
+                  hintText: "81-xxx-xxx-xxx",
                   label: Text("Phone Number"),
                   prefixText: "+62",
                   border: OutlineInputBorder(),

@@ -62,10 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
           : profile!.maritalStatus!
               ? "Married"
               : "Single";
-      // (profile?.maritalStatus ?? false) ? "Single" : "Married";
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +82,6 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               TextField(
                 controller: _nameController,
                 keyboardType: TextInputType.name,
-                
                 readOnly: true,
                 decoration: const InputDecoration(
                   label: Text("Name"),
@@ -94,7 +91,6 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
-                
                 readOnly: true,
                 decoration: const InputDecoration(
                   label: Text("Email"),
@@ -104,7 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               TextField(
                 controller: _phoneNumberController,
                 keyboardType: TextInputType.phone,
-                
                 readOnly: true,
                 decoration: const InputDecoration(
                   label: Text("Phone Number"),
@@ -115,7 +110,6 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               TextField(
                 controller: _marriedController,
                 keyboardType: TextInputType.text,
-                
                 readOnly: true,
                 decoration: const InputDecoration(
                   label: Text("Marital Status"),
