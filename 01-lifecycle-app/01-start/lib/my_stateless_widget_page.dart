@@ -5,7 +5,7 @@ class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({super.key});
 
   void _nextPage(BuildContext context) {
-    Navigator.pop(
+    Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>

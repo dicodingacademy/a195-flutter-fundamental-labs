@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
   // todo-app-02: initialize the AppLifecycleListener class and pass callbacks
   @override
   void initState() {
+    super.initState();
     _listener = AppLifecycleListener(
       onDetach: () => debugPrint('app-detached'),
       onInactive: () => debugPrint('app-inactive'),
@@ -33,8 +34,6 @@ class _MyAppState extends State<MyApp> {
       // todo-app-04: add onExitRequested in listener
       onExitRequested: _onExitRequested,
     );
-
-    super.initState();
   }
 
   // todo-app-03: create a alert dialog when app is exit
