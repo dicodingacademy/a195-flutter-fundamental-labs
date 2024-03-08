@@ -14,8 +14,8 @@ class _MyContainerWidgetState extends State<MyContainerWidget> {
   final List<double> _fixedSize = [150, 200, 300];
 
   // todo-scale-01: create a variable scale for zoom
-  double _scaleFactor = 1.0;
-  double _baseScaleFactor = 0.5;
+  double _scaleFactor = 0.5;
+  double _baseScaleFactor = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +31,21 @@ class _MyContainerWidgetState extends State<MyContainerWidget> {
             _ => _fixedSize[1],
           };
           // todo-scale-04: set scale value to default on onDoubleTap callback
-          _scaleFactor = 1.0;
+          _baseScaleFactor = 1.0;
         });
       },
       // todo-scale-03: add some callback for scale the GestureDetector widget
       onScaleStart: (details) {
-        _baseScaleFactor = _scaleFactor;
+        _scaleFactor = _baseScaleFactor;
       },
       onScaleUpdate: (details) {
         setState(() {
-          _scaleFactor = _baseScaleFactor * details.scale;
+          _baseScaleFactor = _scaleFactor * details.scale;
         });
       },
       // todo-scale-02: wrap this widget with Transform.scale and add scale parameter
       child: Transform.scale(
-        scale: _scaleFactor,
+        scale: _baseScaleFactor,
         child: Image.asset(
           "assets/cat.jpeg",
           fit: BoxFit.cover,
