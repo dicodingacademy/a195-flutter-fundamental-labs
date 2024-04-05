@@ -1,9 +1,9 @@
-// todo-dialog-01: create a CategoryScreen that have a string parameter
+// todo-03-dialog-01: create a CategoryScreen that have a string parameter
 import 'package:flutter/cupertino.dart';
 
 class CategoryScreen extends StatelessWidget {
   final String selectedCategory;
-  // todo-dialog-02: add static value for route name, this screen and HomeScreen
+  // todo-03-dialog-02: add static value for route name, this screen and HomeScreen
   static const String nameRoute = "category";
 
   const CategoryScreen({

@@ -1,4 +1,4 @@
-// todo-tab-01: create a FeedScreen and SearchPage for the child of tab screen
+// todo-02-tab-01: create a FeedScreen and SearchScreen for the child of tab screen
 import 'package:cupertino_app/screen/category_screen.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -14,68 +14,67 @@ class FeedsScreen extends StatelessWidget {
         middle: Text("Feeds Screen"),
       ),
       child: Center(
-        // todo-dialog-05: wrap Text widget with Column
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Feeds Screen",
-                style:
-                    CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
-              ),
-              // todo-dialog-06: add button to open the dialog
-              const SizedBox.square(dimension: 8),
-              CupertinoButton.filled(
-                child: const Text("Select Category"),
-                onPressed: () {
-                  // todo-dialog-09: call the dialog from this callback
-                  _openDialog(context);
-                },
-              ),
-            ],
-          ),
+        // todo-03-dialog-05: wrap Text widget with Column
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Feeds Screen",
+              style:
+                  CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+            ),
+            // todo-03-dialog-06: add button to open the dialog
+            const SizedBox.square(dimension: 8),
+            CupertinoButton.filled(
+              child: const Text("Select Category"),
+              onPressed: () {
+                // todo-03-dialog-09: call the dialog from this callback
+                _openDialog(context);
+              },
+            ),
+          ],
         ),
       ),
     );
   }
 
-  // todo-dialog-07: create a function to open the dialog
+  // todo-03-dialog-07: create a function to open the dialog
   void _openDialog(BuildContext context) {
     showCupertinoModalPopup(
-        context: context,
-        builder: (context) {
-          // todo-dialog-08: set CupertinoActionSheet to display it in modal
-          return CupertinoActionSheet(
-            title: const Text('Select Categories'),
-            actions: [
-              CupertinoActionSheetAction(
-                onPressed: () {
-                  Navigator.pushNamed(context, CategoryScreen.nameRoute,
-                      arguments: 'Technology');
-                },
-                child: const Text('Technology'),
-              ),
-              CupertinoActionSheetAction(
-                onPressed: () {
-                  Navigator.pushNamed(context, CategoryScreen.nameRoute,
-                      arguments: 'Business');
-                },
-                child: const Text('Business'),
-              ),
-              CupertinoActionSheetAction(
-                onPressed: () {
-                  Navigator.pushNamed(context, CategoryScreen.nameRoute,
-                      arguments: 'Sport');
-                },
-                child: const Text('Sport'),
-              ),
-            ],
-            cancelButton: CupertinoActionSheetAction(
-              child: const Text('Close'),
-              onPressed: () => Navigator.pop(context),
+      context: context,
+      builder: (context) {
+        // todo-03-dialog-08: set CupertinoActionSheet to display it in modal
+        return CupertinoActionSheet(
+          title: const Text('Select Categories'),
+          actions: [
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                    arguments: 'Technology');
+              },
+              child: const Text('Technology'),
             ),
-          );
-        });
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                    arguments: 'Business');
+              },
+              child: const Text('Business'),
+            ),
+            CupertinoActionSheetAction(
+              onPressed: () {
+                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                    arguments: 'Sport');
+              },
+              child: const Text('Sport'),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            child: const Text('Close'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        );
+      },
+    );
   }
 }

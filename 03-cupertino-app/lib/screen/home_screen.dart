@@ -4,8 +4,8 @@ import 'package:cupertino_app/screen/setting_screen.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeScreen extends StatelessWidget {
-  // todo-dialog-03: add static value for route name, this screen and HomeScreen
-  static const String nameRoute = "home";
+  // todo-03-dialog-03: add static value for route name, this screen and HomeScreen
+  static const String nameRoute = "/";
 
   const HomeScreen({
     super.key,
@@ -13,9 +13,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // todo-tab-02: create a new screen called HomeScreen and add CupertinoTabScaffold
+    // todo-02-tab-02: create a new screen called HomeScreen and add CupertinoTabScaffold
     return CupertinoTabScaffold(
-      // todo-tab-03: add CupertinoTabBar for bottom navbar
+      // todo-02-tab-03: add CupertinoTabBar for bottom navbar
       tabBar: CupertinoTabBar(items: const [
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.news),
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           label: 'Settings',
         ),
       ]),
-      // todo-tab-04: add tab builder to open the exact screen  based on index
+      // todo-02-tab-04: add tab builder to open the exact screen  based on index
       tabBuilder: (context, index) {
         return switch (index) {
           1 => const SearchScreen(),

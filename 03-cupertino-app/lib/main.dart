@@ -11,16 +11,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // todo-app-01: remove MaterialApp and add CupertinoApp
+    // todo-01-app-01: remove MaterialApp and add CupertinoApp
     return CupertinoApp(
-      // todo-app-02: add Cupertino Theme at CupertinoApp
+      // todo-01-app-02: add Cupertino Theme at CupertinoApp
       theme: const CupertinoThemeData(
         primaryColor: CupertinoColors.systemBlue,
       ),
-      // todo-app-05: add Setting to the home of CupertinoApp
-      // todo-tab-05: change the home parameter to HomeScreen
-      home: const HomeScreen(),
-      // todo-dialog-04: add route for category
+      // todo-01-app-06: add Setting to the home of CupertinoApp
+      // todo-02-tab-05: change the home parameter to HomeScreen
+      // home: const HomeScreen(),
+      // todo-03-dialog-04: add route for category
       initialRoute: HomeScreen.nameRoute,
       routes: {
         HomeScreen.nameRoute: (BuildContext _) => const HomeScreen(),
