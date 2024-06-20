@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sliver_app/model/dicoding_classes.dart';
 
-// todo-17: create a ListTileItem for reusable widget
+// todo-03-sliver-01: create a ListTileItem for reusable widget
 class ListTileItem extends StatelessWidget {
-  final DicodingClasses dicodingClasses;
+  final DicodingCourse dicodingClasses;
 
   const ListTileItem({
     super.key,

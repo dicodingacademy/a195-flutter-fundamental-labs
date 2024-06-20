@@ -31,7 +31,6 @@ class FirebaseAuthService {
 
   Future<UserCredential> signInUser(String email, String password) async {
     try {
-      _auth.sendPasswordResetEmail(email: email);
       final result = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,

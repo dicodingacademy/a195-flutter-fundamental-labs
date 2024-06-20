@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // todo-04: remove a MyHomePage widget and replace home parameter on Material App with LearningPathScreen
+      // todo-01-init-04: remove a MyHomePage widget and replace home parameter on Material App with LearningPathScreen
       home: const LearningPathScreen(),
     );
   }

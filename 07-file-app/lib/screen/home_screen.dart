@@ -1,10 +1,10 @@
-// todo-init-03: move this widget to different file
+// todo-01-init-03: move this widget to different file
 // dont forget to import home screen to main.dart file
 import 'package:file_app/provider/file_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-// todo-init-04: change this widget into stateful widget and change the ui
+// todo-01-init-04: change this widget into stateful widget and change the ui
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // todo-action-01: create a function to show a snacbar
+  // todo-04-action-01: create a function to show a snacbar
   void showSnackBar(String text) {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
 
@@ -111,13 +111,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _createNewFile() {
-    // todo-action-02: empty all text field to create a new file
+    // todo-04-action-02: empty all text field to create a new file
     _fileNameController.clear();
     _contentsController.clear();
   }
 
   void _saveFile() async {
-    // todo-action-03: save a file
+    // todo-04-action-03: save a file
     final filename = _fileNameController.text;
     final contents = _contentsController.text;
 
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _openFile() async {
-    // todo-action-05: open a file
+    // todo-04-action-05: open a file
     final fileProvider = context.read<FileProvider>();
     final filename = (await openListOfFileName()) ?? "";
 
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  // todo-action-04: create a function to show a list of file using dialog
+  // todo-04-action-04: create a function to show a list of file using dialog
   Future<String?> openListOfFileName() async {
     final fileProvider = context.read<FileProvider>();
     await fileProvider.getAllFilesInDirectory();

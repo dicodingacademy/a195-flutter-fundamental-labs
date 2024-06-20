@@ -6,7 +6,7 @@ import 'package:sqlite_app/screen/form_screen.dart';
 import 'package:sqlite_app/static/action_page_enum.dart';
 import 'package:sqlite_app/widgets/profile_card_widget.dart';
 
-// todo-action-01: make it stateful widget
+// todo-03-action-01: make it stateful widget
 class ProfilesScreen extends StatefulWidget {
   const ProfilesScreen({
     super.key,
@@ -17,10 +17,10 @@ class ProfilesScreen extends StatefulWidget {
 }
 
 class _ProfilesScreenState extends State<ProfilesScreen> {
-  // todo-action-02: load all profile data into list
+  // todo-03-action-02: load all profile data into list
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
 
     Future.microtask(() {
       context.read<LocalDatabaseProvider>().loadAllProfileValue();
@@ -42,16 +42,16 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
             children: [
               ProfileCardWidget(
                 profile: Profile(
-                  name: "Achmad Ilham",
-                  email: "achmadilham@gmail.com",
+                  name: "Ilham",
+                  email: "ilham@dicoding.com",
                   phoneNumber: "81234567890",
                   maritalStatus: true,
                 ),
               ),
-              // todo-action-03: add a Consumer widget that handle a list
+              // todo-03-action-03: add a Consumer widget that handle a list
               Consumer<LocalDatabaseProvider>(
                 builder: (context, value, child) {
-                  // todo-action-04: define a widget based on profile list
+                  // todo-03-action-04: define a widget based on profile list
                   if (value.profileList == null) {
                     return const SizedBox();
                   }
@@ -65,7 +65,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                       final profile = profileList[index];
                       return ProfileCardWidget(
                         profile: profile,
-                        // todo-action-05: add callback to remove the item
+                        // todo-03-action-05: add callback to remove the item
                         onTapRemove: () async {
                           if (profile.id != null) {
                             final localDatabaseProvider =
@@ -80,14 +80,13 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                             );
                           }
                         },
-                        // todo-action-12: add callback to edit the item
+                        // todo-03-action-12: add callback to edit the item
                         onTapEdit: () {
                           if (profile.id != null) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => FormScreen(
-                                        // todo-action-11: add action page to FAB navigation
                                         actionPageEnum: ActionPageEnum.edit,
                                         profile: profile,
                                       )),
@@ -114,7 +113,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
             context,
             MaterialPageRoute(
                 builder: (context) => const FormScreen(
-                      // todo-action-11: add action page to FAB navigation
+                      // todo-03-action-11: add action page to FAB navigation
                       actionPageEnum: ActionPageEnum.add,
                     )),
           );

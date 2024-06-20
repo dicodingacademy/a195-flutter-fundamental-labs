@@ -1,15 +1,15 @@
-// todo-provider-01: create a new provider that handle dependency injection
+// todo-02-provider-01: create a new provider that handle dependency injection
 import 'package:flutter/widgets.dart';
 import 'package:sqlite_app/model/profile.dart';
 import 'package:sqlite_app/services/sqlite_service.dart';
 
 class LocalDatabaseProvider extends ChangeNotifier {
-  // todo-provider-02: inject sqlite service
+  // todo-02-provider-02: inject sqlite service
   final SqliteService _service;
 
   LocalDatabaseProvider(this._service);
 
-  // todo-provider-03: add a state to load a saving process and load a getting value process
+  // todo-02-provider-03: add a state to load a saving process and load a getting value process
   String _message = "";
   String get message => _message;
 
@@ -19,7 +19,7 @@ class LocalDatabaseProvider extends ChangeNotifier {
   Profile? _profile;
   Profile? get profile => _profile;
 
-  // todo-provider-04: add a function to save a profile value
+  // todo-02-provider-04: add a function to save a profile value
   Future<void> saveProfileValue(Profile value) async {
     try {
       final result = await _service.insertItem(value);
@@ -38,7 +38,7 @@ class LocalDatabaseProvider extends ChangeNotifier {
     }
   }
 
-  // todo-provider-05: add a function to load all profile value
+  // todo-02-provider-05: add a function to load all profile value
   Future<void> loadAllProfileValue() async {
     try {
       _profileList = await _service.getAllItems();
@@ -50,7 +50,7 @@ class LocalDatabaseProvider extends ChangeNotifier {
     }
   }
 
-  // todo-provider-06: add a function to load profile value based on id
+  // todo-02-provider-06: add a function to load profile value based on id
   Future<void> loadProfileValueById(int id) async {
     try {
       _profile = await _service.getItemById(id);
@@ -62,7 +62,7 @@ class LocalDatabaseProvider extends ChangeNotifier {
     }
   }
 
-  // todo-provider-07: add a function to update profile value based on id
+  // todo-02-provider-07: add a function to update profile value based on id
   Future<void> updateProfileValueById(int id, Profile value) async {
     try {
       final result = await _service.updateItem(id, value);
@@ -81,7 +81,7 @@ class LocalDatabaseProvider extends ChangeNotifier {
     }
   }
 
-  // todo-provider-08: add a function to remove profile value based on id
+  // todo-02-provider-08: add a function to remove profile value based on id
   Future<void> removeProfileValueById(int id) async {
     try {
       await _service.removeItem(id);

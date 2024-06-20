@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  # todo-service-01: add sqflite and provider dependencies
+  # todo-01-service-01: add sqflite and provider dependencies
   sqflite: ^2.3.0
   provider: ^6.1.1
 

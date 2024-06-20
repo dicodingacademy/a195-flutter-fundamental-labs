@@ -13,7 +13,7 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-// todo-observer-03: add RouteAware to this state
+// todo-04-observer-03: add RouteAware to this state
 class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
   late final TextEditingController _nameController = TextEditingController();
   late final TextEditingController _emailController = TextEditingController();
@@ -21,45 +21,45 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
       TextEditingController();
   late final TextEditingController _marriedController = TextEditingController();
 
-  // todo-action-06: call the function in this method
+  // todo-03-action-05: call the function in this method
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
     _loadProfileValue();
-    // todo-observer-04: subscribe this widget to observe the profile route
+    // todo-04-observer-04: subscribe this widget to observe the profile route
     observer.subscribe(this, ModalRoute.of(context)!);
   }
 
-  // todo-observer-05: dont forget to unsubscribe when this widget is no longer visible
+  // todo-04-observer-05: dont forget to unsubscribe when this widget is no longer visible
   @override
   void dispose() {
     observer.unsubscribe(this);
     super.dispose();
   }
 
-  // todo-observer-06: observe the widget when top route has been popped off
+  // todo-04-observer-06: observe the widget when top route has been popped off
   @override
   void didPopNext() {
     _loadProfileValue();
     super.didPopNext();
   }
 
-  // todo-action-04: add a function to get a profile value from shared preference
+  // todo-03-action-03: add a function to get a profile value from shared preference
   void _loadProfileValue() async {
     Future.microtask(() {
       final sharedPreferencesProvider =
           context.read<SharedPreferencesProvider>();
       sharedPreferencesProvider.getProfileValue();
 
-      // todo-action-05: set UI based on the profile value
+      // todo-03-action-04: set UI based on the profile value
       final profile = sharedPreferencesProvider.profile;
       _nameController.text = profile?.name ?? "";
       _emailController.text = profile?.email ?? "";
       _phoneNumberController.text = profile?.phoneNumber ?? "";
       _marriedController.text = profile?.maritalStatus == null
           ? ""
-          : profile!.maritalStatus!
+          : profile!.maritalStatus
               ? "Married"
               : "Single";
     });

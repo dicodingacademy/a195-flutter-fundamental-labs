@@ -78,7 +78,7 @@ class _FormScreenState extends State<FormScreen> {
                 icon: const Icon(Icons.save),
                 label: const Text("Save"),
                 onPressed: () async {
-                  // todo-action-01: save all value to shared preferences
+                  // todo-03-action-01: save all value to shared preferences
                   final profile = Profile(
                     name: _nameController.text,
                     email: _emailController.text,
@@ -89,8 +89,8 @@ class _FormScreenState extends State<FormScreen> {
                       .read<SharedPreferencesProvider>()
                       .saveProfileValue(profile);
 
-                  // todo-action-02: wrap the Navigator using if mounted
-                  if (mounted) {
+                  // todo-03-action-02: wrap the Navigator using if mounted
+                  if (context.mounted) {
                     Navigator.of(context).pop();
                   }
                 },

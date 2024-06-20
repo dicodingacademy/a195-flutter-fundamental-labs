@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  # todo-init-01: add path_provider, path, and provider dependencies
+  # todo-01-init-01: add path_provider, path, and provider dependencies
   path_provider: ^2.1.2
   path: ^1.8.3
   provider: ^6.1.1

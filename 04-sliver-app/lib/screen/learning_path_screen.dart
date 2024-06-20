@@ -1,4 +1,4 @@
-// todo-03: create a screen for LearningPathScreen
+// todo-01-init-03: create a screen for LearningPathScreen
 import 'package:flutter/material.dart';
 import 'package:sliver_app/model/dicoding_classes.dart';
 import 'package:sliver_app/utils/sliver_header_delegate.dart';
@@ -12,55 +12,53 @@ class LearningPathScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // todo-05: set CustomScrollView for the Scaffold body
+      // todo-01-init-05: set CustomScrollView for the Scaffold body
       body: CustomScrollView(
         slivers: [
-          // todo-06: add SliverAppBar as a toolbar/appbar
+          // todo-03-sliver-02: add SliverAppBar as a toolbar/appbar
           const SliverAppBar.medium(
             title: Text("Dicoding Learning Path"),
           ),
-          // todo-15: put a new header in our sliver list
-          _header(context, "Android Developer"),
-          // todo-16: add SliverList for Multi-platform App classes
+          // todo-03-sliver-03: put a new header in our sliver list
+          // and add SliverList for Multi-platform App classes
+          _header(context, "Multi-platform Developer"),
           SliverList(
-            // todo-18: define a builder delegate for SliverList
             delegate: SliverChildBuilderDelegate(
               (context, index) => ListTileItem(
-                dicodingClasses: flutterPaths[index],
+                dicodingClasses: multiplatformPath[index],
               ),
-              childCount: flutterPaths.length,
+              childCount: multiplatformPath.length,
             ),
           ),
-          // todo-19: put another header in our sliver list
+          // todo-03-sliver-04: put another header in our sliver list
+          // and define a common SliverGrid
           _header(context, "iOS Developer"),
-          // todo-20: define a common SliverGrid
           SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (context, index) => ListTileItem(
-                dicodingClasses: iosPaths[index],
+                dicodingClasses: iosPath[index],
               ),
-              childCount: iosPaths.length,
+              childCount: iosPath.length,
             ),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
             ),
           ),
-          // todo-21: put another header in our sliver list
-          _header(context, "Multi-platform App Developer"),
-          // todo-22: add SliverList.builder for Android classes
+          // todo-03-sliver-05: put another header in our sliver list
+          // and add SliverList.builder for Android classes
+          _header(context, "Android Developer"),
           SliverList.builder(
             itemCount: androidPath.length,
-            // todo-23: put an item for Android learning path
             itemBuilder: (context, index) => ListTileItem(
               dicodingClasses: androidPath[index],
             ),
           ),
-          // todo-24: put another header in our sliver list
+          // todo-03-sliver-06: put another header in our sliver list
+          // and add SliverGrid.count for web classes
           _header(context, "Front-End Web Developer"),
-          // todo-25: add SliverGrid.count for web classes
           SliverGrid.count(
             crossAxisCount: 2,
-            children: webPaths
+            children: webPath
                 .map((webClass) => ListTileItem(
                       dicodingClasses: webClass,
                     ))
@@ -71,7 +69,7 @@ class LearningPathScreen extends StatelessWidget {
     );
   }
 
-  // todo-07: create a method that return SliverPersistentHeader
+  // todo-02-header-01: create a method that return SliverPersistentHeader
   // then create empty SliverPersistentHeader that containt a text
   // and context from parameter
   // before that, we need to define delegate first
@@ -80,7 +78,7 @@ class LearningPathScreen extends StatelessWidget {
     String text,
   ) {
     return SliverPersistentHeader(
-      // todo-14: define a delegate here and make it pinned
+      // todo-02-header-08: define a delegate here and make it pinned
       pinned: true,
       delegate: SliverHeaderDelegate(
         minHeight: 60,

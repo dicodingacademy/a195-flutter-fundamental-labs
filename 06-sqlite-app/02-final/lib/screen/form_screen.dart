@@ -5,7 +5,7 @@ import 'package:sqlite_app/provider/local_database_provider.dart';
 import 'package:sqlite_app/static/action_page_enum.dart';
 
 class FormScreen extends StatefulWidget {
-  // todo-action-07: pass parameter that containt action page and profile data
+  // todo-03-action-07: pass parameter that containt action page and profile data
   final ActionPageEnum actionPageEnum;
   final Profile? profile;
 
@@ -26,10 +26,10 @@ class _FormScreenState extends State<FormScreen> {
       TextEditingController();
   bool _isMarried = false;
 
-  // todo-action-08: setup the profile value before UI is build
+  // todo-03-action-08: setup the profile value before UI is build
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
 
     if (widget.actionPageEnum.isEdit) {
       _nameController.text = widget.profile?.name ?? "";
@@ -97,12 +97,12 @@ class _FormScreenState extends State<FormScreen> {
               ),
               const SizedBox.square(dimension: 32),
               FilledButton.icon(
-                // todo-action-09: make the icon and name more flexible based on parameter
+                // todo-03-action-09: make the icon and name more flexible based on parameter
                 icon: Icon(
                     widget.actionPageEnum.isEdit ? Icons.edit : Icons.save),
                 label: Text(widget.actionPageEnum.isEdit ? "Edit" : "Save"),
                 onPressed: () async {
-                  // todo-action-10: tdo the edit or save the profile data
+                  // todo-03-action-10: do the edit or save the profile data
                   final localDatabaseProvider =
                       context.read<LocalDatabaseProvider>();
                   final profile = Profile(
@@ -122,7 +122,7 @@ class _FormScreenState extends State<FormScreen> {
                   }
                   await localDatabaseProvider.loadAllProfileValue();
 
-                  if (mounted) {
+                  if (context.mounted) {
                     Navigator.of(context).pop();
                   }
                 },

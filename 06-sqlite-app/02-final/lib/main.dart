@@ -4,11 +4,8 @@ import 'package:sqlite_app/provider/local_database_provider.dart';
 import 'package:sqlite_app/screen/profiles_screen.dart';
 import 'package:sqlite_app/services/sqlite_service.dart';
 
-void main() async {
-  // todo-provider-09: make the main is async, add widget binding, and get an access to shared preference.
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // todo-provider-08: register the share preference provider
+void main() {
+  // todo-02-provider-09: register the share preference provider
   runApp(MultiProvider(
     providers: [
       Provider(

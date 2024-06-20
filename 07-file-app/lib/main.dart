@@ -1,4 +1,4 @@
-// todo-init-02: remove all necessary class and change with all of this code
+// todo-01-init-02: remove all necessary class and change with all of this code
 import 'package:file_app/provider/file_provider.dart';
 import 'package:file_app/screen/home_screen.dart';
 import 'package:file_app/service/file_service.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  // todo-provider-07: register the provider
+  // todo-03-provider-07: register the provider
   runApp(MultiProvider(
     providers: [
       Provider(
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// todo-init-03: move this widget to different file
+// todo-01-init-03: move this widget to different file
 // dont forget to import home screen to main.dart file
 /*
 class HomeScreen extends StatelessWidget {

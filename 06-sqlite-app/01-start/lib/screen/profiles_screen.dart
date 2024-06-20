@@ -22,8 +22,8 @@ class ProfilesScreen extends StatelessWidget {
             children: [
               ProfileCardWidget(
                 profile: Profile(
-                  name: "Achmad Ilham",
-                  email: "achmadilham@gmail.com",
+                  name: "Ilham",
+                  email: "ilham@dicoding.com",
                   phoneNumber: "81234567890",
                   maritalStatus: true,
                 ),

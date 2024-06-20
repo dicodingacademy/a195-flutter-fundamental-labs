@@ -1,11 +1,11 @@
-// todo-08: create a SliverPersistentHeaderDelegate first
+// todo-02-header-02: create a SliverPersistentHeaderDelegate first
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
-  // todo-09: implement some method that provided
-  // todo-10: create a constructor which has minHeight, maxHeight, and child parameter
+  // todo-02-header-03: implement some method that provided
+  // todo-02-header-04: create a constructor which has minHeight, maxHeight, and child parameter
   final double minHeight;
   final double maxHeight;
   final Widget child;
@@ -19,12 +19,12 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    // todo-11: display a widget from child parameter
+    // todo-02-header-05: display a widget from child parameter
     return child;
   }
 
   @override
-  // todo-12: define maxHeight and minHeight from constructor parameter
+  // todo-02-header-06: define maxHeight and minHeight from constructor parameter
   double get maxExtent => max(maxHeight, minHeight);
 
   @override
@@ -32,7 +32,7 @@ class SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(covariant SliverHeaderDelegate oldDelegate) {
-    // todo-13: define a boolean value so the widget will rebuild when the value is true
+    // todo-02-header-07: define a boolean value so the widget will rebuild when the value is true
     // if variabel is error, that because the parameter. That should be the name of class
     return maxHeight != oldDelegate.maxHeight ||
         minHeight != oldDelegate.minHeight ||
