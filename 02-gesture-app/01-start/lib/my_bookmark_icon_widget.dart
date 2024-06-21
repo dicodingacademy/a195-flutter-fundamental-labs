@@ -16,7 +16,7 @@ class _MyBookmarkIconWidgetState extends State<MyBookmarkIconWidget> {
 
     // todo-tap-03: add onTap callback and set the variable differently
 
-    return const Icon(
+    return Icon(
       // todo-tap-04: change the icon and color based on value
       Icons.bookmark_border,
       color: Colors.grey,
