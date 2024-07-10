@@ -1,0 +1,4 @@
+<!-- todo-01-android-08: add a raw folder that contain keep.xml and mp3 file -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/*,@raw/slow_spring_board" />
