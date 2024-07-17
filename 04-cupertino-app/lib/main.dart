@@ -1,5 +1,6 @@
 import 'package:cupertino_app/screen/category_screen.dart';
 import 'package:cupertino_app/screen/home_screen.dart';
+import 'package:cupertino_app/static/my_route.dart';
 import 'package:flutter/cupertino.dart';
 
 void main() {
@@ -21,10 +22,10 @@ class MyApp extends StatelessWidget {
       // todo-02-tab-05: change the home parameter to HomeScreen
       // home: const HomeScreen(),
       // todo-03-dialog-04: add route for category
-      initialRoute: HomeScreen.nameRoute,
+      initialRoute: MyRoute.home.name,
       routes: {
-        HomeScreen.nameRoute: (BuildContext _) => const HomeScreen(),
-        CategoryScreen.nameRoute: (context) => CategoryScreen(
+        MyRoute.home.name: (BuildContext _) => const HomeScreen(),
+        MyRoute.category.name: (context) => CategoryScreen(
               selectedCategory:
                   ModalRoute.of(context)?.settings.arguments as String,
             )

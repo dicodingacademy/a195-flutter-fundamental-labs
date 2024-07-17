@@ -1,5 +1,5 @@
 // todo-02-tab-01: create a FeedScreen and SearchScreen for the child of tab screen
-import 'package:cupertino_app/screen/category_screen.dart';
+import 'package:cupertino_app/static/my_route.dart';
 import 'package:flutter/cupertino.dart';
 
 class FeedsScreen extends StatelessWidget {
@@ -49,21 +49,21 @@ class FeedsScreen extends StatelessWidget {
           actions: [
             CupertinoActionSheetAction(
               onPressed: () {
-                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                Navigator.pushNamed(context, MyRoute.category.name,
                     arguments: 'Technology');
               },
               child: const Text('Technology'),
             ),
             CupertinoActionSheetAction(
               onPressed: () {
-                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                Navigator.pushNamed(context, MyRoute.category.name,
                     arguments: 'Business');
               },
               child: const Text('Business'),
             ),
             CupertinoActionSheetAction(
               onPressed: () {
-                Navigator.pushNamed(context, CategoryScreen.nameRoute,
+                Navigator.pushNamed(context, MyRoute.category.name,
                     arguments: 'Sport');
               },
               child: const Text('Sport'),
