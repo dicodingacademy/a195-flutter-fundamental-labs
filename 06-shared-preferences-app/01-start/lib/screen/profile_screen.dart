@@ -65,7 +65,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 readOnly: true,
                 decoration: const InputDecoration(
                   label: Text("Marital Status"),
-                  prefixText: "+62",
                 ),
               ),
               const SizedBox.square(dimension: 32),

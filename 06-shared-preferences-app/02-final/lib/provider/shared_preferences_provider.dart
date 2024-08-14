@@ -13,7 +13,7 @@ class SharedPreferencesProvider extends ChangeNotifier {
   String _message = "";
   String get message => _message;
 
-  late Profile? _profile;
+  Profile? _profile;
   Profile? get profile => _profile;
 
   // todo-02-provider-04: add a function to pass a profile value

@@ -85,12 +85,13 @@ class _FormScreenState extends State<FormScreen> {
                     phoneNumber: _phoneNumberController.text,
                     maritalStatus: _isMarried,
                   );
-                  await context
-                      .read<SharedPreferencesProvider>()
-                      .saveProfileValue(profile);
+                  final sharedPreferencesProvider =
+                      context.read<SharedPreferencesProvider>();
+                  await sharedPreferencesProvider.saveProfileValue(profile);
 
                   // todo-03-action-02: wrap the Navigator using if mounted
                   if (context.mounted) {
+                    sharedPreferencesProvider.getProfileValue();
                     Navigator.of(context).pop();
                   }
                 },
