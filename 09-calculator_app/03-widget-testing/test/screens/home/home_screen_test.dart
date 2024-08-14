@@ -51,12 +51,13 @@ void main() {
       expect(textInAppBar.data, "Calculator App");
 
       // check empty text within FormulaField
-final editableTextFinder = find.descendant(
-  of: formulaFieldFinder,
-  matching: find.byType(EditableText),
-);
-final EditableTextState editableText = tester.state(editableTextFinder);
-expect(editableText.widget.controller.text, isEmpty);
+      final textFormFieldFinder = find.descendant(
+        of: formulaFieldFinder,
+        matching: find.byType(TextFormField),
+      );
+      final textFormFieldWidget =
+          tester.widget<TextFormField>(textFormFieldFinder);
+      expect(textFormFieldWidget.controller!.text, isEmpty);
 
       // check test within ActionButton
       final textInActionButtonFinder = find.descendant(

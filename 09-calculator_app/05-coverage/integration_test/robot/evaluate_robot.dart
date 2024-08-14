@@ -30,8 +30,8 @@ class EvaluateRobot {
   }
 
   Future<void> checkResultText(String result) async {
-    final resultFidner = find.byKey(resultKey);
-    final resultWidget = tester.widget<Text>(resultFidner);
+    final resultFinder = find.byKey(resultKey);
+    final resultWidget = tester.widget<Text>(resultFinder);
     expect(resultWidget.data, result);
   }
 }

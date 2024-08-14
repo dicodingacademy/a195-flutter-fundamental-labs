@@ -13,16 +13,16 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  provider: 
-  math_expressions: 
-  equatable: 
+  provider: ^6.1.2
+  math_expressions: ^2.6.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  test:
-  mocktail: 
+  test: ^1.25.2
+  mocktail: ^1.0.4
 
   flutter_lints: ^3.0.0
 

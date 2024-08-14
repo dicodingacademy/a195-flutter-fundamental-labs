@@ -42,9 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox.square(dimension: 8),
             const Expanded(
               child: Center(
-                child: ResultText(
-                  key: ValueKey("resultText"),
-                ),
+                child: ResultText(),
               ),
             ),
           ],
