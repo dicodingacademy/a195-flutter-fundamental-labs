@@ -1,16 +1,17 @@
 import 'package:calculator_app/providers/math_provider.dart';
+import 'package:calculator_app/services/math_expression.dart';
 import 'package:calculator_app/static/evaluate_formula_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../mocks/mock.dart';
+class MockMathExpression extends Mock implements MathExpression {}
 
 void main() {
   late MockMathExpression mathExpression;
   late MathProvider mathProvider;
   const String successFormula = "3*25";
   const String failureFormula = "math";
-  const String successResultOfFormula = "75.0";
+  const String resultOfSuccess = "75.0";
   const String resultOfError = "Cannot evaluate that formula.";
 
   setUp(() {
@@ -28,7 +29,7 @@ void main() {
     test('should return SuccessEvaluate type when formula is right.', () async {
       // arrange
       when(() => mathExpression.evaluate(successFormula))
-          .thenReturn(successResultOfFormula);
+          .thenReturn(resultOfSuccess);
 
       // act
       mathProvider.evaluate(successFormula);
@@ -41,14 +42,14 @@ void main() {
     test('should return 75 when formula is right.', () async {
       // arrange
       when(() => mathExpression.evaluate(successFormula))
-          .thenReturn(successResultOfFormula);
+          .thenReturn(resultOfSuccess);
 
       // act
       mathProvider.evaluate(successFormula);
       final state = mathProvider.state;
 
       // assert
-      expect(state, equals(SuccessEvaluate(successResultOfFormula)));
+      expect(state, equals(SuccessEvaluate(resultOfSuccess)));
     });
 
     test('should return FailedEvaluate type when formula is wrong.', () {

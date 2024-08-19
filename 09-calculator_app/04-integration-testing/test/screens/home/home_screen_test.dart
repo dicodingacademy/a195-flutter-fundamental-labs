@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 
-import '../../mocks/mock.dart';
+class MockMathProvider extends Mock implements MathProvider {}
 
 void main() {
   late MockMathProvider mathProvider;
