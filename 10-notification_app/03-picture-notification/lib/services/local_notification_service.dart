@@ -13,17 +13,6 @@ final StreamController<String?> selectNotificationStream =
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-@pragma('vm:entry-point')
-void notificationTapBackground(NotificationResponse notificationResponse) {
-  print('notification(${notificationResponse.id}) action tapped: '
-      '${notificationResponse.actionId} with'
-      ' payload: ${notificationResponse.payload}');
-  if (notificationResponse.input?.isNotEmpty ?? false) {
-    print(
-        'notification action tapped with input: ${notificationResponse.input}');
-  }
-}
-
 class LocalNotificationService {
   // todo-02-notif-01: add a constructor
   // todo-02-notif-01: there is an error in main.dart, we fix that later
@@ -63,7 +52,6 @@ class LocalNotificationService {
           selectNotificationStream.add(payload);
         }
       },
-      onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
   }
 
@@ -72,6 +60,14 @@ class LocalNotificationService {
             .resolvePlatformSpecificImplementation<
                 AndroidFlutterLocalNotificationsPlugin>()
             ?.areNotificationsEnabled() ??
+        false;
+  }
+
+  Future<bool> _requestAndroidNotificationsPermission() async {
+    return await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin>()
+            ?.requestNotificationsPermission() ??
         false;
   }
 
@@ -86,13 +82,13 @@ class LocalNotificationService {
         sound: true,
       );
     } else if (defaultTargetPlatform == TargetPlatform.android) {
-      final androidImplementation =
-          flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>();
-      final requestNotificationsPermission =
-          await androidImplementation?.requestNotificationsPermission();
       final notificationEnabled = await _isAndroidPermissionGranted();
-      return (requestNotificationsPermission ?? false) && notificationEnabled;
+      if (!notificationEnabled) {
+        final requestNotificationsPermission =
+            await _requestAndroidNotificationsPermission();
+        return requestNotificationsPermission;
+      }
+      return notificationEnabled;
     } else {
       return false;
     }

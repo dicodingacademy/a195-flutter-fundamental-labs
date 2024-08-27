@@ -3,7 +3,7 @@ class ReceivedNotification {
   final String? title;
   final String? body;
   final String? payload;
- 
+
   ReceivedNotification({
     this.id,
     this.title,
