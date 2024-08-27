@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/providers/payload_provider.dart';
 import 'package:notification_app/models/received_notification.dart';
 import 'package:notification_app/providers/local_notification_provider.dart';
+import 'package:notification_app/providers/payload_provider.dart';
 import 'package:notification_app/services/local_notification_service.dart';
 import 'package:notification_app/static/my_route.dart';
 import 'package:notification_app/widgets/my_divider.dart';
@@ -15,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // todo-05-action-02: add functions to handle the notification
   void _configureSelectNotificationSubject() {
     selectNotificationStream.stream.listen((String? payload) {
       context.read<PayloadProvider>().payload = payload;
@@ -33,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // todo-05-action-03: add initState to run the function
   @override
   void initState() {
     super.initState();
@@ -41,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _configureDidReceiveLocalNotificationSubject();
   }
 
-  // todo-05-action-04: add dispose to close the stream
   @override
   void dispose() {
     selectNotificationStream.close();
@@ -65,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () async {
                   await _requestPermission();
                 },
-                // todo-05-action-05: consume the permission state
                 child: Consumer<LocalNotificationProvider>(
                   builder: (context, value, child) {
                     return Text(
@@ -114,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const MyDivider(title: "Background Service"),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudOneOffTask();
+                  _runBackgroundOneOffTask();
                 },
                 child: const Text(
                   "Run a task in background",
@@ -123,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudPeriodicTask();
+                  _runBackgroundPeriodicTask();
                 },
                 child: const Text(
                   "Run a task periodically in background",
@@ -148,12 +144,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _requestPermission() async {
-    // todo-05-action-06: run the request action
     context.read<LocalNotificationProvider>().requestPermissions();
   }
 
   Future<void> _showNotification() async {
-    // todo-05-action-07: run the notification
     context.read<LocalNotificationProvider>().showNotification();
   }
 
@@ -163,9 +157,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _checkPendingNotificationRequests() async {}
 
-  void _runBackgroudOneOffTask() async {}
+  void _runBackgroundOneOffTask() async {}
 
-  void _runBackgroudPeriodicTask() async {}
+  void _runBackgroundPeriodicTask() async {}
 
   void _cancelAllTaskInBackground() async {}
 }

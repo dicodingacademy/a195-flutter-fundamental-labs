@@ -13,11 +13,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-
-  # todo-00-package-01: add dependencies
   provider: ^6.1.2
-  flutter_local_notifications: ^17.1.2
-  # todo-00-package-02: build project
+  flutter_local_notifications: ^17.2.2
 
 dev_dependencies:
   flutter_test:

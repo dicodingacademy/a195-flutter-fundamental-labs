@@ -1,19 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- todo-01-android-05: setup a permission -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:label="notification_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- todo-01-android-06: setup showWhenLocked and turnScreenOn -->
-        <!-- todo-01-android-07: add an image to drawable folder (android>app>src>main>res>drawable) -->
         <activity
-            android:showWhenLocked="true"
-            android:turnScreenOn="true"
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

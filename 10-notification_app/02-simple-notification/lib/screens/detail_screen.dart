@@ -9,8 +9,6 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // todo-05-action-11: update a payload
-    // todo-05-action-12: clean and build the project, then run the app
     final data = context.read<PayloadProvider>().payload;
     return Scaffold(
       appBar: AppBar(
@@ -18,20 +16,23 @@ class DetailScreen extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Payload: $data",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              FilledButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Go back!"),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Payload: $data",
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Go back!"),
+                ),
+              ],
+            ),
           ),
         ),
       ),

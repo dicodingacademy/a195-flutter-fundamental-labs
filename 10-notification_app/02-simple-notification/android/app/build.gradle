@@ -25,15 +25,12 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.dicoding.notification_app"
-    // todo-01-android-04: set to minimum 34 or default flutter.compileSdkVersion
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-        // todo-01-android-01: enable flag to support for the new language APIs
-        coreLibraryDesugaringEnabled = true
     }
 
     defaultConfig {
@@ -45,7 +42,6 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
-        // todo-01-android-02: enable multiDexEnabled
         multiDexEnabled = true
     }
 
@@ -60,12 +56,4 @@ android {
 
 flutter {
     source = "../.."
-}
-
-dependencies {
-  // todo-01-android-03: enable flag to support for the new language APIs
-  // todo-01-android-03: to fix Android 12L and above from crash because enabling desugaring
-  coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
-  implementation 'androidx.window:window:1.0.0'
-  implementation 'androidx.window:window-java:1.0.0'
 }
