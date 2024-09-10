@@ -1,6 +1,8 @@
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/static/screen_route.dart';
 import 'package:chatting_app/widgets/textfield_obsecure_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -62,11 +64,32 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+
+    final navigator = Navigator.of(context);
+    final isLogin = context.read<SharedPreferenceProvider>().isLogin;
+
+    Future.microtask(() async {
+      if (isLogin) {
+        navigator.pushReplacementNamed(
+          ScreenRoute.chat.name,
+        );
+      }
+    });
+  }
+
   void _tapToLogin() async {
-    Navigator.pushReplacementNamed(
-      context,
-      ScreenRoute.chat.name,
-    );
+    final sharedPreferenceProvider = context.read<SharedPreferenceProvider>();
+    await sharedPreferenceProvider.login();
+
+    if (mounted) {
+      Navigator.pushReplacementNamed(
+        context,
+        ScreenRoute.chat.name,
+      );
+    }
   }
 
   void _goToRegister() async {

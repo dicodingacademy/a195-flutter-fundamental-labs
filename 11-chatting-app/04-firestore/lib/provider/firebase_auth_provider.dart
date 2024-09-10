@@ -72,4 +72,14 @@ class FirebaseAuthProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future updateProfile() async {
+    final user = await _service.userChanges();
+    _profile = Profile(
+      name: user?.displayName,
+      email: user?.email,
+      photoUrl: user?.photoURL,
+    );
+    notifyListeners();
+  }
 }

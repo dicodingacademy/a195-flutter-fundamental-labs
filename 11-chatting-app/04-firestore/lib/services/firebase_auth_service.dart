@@ -57,4 +57,6 @@ class FirebaseAuthService {
       throw Exception("Logout failed. Please try again.");
     }
   }
+
+  Future<User?> userChanges() => _auth.userChanges().first;
 }

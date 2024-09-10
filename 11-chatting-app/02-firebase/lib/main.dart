@@ -1,17 +1,36 @@
 import 'package:chatting_app/firebase_options.dart';
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/screens/chat_screen.dart';
 import 'package:chatting_app/screens/login_screen.dart';
 import 'package:chatting_app/screens/register_screen.dart';
+import 'package:chatting_app/services/shared_preferences_service.dart';
 import 'package:chatting_app/static/screen_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final pref = await SharedPreferences.getInstance();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  runApp(MultiProvider(
+    providers: [
+      Provider(
+        create: (context) => SharedPreferencesService(pref),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => SharedPreferenceProvider(
+          context.read<SharedPreferencesService>(),
+        ),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

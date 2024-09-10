@@ -62,4 +62,7 @@ class FirebaseAuthService {
       throw Exception("Logout failed. Please try again.");
     }
   }
+
+  // todo-01-auth-07: check user still login
+  Future<User?> userChanges() => _auth.userChanges().first;
 }

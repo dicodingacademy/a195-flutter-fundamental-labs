@@ -1,4 +1,5 @@
 import 'package:chatting_app/provider/firebase_auth_provider.dart';
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/static/firebase_auth_status.dart';
 import 'package:chatting_app/static/screen_route.dart';
 import 'package:chatting_app/widgets/textfield_obsecure_widget.dart';
@@ -74,10 +75,29 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+
+    final firebaseAuthProvider = context.read<FirebaseAuthProvider>();
+    final navigator = Navigator.of(context);
+    final isLogin = context.read<SharedPreferenceProvider>().isLogin;
+
+    Future.microtask(() async {
+      if (isLogin) {
+        await firebaseAuthProvider.updateProfile();
+        navigator.pushReplacementNamed(
+          ScreenRoute.chat.name,
+        );
+      }
+    });
+  }
+
   void _tapToLogin() async {
     final email = _emailController.text;
     final password = _passwordController.text;
     if (email.isNotEmpty && password.isNotEmpty) {
+      final sharedPreferenceProvider = context.read<SharedPreferenceProvider>();
       final firebaseAuthProvider = context.read<FirebaseAuthProvider>();
       final navigator = Navigator.of(context);
       final scaffoldMessenger = ScaffoldMessenger.of(context);
@@ -85,6 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await firebaseAuthProvider.signInUser(email, password);
       switch (firebaseAuthProvider.authStatus) {
         case FirebaseAuthStatus.authenticated:
+          await sharedPreferenceProvider.login();
           navigator.pushReplacementNamed(
             ScreenRoute.chat.name,
           );

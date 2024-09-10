@@ -1,19 +1,24 @@
 import 'package:chatting_app/firebase_options.dart';
 import 'package:chatting_app/provider/firebase_auth_provider.dart';
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/screens/chat_screen.dart';
 import 'package:chatting_app/screens/login_screen.dart';
 import 'package:chatting_app/screens/register_screen.dart';
 import 'package:chatting_app/services/firebase_auth_service.dart';
 import 'package:chatting_app/services/firebase_firestore_service.dart';
+import 'package:chatting_app/services/shared_preferences_service.dart';
 import 'package:chatting_app/static/screen_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final pref = await SharedPreferences.getInstance();
+  
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -22,6 +27,14 @@ void main() async {
   final firebaseFirestore = FirebaseFirestore.instance;
   runApp(MultiProvider(
     providers: [
+      Provider(
+        create: (context) => SharedPreferencesService(pref),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => SharedPreferenceProvider(
+          context.read<SharedPreferencesService>(),
+        ),
+      ),
       Provider(
         create: (context) => FirebaseAuthService(
           firebaseAuth,

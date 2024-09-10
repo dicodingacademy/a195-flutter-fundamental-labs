@@ -29,12 +29,11 @@ class FirebaseAuthProvider extends ChangeNotifier {
 
       _authStatus = FirebaseAuthStatus.accountCreated;
       _message = "Create account is success";
-      notifyListeners();
     } catch (e) {
       _message = e.toString();
       _authStatus = FirebaseAuthStatus.error;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   // todo-02-provider-07: add a function to login
@@ -53,12 +52,11 @@ class FirebaseAuthProvider extends ChangeNotifier {
 
       _authStatus = FirebaseAuthStatus.authenticated;
       _message = "Sign in is success";
-      notifyListeners();
     } catch (e) {
       _message = e.toString();
       _authStatus = FirebaseAuthStatus.error;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   // todo-02-provider-08: add a function to logout
@@ -71,11 +69,21 @@ class FirebaseAuthProvider extends ChangeNotifier {
 
       _authStatus = FirebaseAuthStatus.unauthenticated;
       _message = "Sign out is success";
-      notifyListeners();
     } catch (e) {
       _message = e.toString();
       _authStatus = FirebaseAuthStatus.error;
-      notifyListeners();
     }
+    notifyListeners();
+  }
+
+  // todo-02-provider-09: update the profile when still login
+  Future updateProfile() async {
+    final user = await _service.userChanges();
+    _profile = Profile(
+      name: user?.displayName,
+      email: user?.email,
+      photoUrl: user?.photoURL,
+    );
+    notifyListeners();
   }
 }

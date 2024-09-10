@@ -1,5 +1,7 @@
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/static/screen_route.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -69,10 +71,15 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _tapToSignOut() async {
-    Navigator.pushReplacementNamed(
-      context,
-      ScreenRoute.login.name,
-    );
+    final sharedPreferenceProvider = context.read<SharedPreferenceProvider>();
+    await sharedPreferenceProvider.logout();
+
+    if (mounted) {
+      Navigator.pushReplacementNamed(
+        context,
+        ScreenRoute.login.name,
+      );
+    }
   }
 
   void _sendMessage() async {}

@@ -1,6 +1,7 @@
 import 'package:chatting_app/model/chat.dart';
 import 'package:chatting_app/model/profile.dart';
 import 'package:chatting_app/provider/firebase_auth_provider.dart';
+import 'package:chatting_app/provider/shared_preference_provider.dart';
 import 'package:chatting_app/services/firebase_firestore_service.dart';
 import 'package:chatting_app/static/firebase_auth_status.dart';
 import 'package:chatting_app/static/screen_route.dart';
@@ -123,11 +124,13 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _tapToSignOut() async {
+    final sharedPreferenceProvider = context.read<SharedPreferenceProvider>();
     final firebaseAuthProvider = context.read<FirebaseAuthProvider>();
     final navigator = Navigator.of(context);
     final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-    await firebaseAuthProvider.signOutUser().then((value) {
+    await firebaseAuthProvider.signOutUser().then((value) async {
+      await sharedPreferenceProvider.logout();
       navigator.pushReplacementNamed(
         ScreenRoute.login.name,
       );
