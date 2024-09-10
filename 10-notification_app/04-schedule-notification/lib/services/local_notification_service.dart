@@ -16,17 +16,6 @@ final StreamController<String?> selectNotificationStream =
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-@pragma('vm:entry-point')
-void notificationTapBackground(NotificationResponse notificationResponse) {
-  print('notification(${notificationResponse.id}) action tapped: '
-      '${notificationResponse.actionId} with'
-      ' payload: ${notificationResponse.payload}');
-  if (notificationResponse.input?.isNotEmpty ?? false) {
-    print(
-        'notification action tapped with input: ${notificationResponse.input}');
-  }
-}
-
 class LocalNotificationService {
   final HttpService httpService;
 
@@ -64,7 +53,6 @@ class LocalNotificationService {
           selectNotificationStream.add(payload);
         }
       },
-      onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
   }
 
@@ -73,6 +61,14 @@ class LocalNotificationService {
             .resolvePlatformSpecificImplementation<
                 AndroidFlutterLocalNotificationsPlugin>()
             ?.areNotificationsEnabled() ??
+        false;
+  }
+
+  Future<bool> _requestAndroidNotificationsPermission() async {
+    return await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin>()
+            ?.requestNotificationsPermission() ??
         false;
   }
 
@@ -96,17 +92,17 @@ class LocalNotificationService {
         sound: true,
       );
     } else if (defaultTargetPlatform == TargetPlatform.android) {
-      final androidImplementation =
-          flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>();
-      final requestNotificationsPermission =
-          await androidImplementation?.requestNotificationsPermission();
       final notificationEnabled = await _isAndroidPermissionGranted();
       // todo-01-notif-03: add a request
       final requestAlarmEnabled = await _requestExactAlarmsPermission();
-      return (requestNotificationsPermission ?? false) &&
-          notificationEnabled
-          // todo-01-notif-03: add a request
+      if (!notificationEnabled) {
+        final requestNotificationsPermission =
+            await _requestAndroidNotificationsPermission();
+        return requestNotificationsPermission // todo-01-notif-03: add a request
+            &&
+            requestAlarmEnabled;
+      }
+      return notificationEnabled // todo-01-notif-03: add a request
           &&
           requestAlarmEnabled;
     } else {

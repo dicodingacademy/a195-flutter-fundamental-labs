@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const MyDivider(title: "Background Service"),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudOneOffTask();
+                  _runBackgroundOneOffTask();
                 },
                 child: const Text(
                   "Run a task in background",
@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudPeriodicTask();
+                  _runBackgroundPeriodicTask();
                 },
                 child: const Text(
                   "Run a task periodically in background",
@@ -225,12 +225,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _runBackgroudOneOffTask() async {
+  void _runBackgroundOneOffTask() async {
     // todo-02-action-01: run the runOneOffTask function
     context.read<WorkmanagerService>().runOneOffTask();
   }
 
-  void _runBackgroudPeriodicTask() async {
+  void _runBackgroundPeriodicTask() async {
     // todo-02-action-02: run the runPeriodicTask function
     context.read<WorkmanagerService>().runPeriodicTask();
   }

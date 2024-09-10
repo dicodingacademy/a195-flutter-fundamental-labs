@@ -4,14 +4,12 @@ import 'package:notification_app/services/http_service.dart';
 import 'package:notification_app/static/my_workmanager.dart';
 import 'package:workmanager/workmanager.dart';
 
-// todo-01-service-08: back to here and create a conditional task
-final httpService = HttpService();
-
 // todo-01-service-04: add initialization and we add it later
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
     // todo-01-service-08: back to here and create a conditional task
+    final httpService = HttpService();
     if (task == MyWorkmanager.oneOff.taskName ||
         task == MyWorkmanager.oneOff.uniqueName ||
         task == Workmanager.iOSBackgroundTask) {
@@ -48,12 +46,9 @@ class WorkmanagerService {
       constraints: Constraints(
         networkType: NetworkType.connected,
       ),
+      initialDelay: const Duration(seconds: 5),
       inputData: {
-        'int': 1,
-        'bool': true,
-        'double': 1.0,
-        'string': 'string',
-        'array': [1, 2, 3],
+        "data": "This is a valid payload from oneoff task workmanager",
       },
     );
   }
@@ -66,11 +61,7 @@ class WorkmanagerService {
       frequency: const Duration(minutes: 16),
       initialDelay: Duration.zero,
       inputData: {
-        'int': 1,
-        'bool': true,
-        'double': 1.0,
-        'string': 'string',
-        'array': [1, 2, 3],
+        "data": "This is a valid payload from periodic task workmanager",
       },
     );
   }

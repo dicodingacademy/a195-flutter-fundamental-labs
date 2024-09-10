@@ -13,20 +13,24 @@ class DetailScreen extends StatelessWidget {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Payload: null",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              FilledButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Go back!"),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Payload: null",
+                  style: Theme.of(context).textTheme.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+                FilledButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Go back!"),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const MyDivider(title: "Background Service"),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudOneOffTask();
+                  _runBackgroundOneOffTask();
                 },
                 child: const Text(
                   "Run a task in background",
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _runBackgroudPeriodicTask();
+                  _runBackgroundPeriodicTask();
                 },
                 child: const Text(
                   "Run a task periodically in background",
@@ -112,9 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _checkPendingNotificationRequests() async {}
 
-  void _runBackgroudOneOffTask() async {}
+  void _runBackgroundOneOffTask() async {}
 
-  void _runBackgroudPeriodicTask() async {}
+  void _runBackgroundPeriodicTask() async {}
 
   void _cancelAllTaskInBackground() async {}
 }
