@@ -22,11 +22,10 @@ class SharedPreferencesProvider extends ChangeNotifier {
     try {
       await _service.saveSettingValue(value);
       _message = "Your data is saved";
-      notifyListeners();
     } catch (e) {
       _message = "Failed to save your data";
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   // todo-02-provider-06: add a function to get a setting value
@@ -34,10 +33,9 @@ class SharedPreferencesProvider extends ChangeNotifier {
     try {
       _setting = _service.getSettingValue();
       _message = "Data successfully retrieved";
-      notifyListeners();
     } catch (e) {
       _message = "Failed to get your data";
-      notifyListeners();
     }
+    notifyListeners();
   }
 }

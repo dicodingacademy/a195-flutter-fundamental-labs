@@ -17,8 +17,6 @@ class _SettingPageState extends State<SettingPage> {
   final maximumPageSizeController = TextEditingController();
   final signatureController = TextEditingController();
 
-  final maximumPageSizeNumbers = [10, 15, 20, 25, 50, 100];
-
   @override
   void dispose() {
     maximumPageSizeController.dispose();
@@ -42,7 +40,6 @@ class _SettingPageState extends State<SettingPage> {
               const NotificationField(),
               MaximumPageSizeField(
                 controller: maximumPageSizeController,
-                maximumPageSizeNumbers: maximumPageSizeNumbers,
               ),
               SignatureField(
                 controller: signatureController,

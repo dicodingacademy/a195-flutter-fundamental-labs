@@ -4,6 +4,7 @@ import 'package:shared_preferences_app/models/setting.dart';
 import 'package:shared_preferences_app/providers/notification_state_provider.dart';
 import 'package:shared_preferences_app/providers/shared_preferences_provider.dart';
 import 'package:shared_preferences_app/utils/notification_state.dart';
+import 'package:shared_preferences_app/utils/page_size_number.dart';
 import 'package:shared_preferences_app/widgets/maximum_page_size_field.dart';
 import 'package:shared_preferences_app/widgets/notification_field.dart';
 import 'package:shared_preferences_app/widgets/save_button.dart';
@@ -21,8 +22,6 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   final maximumPageSizeController = TextEditingController();
   final signatureController = TextEditingController();
-
-  final maximumPageSizeNumbers = [10, 15, 20, 25, 50, 100];
 
   @override
   void dispose() {
@@ -47,7 +46,6 @@ class _SettingPageState extends State<SettingPage> {
               const NotificationField(),
               MaximumPageSizeField(
                 controller: maximumPageSizeController,
-                maximumPageSizeNumbers: maximumPageSizeNumbers,
               ),
               SignatureField(
                 controller: signatureController,
@@ -67,8 +65,8 @@ class _SettingPageState extends State<SettingPage> {
     final notificationState =
         context.read<NotificationStateProvider>().notificationState;
     final isNotificationEnable = notificationState.isEnable;
-    final maximumPageSize = int.tryParse(maximumPageSizeController.text) ??
-        maximumPageSizeNumbers.first;
+    final maximumPageSize =
+        int.tryParse(maximumPageSizeController.text) ?? defaultPageSizeNumbers;
     final signature = signatureController.text;
     final Setting setting = Setting(
       notificationEnable: isNotificationEnable,
@@ -101,9 +99,8 @@ class _SettingPageState extends State<SettingPage> {
       if (setting != null) {
         maximumPageSizeController.text = setting.pageNumber.toString();
         signatureController.text = setting.signature;
-        notificationStateProvider.notificationState = setting.notificationEnable
-            ? NotificationState.enable
-            : NotificationState.disable;
+        notificationStateProvider.notificationState =
+            setting.notificationEnable.isEnable;
       }
     });
   }

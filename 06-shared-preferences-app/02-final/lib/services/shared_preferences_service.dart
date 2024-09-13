@@ -1,6 +1,7 @@
 // todo-01-service-02: create a services to handle a preferences
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_app/models/setting.dart';
+import 'package:shared_preferences_app/utils/page_size_number.dart';
 
 class SharedPreferencesService {
   // todo-01-service-03: inject a preference from dependency
@@ -31,7 +32,7 @@ class SharedPreferencesService {
   Setting getSettingValue() {
     return Setting(
       notificationEnable: _preferences.getBool(_keyNotification) ?? true,
-      pageNumber: _preferences.getInt(_keyPageNumber) ?? 10,
+      pageNumber: _preferences.getInt(_keyPageNumber) ?? defaultPageSizeNumbers,
       signature: _preferences.getString(_keySignature) ?? "",
     );
   }

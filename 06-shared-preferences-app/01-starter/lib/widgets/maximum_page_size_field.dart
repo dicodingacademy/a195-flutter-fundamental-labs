@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences_app/utils/page_size_number.dart';
 import 'package:shared_preferences_app/widgets/title_form.dart';
 
 class MaximumPageSizeField extends StatelessWidget {
   final TextEditingController controller;
-  final List<int> maximumPageSizeNumbers;
 
   const MaximumPageSizeField({
     super.key,
     required this.controller,
-    required this.maximumPageSizeNumbers,
   });
 
   @override
@@ -24,7 +23,7 @@ class MaximumPageSizeField extends StatelessWidget {
           const SizedBox.square(dimension: 4),
           DropdownMenu(
             controller: controller,
-            initialSelection: maximumPageSizeNumbers.first,
+            initialSelection: defaultPageSizeNumbers,
             dropdownMenuEntries: maximumPageSizeNumbers
                 .map(
                   (pageSizeNumber) => DropdownMenuEntry(
