@@ -1,14 +1,10 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:notification_app/models/received_notification.dart';
 import 'package:notification_app/services/http_service.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
-
-final StreamController<ReceivedNotification> didReceiveLocalNotificationStream =
-    StreamController<ReceivedNotification>.broadcast();
 
 final StreamController<String?> selectNotificationStream =
     StreamController<String?>.broadcast();
@@ -29,17 +25,6 @@ class LocalNotificationService {
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {
-        didReceiveLocalNotificationStream.add(
-          ReceivedNotification(
-            id: id,
-            title: title,
-            body: body,
-            payload: payload,
-          ),
-        );
-      },
     );
     final initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
@@ -232,8 +217,6 @@ class LocalNotificationService {
       datetimeSchedule,
       notificationDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
