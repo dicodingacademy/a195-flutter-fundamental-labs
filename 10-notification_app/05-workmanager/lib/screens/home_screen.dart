@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/providers/payload_provider.dart';
-import 'package:notification_app/models/received_notification.dart';
 import 'package:notification_app/providers/local_notification_provider.dart';
 import 'package:notification_app/services/local_notification_service.dart';
 import 'package:notification_app/services/workmanager_service.dart';
@@ -23,27 +22,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _configureDidReceiveLocalNotificationSubject() {
-    didReceiveLocalNotificationStream.stream
-        .listen((ReceivedNotification receivedNotification) {
-      final payload = receivedNotification.payload;
-      context.read<PayloadProvider>().payload = payload;
-      Navigator.pushNamed(context, MyRoute.detail.name,
-          arguments: receivedNotification.payload);
-    });
-  }
-
   @override
   void initState() {
     super.initState();
     _configureSelectNotificationSubject();
-    _configureDidReceiveLocalNotificationSubject();
   }
 
   @override
   void dispose() {
     selectNotificationStream.close();
-    didReceiveLocalNotificationStream.close();
     super.dispose();
   }
 
