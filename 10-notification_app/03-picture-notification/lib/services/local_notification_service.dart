@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:notification_app/models/received_notification.dart';
 import 'package:notification_app/services/http_service.dart';
 
-final StreamController<ReceivedNotification> didReceiveLocalNotificationStream =
-    StreamController<ReceivedNotification>.broadcast();
 
 final StreamController<String?> selectNotificationStream =
     StreamController<String?>.broadcast();
@@ -24,23 +21,12 @@ class LocalNotificationService {
     const initializationSettingsAndroid = AndroidInitializationSettings(
       'app_icon',
     );
-    final initializationSettingsDarwin = DarwinInitializationSettings(
+    const initializationSettingsDarwin = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {
-        didReceiveLocalNotificationStream.add(
-          ReceivedNotification(
-            id: id,
-            title: title,
-            body: body,
-            payload: payload,
-          ),
-        );
-      },
     );
-    final initializationSettings = InitializationSettings(
+    const initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
