@@ -13,13 +13,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.3
-  provider: ^6.1.1
-  shared_preferences: ^2.3.2 
+  provider: ^6.1.4
+  shared_preferences: ^2.5.3
 
-  firebase_core: ^3.1.0
-  firebase_auth: ^5.1.0
+  firebase_core: ^3.13.0
+  firebase_auth: ^5.5.2
   # todo-01-firestore-01: add package
-  cloud_firestore: ^5.0.1
+  cloud_firestore: ^5.6.6
 
 dev_dependencies:
   flutter_test:

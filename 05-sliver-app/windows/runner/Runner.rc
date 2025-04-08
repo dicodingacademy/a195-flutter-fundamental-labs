@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "sliver_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "sliver_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.dicoding. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.dicoding. All rights reserved." "\0"
             VALUE "OriginalFilename", "sliver_app.exe" "\0"
             VALUE "ProductName", "sliver_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

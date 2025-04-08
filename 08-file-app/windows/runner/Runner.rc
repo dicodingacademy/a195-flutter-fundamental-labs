@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "file_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "file_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.dicoding. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.dicoding. All rights reserved." "\0"
             VALUE "OriginalFilename", "file_app.exe" "\0"
             VALUE "ProductName", "file_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

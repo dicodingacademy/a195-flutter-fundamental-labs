@@ -14,8 +14,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   # todo-01-service-01: add sqflite and provider dependencies
-  sqflite: ^2.3.0
-  provider: ^6.1.1
+  sqflite: ^2.4.2
+  provider: ^6.1.4
 
 dev_dependencies:
   flutter_test:

@@ -52,11 +52,7 @@ class ProfileCardWidget extends StatelessWidget {
                     const SizedBox.square(dimension: 4),
                     ProfileRowWidget(
                       title: "Marital Status ",
-                      subtitle: profile.maritalStatus == null
-                          ? ""
-                          : profile.maritalStatus!
-                              ? "Married"
-                              : "Single",
+                      subtitle: profile.maritalStatus ? "Married" : "Single",
                     ),
                   ],
                 ),

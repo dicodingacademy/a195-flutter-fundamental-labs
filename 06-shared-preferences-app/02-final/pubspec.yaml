@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
 
   # todo-00-dependencies-01: add dependencies
-  shared_preferences: ^2.3.2
-  provider: ^6.1.2
+  shared_preferences: ^2.5.3
+  provider: ^6.1.4
 
 dev_dependencies:
   flutter_test:
