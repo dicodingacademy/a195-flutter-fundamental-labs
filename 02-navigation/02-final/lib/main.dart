@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:navigation_app/another_screen.dart';
 import 'package:navigation_app/first_screen.dart';
 import 'package:navigation_app/replacement_screen.dart';

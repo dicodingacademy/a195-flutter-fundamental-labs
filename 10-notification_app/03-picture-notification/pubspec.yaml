@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.6
 
-  provider: ^6.1.2
+  provider: ^6.1.4
   flutter_local_notifications: ^19.0.0
   # todo-00-init-01: add dependency
   http: ^1.2.1

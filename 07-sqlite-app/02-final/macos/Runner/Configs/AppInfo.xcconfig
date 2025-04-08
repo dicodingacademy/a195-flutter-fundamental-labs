@@ -11,4 +11,4 @@ PRODUCT_NAME = sqlite_app
 PRODUCT_BUNDLE_IDENTIFIER = com.dicoding.sqliteApp
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 com.dicoding. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2025 com.dicoding. All rights reserved.

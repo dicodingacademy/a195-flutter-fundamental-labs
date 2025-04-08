@@ -1,7 +1,7 @@
 import 'package:math_expressions/math_expressions.dart';
 
 class MathExpression {
-  final Parser parser = Parser();
+  final ExpressionParser parser = ShuntingYardParser();
   final ContextModel cm = ContextModel();
 
   String evaluate(String formula) {
